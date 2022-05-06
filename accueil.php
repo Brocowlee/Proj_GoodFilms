@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE HTML>
 <html>
 
@@ -13,11 +15,11 @@
 <a href="liste_films.php"><div id="liste_films">Mes Films<div></a>
 <a href="recherche.php"><div id="recherche">Recherche par genre<div></a>
 <input type="search" name="recherche" placeholder="Recherche par titre">
-<a href="page_connexion.php"><div id="connexion">Déconnexion<div></a>
+<a href="logout.php"><div id="connexion">Déconnexion<div></a>
 </div>
 
 <body>
-<h1>WELCOME TO NOTRE SITE</h1>
+<h1>WELCOME TO NOTRE SITE <?php echo $_SESSION['login'] ?></h1>
 </br>
 
 <h3>Voici les derniers films :</h3>
