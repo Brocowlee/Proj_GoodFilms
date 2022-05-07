@@ -28,8 +28,8 @@ public class MyGUI extends JFrame{
 	private JMenu menu2 = new JMenu("Edition");
 		
 	
-	private JMenu menu3 = new JMenu("Help");
-	
+	private JMenu menu3 = new JMenu("Help"); 
+	 
 	
 	
 	public MyGUI() {
