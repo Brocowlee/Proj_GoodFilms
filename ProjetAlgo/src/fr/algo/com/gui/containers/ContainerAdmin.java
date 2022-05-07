@@ -66,7 +66,7 @@ public class ContainerAdmin extends JPanel {
       	  button.getButton().setMaximumSize(new Dimension(150,30));
         
       	  if(button.getName().equalsIgnoreCase(table_name)) {
-      		  button.getButton().setBackground(Color.DARK_GRAY);
+      		  button.getButton().setBackground(Color.GRAY);
       	  }
       	  
           panel.add(button.getButton());
