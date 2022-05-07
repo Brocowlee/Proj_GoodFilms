@@ -32,7 +32,10 @@ public class ContainerAdmin extends JPanel {
 	
 	private JLabel Ldelete = new JLabel("La suppression");
     private JLabel Ldelete2 = new JLabel("a été effectué");
-	
+    private JLabel Ldeleterefused = new JLabel("Veuillez choisir");
+    private JLabel Ldeleterefused2 = new JLabel("une donnée");
+    
+    
 	private ReturnNavigationListener<ContainerAdmin> navigationListener;
 	
 	
@@ -100,6 +103,18 @@ public class ContainerAdmin extends JPanel {
         this.Ldelete2.setVisible(false);
         contentPane.add(this.Ldelete2);
         
+        this.Ldeleterefused.setBounds(35, 340, 100, 25);
+        this.Ldeleterefused.setForeground(Color.RED);
+        this.Ldeleterefused.setFont(new Font("Serif", Font.PLAIN, 13));
+        this.Ldeleterefused.setVisible(false);
+        contentPane.add(this.Ldeleterefused);
+
+        this.Ldeleterefused2.setBounds(40, 360, 100, 25);
+        this.Ldeleterefused2.setForeground(Color.RED);
+        this.Ldeleterefused2.setFont(new Font("Serif", Font.PLAIN, 13));
+        this.Ldeleterefused2.setVisible(false);
+        contentPane.add(this.Ldeleterefused2);
+        
         this.add(contentPane);
 		
 	}
@@ -107,6 +122,11 @@ public class ContainerAdmin extends JPanel {
 	
 	public void delete() {
 		
+		this.Ldelete.setVisible(false);
+        this.Ldelete2.setVisible(false);
+        this.Ldeleterefused.setVisible(false);
+        this.Ldeleterefused2.setVisible(false);
+        
 		TableObject table = null;
 		
 		boolean suppressed = false;
@@ -129,7 +149,11 @@ public class ContainerAdmin extends JPanel {
 			}
 		}
 		
-		if(table == null) return;
+		if(table == null) {
+			this.Ldeleterefused.setVisible(true);
+	        this.Ldeleterefused2.setVisible(true);
+			return;
+		}
 		
 		if(!suppressed) return;
 		
