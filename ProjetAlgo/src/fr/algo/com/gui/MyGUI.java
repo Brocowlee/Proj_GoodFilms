@@ -1,0 +1,80 @@
+package fr.algo.com.gui;
+
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import fr.algo.com.gui.containers.MasterContainer;
+
+
+@SuppressWarnings("serial")
+public class MyGUI extends JFrame{
+
+	
+	private ImageIcon icon = new ImageIcon("./Icon.jpg");
+	
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu menu = new JMenu("Fichier");
+		private JMenuItem menuItem = new JMenuItem("Je sais");
+		private JMenuItem menuItem2 = new JMenuItem("pas quoi");
+		private JMenuItem menuItem3 = new JMenuItem("mettre");
+	
+	private JMenu menu2 = new JMenu("Edition");
+		
+	
+	private JMenu menu3 = new JMenu("Help");
+	
+	
+	
+	public MyGUI() {
+		
+		setContentPane(new MasterContainer());
+
+		//Application initialising :
+		setTitle("ZeFilmViewer");
+		setIconImage(icon.getImage());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setMinimumSize(new Dimension(1000,1000));
+        setMaximumSize(new Dimension(1000,1000));
+		setLocationRelativeTo(null);
+		pack();
+		
+		//Menu bar setup :
+		
+		this.menuBar.add(menu);
+		this.menuBar.add(menu2);
+		this.menuBar.add(menu3);
+		
+		menu.add(menuItem);
+		menu.add(menuItem2);
+		menu.add(menuItem3);
+		
+		setJMenuBar(menuBar);
+		
+		
+		menuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		
+		menuItem2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+	}
+}
