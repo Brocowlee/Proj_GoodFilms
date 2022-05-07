@@ -141,7 +141,6 @@ public class ContainerAdmin extends JPanel {
         		int currentColumnIndex = list.indexOf(attribut);
         		int currentColumnMaxSize = maxvalues.get(currentColumnIndex);
         		
-        		
         		JLabel lab = new JLabel(attribut);
         		
         		int space = currentColumnMaxSize + 30;
