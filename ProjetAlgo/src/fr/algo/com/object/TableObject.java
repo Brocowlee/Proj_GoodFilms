@@ -94,11 +94,26 @@ public class TableObject {
 	
 	/*public int getMaxSizeOfLine() {
 				
+		
+		
+		ArrayList<Integer> max_values = new ArrayList<>();
+		
+		for(List<String> sous_list : this.selectAll()) {
+			
+			for(String attribut : sous_list) {
+				
+				int index = sous_list.indexOf(attribut);
+				
+				//if(attribut.length())
 				
 				
+			}
+			
+			
+		}
 				
 				
-	} */
+	}  */
 	
 	public int getTotalLine() {
 		
