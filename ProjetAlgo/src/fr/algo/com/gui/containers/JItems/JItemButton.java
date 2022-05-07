@@ -35,7 +35,7 @@ public class JItemButton {
 				}
 		    	if(type.equalsIgnoreCase("Supprimer")) {
 		    		
-		    		
+		    		ContainerAdmin.delete();
 		    	}
 		    }
 		    
