@@ -29,18 +29,16 @@ public class Main {
 		 try
 		    {
 		      database.openConnection();
-		    
 		      
 		      System.out.println("Connexion à la base de données réalisée avec succès.");
 		      
-		      
 		      InitTable.initTable();
 		      
-		      for(TableObject to : InitTable.liste_tables.values()) {
+		      /*for(TableObject to : InitTable.liste_tables.values()) {
 		    	  //System.out.println(to.selectAll());
 		    	  //System.out.println(to.getName());
 		    	  //System.out.println(to.getTotalLine());
-		    	  System.out.println(to.selectAll());
+		    	  
 		      } 
 		      
 		      /*TableBuilder tb = new TableBuilder("test3");
@@ -49,7 +47,7 @@ public class Main {
 		      
 		      
 		    }
-		    catch (ClassNotFoundException |SQLException e)
+		    catch (ClassNotFoundException | SQLException e)
 		    {
 		      System.out.println("Impossible de se connecter à la base de données :");
 		      e.printStackTrace();

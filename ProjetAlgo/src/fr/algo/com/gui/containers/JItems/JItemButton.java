@@ -3,7 +3,6 @@ package fr.algo.com.gui.containers.JItems;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerAdapter;
 
 import javax.swing.JButton;
 
@@ -15,22 +14,28 @@ public class JItemButton {
 
 	private String name;
 	private JButton button;
+	private String type;
 	private ContainerAdmin containerAdmin;
 	
-	public JItemButton(String name,ContainerAdmin containerAdmin) {
+	
+	public JItemButton(String name,ContainerAdmin containerAdmin, String type) {
 		this.name = name;
+		this.type = type;
 		this.containerAdmin = containerAdmin;
 		initButton(name);
 		
 		
 		this.button.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	
-		    	TableObject table = InitTable.liste_tables.get(name);
-		    	
-		    	getContainerAdmin().showTable(table, getContainerAdmin());
-		    	
-		    	
+		    	if (type.equalsIgnoreCase("Table")) {
+		    		
+		    		TableObject table = InitTable.liste_tables.get(name);
+				    getContainerAdmin().showTable(table, getContainerAdmin());
+				}
+		    	if(type.equalsIgnoreCase("Supprimer")) {
+		    		
+		    		ContainerAdmin.delete();
+		    	}
 		    }
 		    
 		});
@@ -40,6 +45,14 @@ public class JItemButton {
 	private void initButton(String name) {
 		this.button = new JButton(name);
 		this.button.setAlignmentX(Component.CENTER_ALIGNMENT);
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getName() {

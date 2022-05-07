@@ -92,11 +92,46 @@ public class TableObject {
 		
 	}
 	
+<<<<<<< Upstream, based on origin/main
 	/*public int getMaxSizeOfLine() {
 				
 				
 				
 	} */
+=======
+	public ArrayList<String> getMaxSizeFromColumn() {
+		
+		ArrayList<String> maxvalue = new ArrayList<>();
+		
+		for(int i = 0; i < informations.keySet().size(); i++) {
+			maxvalue.add("");
+		}
+		
+		for(List<String> sublist : this.selectAll()) {
+			
+			for(int i = 0; i< sublist.size(); i++) {
+				
+				String attribut = sublist.get(i);
+				
+				if(attribut.length() > maxvalue.get(i).length()) {
+					maxvalue.set(i, attribut);
+				}
+				
+				
+			}
+			
+		}
+		
+		return maxvalue;
+		
+	}
+	
+	public int getTotalColumn() {
+		
+		return informations.keySet().size();
+		
+	}
+>>>>>>> 9b9ee65 Adding space between columns
 	
 	public int getTotalLine() {
 		
