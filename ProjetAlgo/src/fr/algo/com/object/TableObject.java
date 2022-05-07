@@ -95,6 +95,7 @@ public class TableObject {
 	/*public int getMaxSizeOfLine() {
 		
 		
+		
 	} */
 	
 	public int getTotalLine() {
