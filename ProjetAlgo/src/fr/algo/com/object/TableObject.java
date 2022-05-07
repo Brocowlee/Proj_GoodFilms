@@ -1,5 +1,6 @@
 package fr.algo.com.object;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -147,6 +148,16 @@ public class TableObject {
 		}
 		
 		return count;
+		
+	}
+
+	public void deleteLine(int index) {
+		
+		try {
+			Main.database.updateSQL("DELETE FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = +" + index + ";");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

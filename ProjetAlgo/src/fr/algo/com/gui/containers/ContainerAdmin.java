@@ -27,7 +27,11 @@ public class ContainerAdmin extends JPanel {
 	
 	
 	public HashMap<String, JItemButton> liste_buttons = new HashMap<>();
-	public HashMap<String, JCheckBox> check_box_ids = new HashMap<>();
+	public HashMap<JCheckBox, String> check_box_ids = new HashMap<>();
+	public HashMap<JCheckBox, TableObject> check_box_table = new HashMap<>();
+	
+	private JLabel Ldelete = new JLabel("La suppression");
+    private JLabel Ldelete2 = new JLabel("a été effectué");
 	
 	private ReturnNavigationListener<ContainerAdmin> navigationListener;
 	
@@ -37,13 +41,13 @@ public class ContainerAdmin extends JPanel {
 		
 			setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
 		 
-			showMenu(this);
+			showMenu();
 	        
 	  //--------------------------------------------------------------------------------------------------------------------------      
 	        
 	}
 	
-	public void showMenu(ContainerAdmin containerAdmin) {
+	public void showMenu() {
 		
 		String type = "Table";
 		JPanel panel = new JPanel();
@@ -55,6 +59,9 @@ public class ContainerAdmin extends JPanel {
           
       	  liste_buttons.put(table.getName(), button);
       	  
+          button.getButton().setMinimumSize(new Dimension(150,30));
+      	  button.getButton().setMaximumSize(new Dimension(150,30));
+        
           panel.add(button.getButton());
       	
         }
@@ -81,22 +88,65 @@ public class ContainerAdmin extends JPanel {
         delete.getButton().setBounds(25, 300, 100, 25);
         contentPane.add(delete.getButton());
         
+        this.Ldelete.setBounds(35, 340, 100, 25);
+        this.Ldelete.setForeground(Color.RED);
+        this.Ldelete.setFont(new Font("Serif", Font.PLAIN, 13));
+        this.Ldelete.setVisible(false);
+        contentPane.add(this.Ldelete);
+
+        this.Ldelete2.setBounds(40, 360, 100, 25);
+        this.Ldelete2.setForeground(Color.RED);
+        this.Ldelete2.setFont(new Font("Serif", Font.PLAIN, 13));
+        this.Ldelete2.setVisible(false);
+        contentPane.add(this.Ldelete2);
         
-        containerAdmin.add(contentPane);
+        this.add(contentPane);
 		
 	}
 
 	
-	public static void delete() {
+	public void delete() {
 		
+		TableObject table = null;
+		
+		boolean suppressed = false;
+		
+		for(JCheckBox box : check_box_ids.keySet()){
+			
+			if(!check_box_ids.keySet().isEmpty()) {
+				
+				
+				
+				if(box.isSelected()) {
+					
+					int index = Integer.parseInt(check_box_ids.get(box));
+					table = check_box_table.get(box);
+					
+					suppressed = true;
+					table.deleteLine(index);
+				}
+				
+			}
+		}
+		
+		if(table == null) return;
+		
+		if(!suppressed) return;
+		
+		showTable(table);
+		
+		this.Ldelete.setVisible(true);
+        this.Ldelete2.setVisible(true);
 		
 	}
 	
-	public void showTable(TableObject table, ContainerAdmin containerAdmin) {
+	public void showTable(TableObject table) {
 		
+		this.check_box_ids.clear();
+		this.check_box_table.clear();
 		removeAll();
 		
-		showMenu(containerAdmin);
+		showMenu();
 		
 		JPanel pan = new JPanel();
         pan.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -134,7 +184,8 @@ public class ContainerAdmin extends JPanel {
             
         	JCheckBox checkbox = new JCheckBox();
             a_panel.add(checkbox);
-            check_box_ids.put(list.get(0), checkbox);
+            check_box_ids.put(checkbox, list.get(0));
+            check_box_table.put(checkbox, table);
             
         	for(String attribut : list) {
         		
@@ -174,10 +225,10 @@ public class ContainerAdmin extends JPanel {
         contentPane2.setMaximumSize(new Dimension(835,1000));
         contentPane2.add(scrollPane2);
         
-        containerAdmin.add(contentPane2);
+        this.add(contentPane2);
         
-        containerAdmin.setMinimumSize(new Dimension(800,500));
-        containerAdmin.setMaximumSize(new Dimension(800,500));
+        this.setMinimumSize(new Dimension(800,500));
+        this.setMaximumSize(new Dimension(800,500));
         revalidate();
         repaint();
 		

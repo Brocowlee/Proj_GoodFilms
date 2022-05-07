@@ -30,11 +30,10 @@ public class JItemButton {
 		    	if (type.equalsIgnoreCase("Table")) {
 		    		
 		    		TableObject table = InitTable.liste_tables.get(name);
-				    getContainerAdmin().showTable(table, getContainerAdmin());
+				    getContainerAdmin().showTable(table);
 				}
 		    	if(type.equalsIgnoreCase("Supprimer")) {
-		    		
-		    		ContainerAdmin.delete();
+		    		getContainerAdmin().delete();
 		    	}
 		    }
 		    
