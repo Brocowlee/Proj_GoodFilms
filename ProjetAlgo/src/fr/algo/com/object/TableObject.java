@@ -57,6 +57,8 @@ public class TableObject {
 		
 		String QUERY = "SELECT * FROM " + this.name;
 		
+		
+		
 		try {
 			ResultSet rs = Main.database.querySQL(QUERY);
 			
