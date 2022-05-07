@@ -135,8 +135,6 @@ public class ContainerAdmin extends JPanel {
 			
 			if(!check_box_ids.keySet().isEmpty()) {
 				
-				
-				
 				if(box.isSelected()) {
 					
 					int index = Integer.parseInt(check_box_ids.get(box));
@@ -164,6 +162,20 @@ public class ContainerAdmin extends JPanel {
 		
 	}
 	
+	private List<Integer> getMaxValues(TableObject table) {
+		
+		 List<Integer> maxvalues = new ArrayList<>();
+	        
+	     for(String attribut : table.getMaxSizeFromColumn()) {
+	        	
+	        	JLabel lab = new JLabel(attribut);
+	        	maxvalues.add(lab.getMaximumSize().width);
+	        	
+	     }
+	     
+	     return maxvalues;
+	}
+	
 	public void showTable(TableObject table) {
 		
 		this.check_box_ids.clear();
@@ -179,26 +191,45 @@ public class ContainerAdmin extends JPanel {
 	 	JPanel panel1 = new JPanel();
 	 	panel1.setLayout(new BoxLayout(panel1,BoxLayout.X_AXIS));
 	 	
-        
-        for(String column : table.getColumnName()) {
-        	
-        	  JLabel lab = new JLabel(column);
-              lab.setBorder(new EmptyBorder(0,50,0,0));
-              
-        	  panel1.add(lab);
-        }
+	 	List<Integer> maxvalues = getMaxValues(table);   
+	 	
+	 	for(int i = 0; i < table.getColumnName().size(); i++) {
+	 		
+	 		String column = (String) table.getColumnName().toArray()[i];
+	 		
+	 		JLabel lab = new JLabel(column);
+	 		
+	 		int space = 0;
+	 		
+	 		if(lab.getMaximumSize().width > maxvalues.get(i)) {
+	 			
+	 			maxvalues.set(i, lab.getMaximumSize().width);
+	 			space += maxvalues.get(i) + 30;
+	 		} else {
+	 			
+	 			if(i < 4) {
+	 				space += (maxvalues.get(i) / 2) + 30;
+	 				space += (maxvalues.get(i+1) / 2);
+	 			} else {
+	 				space += maxvalues.get(i) + 30;
+	 			}
+	 		}
+	 		
+	 		
+    		int real_space = space - lab.getMaximumSize().width;
+    		
+    		if(i == 0) {
+    			lab.setBorder(new EmptyBorder(0,30,0,real_space));
+    		} else {
+    			lab.setBorder(new EmptyBorder(0,10,0,real_space));
+    		}
+    		
+            panel1.add(lab);
+    		
+	 	}
+	 	
         panel1.setBackground(Color.LIGHT_GRAY);
         pan.add(panel1);
-        
-        
-        List<Integer> maxvalues = new ArrayList<>();
-        
-        for(String attribut : table.getMaxSizeFromColumn()) {
-        	
-        	JLabel lab = new JLabel(attribut);
-        	maxvalues.add(lab.getMaximumSize().width);
-        	
-        }
         
         
         for(List<String> list : table.selectAll()) {
