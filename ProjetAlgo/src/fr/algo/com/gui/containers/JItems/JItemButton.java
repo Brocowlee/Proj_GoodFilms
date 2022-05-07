@@ -15,22 +15,28 @@ public class JItemButton {
 
 	private String name;
 	private JButton button;
+	private String type;
 	private ContainerAdmin containerAdmin;
 	
-	public JItemButton(String name,ContainerAdmin containerAdmin) {
+	
+	public JItemButton(String name,ContainerAdmin containerAdmin, String type) {
 		this.name = name;
+		this.type = type;
 		this.containerAdmin = containerAdmin;
 		initButton(name);
 		
 		
 		this.button.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	
-		    	TableObject table = InitTable.liste_tables.get(name);
-		    	
-		    	getContainerAdmin().showTable(table, getContainerAdmin());
-		    	
-		    	
+		    	if (type.equalsIgnoreCase("Table")) {
+		    		
+		    		TableObject table = InitTable.liste_tables.get(name);
+				    getContainerAdmin().showTable(table, getContainerAdmin());
+				}
+		    	if(type.equalsIgnoreCase("Supprimer")) {
+		    		
+		    		
+		    	}
 		    }
 		    
 		});

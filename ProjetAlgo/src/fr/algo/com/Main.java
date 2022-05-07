@@ -14,7 +14,7 @@ public class Main {
 	
 	public static void main(String args[]) {
 		
-		database = new MySQL("localhost", "3306", "nicolath", "root", "");
+		database = new MySQL("localhost", "3306", "gueriotb", "root", "");
 		
 		connectToDatabase(database);
 		

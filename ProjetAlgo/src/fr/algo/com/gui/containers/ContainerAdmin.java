@@ -1,14 +1,17 @@
 package fr.algo.com.gui.containers;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,51 +38,23 @@ public class ContainerAdmin extends JPanel {
 		
 			setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
 		 
-			JPanel panel = new JPanel();
-	        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+			showMenu(this);
+			
 	        
-	        for(TableObject table : InitTable.liste_tables.values()) {
-	        	
-	          JItemButton button = new JItemButton(table.getName(), this);
-	          
-	      	  liste_buttons.put(table.getName(), button);
-	      	  
-	          panel.add(button.getButton());
-	      	
-	        }
-	        
-	        JScrollPane scrollPane = new JScrollPane(panel);
-	        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-	        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-	        scrollPane.setBounds(0, 0, 150, 250);
-	        scrollPane.setBorder(BorderFactory.createLineBorder(Color.black));
-	        JPanel contentPane = new JPanel(null);
-	        contentPane.setMinimumSize(new Dimension(4500,1000));
-	        contentPane.setMaximumSize(new Dimension(4500,1000));
-	        contentPane.add(scrollPane);
-	        add(contentPane);
-	        
-	  //--------------------------------------------------------------------------------------------------------------------------      
-	        
-	        
-	        
-	       
-	        
-	        
+	  //--------------------------------------------------------------------------------------------------------------------------          
 	}
 	
-	public void showTable(TableObject table, ContainerAdmin containerAdmin) {
+	public void showMenu(ContainerAdmin containerAdmin) {
 		
-		removeAll();
-		
+		String type = "Table";
 		JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
-        for(TableObject to : InitTable.liste_tables.values()) {
+        for(TableObject table : InitTable.liste_tables.values()) {
         	
-          JItemButton button = new JItemButton(to.getName(), this);
+          JItemButton button = new JItemButton(table.getName(), this, type);
           
-      	  liste_buttons.put(to.getName(), button);
+      	  liste_buttons.put(table.getName(), button);
       	  
           panel.add(button.getButton());
       	
@@ -91,10 +66,38 @@ public class ContainerAdmin extends JPanel {
         scrollPane.setBounds(0, 0, 150, 250);
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.black));
         JPanel contentPane = new JPanel(null);
-        contentPane.setMinimumSize(new Dimension(4500,1000));
-        contentPane.setMaximumSize(new Dimension(4500,1000));
+        contentPane.setMinimumSize(new Dimension(150,950));
+        contentPane.setMaximumSize(new Dimension(150,950));
         contentPane.add(scrollPane);
+        
+        
+        JLabel Loption = new JLabel("Option :");
+        Loption.setBounds(45, 250, 100, 25);
+        Loption.setFont(new Font("Serif", Font.PLAIN, 20));
+        contentPane.add(Loption);
+        
+        JItemButton delete = new JItemButton("Supprimer",this, "Supprimer");
+        delete.getButton().setMinimumSize(new Dimension(20,20));
+        delete.getButton().setMaximumSize(new Dimension(20,20));
+        delete.getButton().setBounds(25, 300, 100, 25);
+        contentPane.add(delete.getButton());
+        
+        
         containerAdmin.add(contentPane);
+		
+	}
+
+	
+	public static void delete() {
+		
+		
+	}
+	
+	public void showTable(TableObject table, ContainerAdmin containerAdmin) {
+		
+		removeAll();
+		
+		showMenu(containerAdmin);
 		
 		JPanel pan = new JPanel();
         pan.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -119,6 +122,10 @@ public class ContainerAdmin extends JPanel {
         	JPanel a_panel = new JPanel();
             a_panel.setLayout(new BoxLayout(a_panel,BoxLayout.X_AXIS));
             
+            JCheckBox checkbox = new JCheckBox();
+            a_panel.add(checkbox);
+            check_box_ids.put(list.get(0), checkbox);
+            
         	for(String attribut : list) {
         		
         		JLabel lab = new JLabel(attribut);
@@ -137,11 +144,7 @@ public class ContainerAdmin extends JPanel {
                 
                 
         	}
-        	
-        	
-        	JCheckBox checkbox = new JCheckBox();
-            a_panel.add(checkbox);
-            check_box_ids.put(list.get(0), checkbox);
+
             pan.add(a_panel);
         	
         }
@@ -156,10 +159,10 @@ public class ContainerAdmin extends JPanel {
         JScrollPane scrollPane2 = new JScrollPane(pan);
         scrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane2.setBounds(0, 0, 820, 900);
+        scrollPane2.setBounds(0, 0, 835, 900);
         JPanel contentPane2 = new JPanel(null);
-        contentPane2.setMinimumSize(new Dimension(23000,1000));
-        contentPane2.setMaximumSize(new Dimension(23000,1000));
+        contentPane2.setMinimumSize(new Dimension(835,1000));
+        contentPane2.setMaximumSize(new Dimension(835,1000));
         contentPane2.add(scrollPane2);
         
         containerAdmin.add(contentPane2);
