@@ -44,13 +44,13 @@ public class ContainerAdmin extends JPanel {
 		
 			setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
 		 
-			showMenu();
+			showMenu(null);
 	        
 	  //--------------------------------------------------------------------------------------------------------------------------      
 	        
 	}
 	
-	public void showMenu() {
+	public void showMenu(String table_name) {
 		
 		String type = "Table";
 		JPanel panel = new JPanel();
@@ -65,6 +65,10 @@ public class ContainerAdmin extends JPanel {
           button.getButton().setMinimumSize(new Dimension(150,30));
       	  button.getButton().setMaximumSize(new Dimension(150,30));
         
+      	  if(button.getName().equalsIgnoreCase(table_name)) {
+      		  button.getButton().setBackground(Color.DARK_GRAY);
+      	  }
+      	  
           panel.add(button.getButton());
       	
         }
@@ -91,34 +95,24 @@ public class ContainerAdmin extends JPanel {
         delete.getButton().setBounds(25, 300, 100, 25);
         contentPane.add(delete.getButton());
         
-        this.Ldelete.setBounds(35, 340, 100, 25);
-        this.Ldelete.setForeground(Color.RED);
-        this.Ldelete.setFont(new Font("Serif", Font.PLAIN, 13));
-        this.Ldelete.setVisible(false);
-        contentPane.add(this.Ldelete);
-
-        this.Ldelete2.setBounds(40, 360, 100, 25);
-        this.Ldelete2.setForeground(Color.RED);
-        this.Ldelete2.setFont(new Font("Serif", Font.PLAIN, 13));
-        this.Ldelete2.setVisible(false);
-        contentPane.add(this.Ldelete2);
-        
-        this.Ldeleterefused.setBounds(35, 340, 100, 25);
-        this.Ldeleterefused.setForeground(Color.RED);
-        this.Ldeleterefused.setFont(new Font("Serif", Font.PLAIN, 13));
-        this.Ldeleterefused.setVisible(false);
-        contentPane.add(this.Ldeleterefused);
-
-        this.Ldeleterefused2.setBounds(40, 360, 100, 25);
-        this.Ldeleterefused2.setForeground(Color.RED);
-        this.Ldeleterefused2.setFont(new Font("Serif", Font.PLAIN, 13));
-        this.Ldeleterefused2.setVisible(false);
-        contentPane.add(this.Ldeleterefused2);
+        createTextArea(this.Ldelete, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
+        createTextArea(this.Ldelete2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
+        createTextArea(this.Ldeleterefused, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
+        createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
         
         this.add(contentPane);
 		
 	}
-
+	
+	private void createTextArea(JLabel text, JPanel contentPane, int[] list, Color color, boolean bool) {
+		
+		text.setBounds(list[0], list[1], list[2], list[3]);
+		text.setForeground(color);
+		text.setFont(new Font("Serif", Font.PLAIN, 13));
+		text.setVisible(bool);
+        contentPane.add(text);
+		
+	}
 	
 	public void delete() {
 		
@@ -182,7 +176,7 @@ public class ContainerAdmin extends JPanel {
 		this.check_box_table.clear();
 		removeAll();
 		
-		showMenu();
+		showMenu(table.getName());
 		
 		JPanel pan = new JPanel();
         pan.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -214,7 +208,6 @@ public class ContainerAdmin extends JPanel {
 	 				space += maxvalues.get(i) + 30;
 	 			}
 	 		}
-	 		
 	 		
     		int real_space = space - lab.getMaximumSize().width;
     		
@@ -259,7 +252,6 @@ public class ContainerAdmin extends JPanel {
                 
         	}
         	
-        	
             pan.add(a_panel);
         	
         }
@@ -289,7 +281,6 @@ public class ContainerAdmin extends JPanel {
 		
 		
 	}
-	
 	
 	public ReturnNavigationListener<ContainerAdmin> getReturnNavigationListener() {
         return navigationListener;
