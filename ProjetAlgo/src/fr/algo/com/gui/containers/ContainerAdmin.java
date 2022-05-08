@@ -26,7 +26,6 @@ import fr.algo.com.object.TableObject;
 public class ContainerAdmin extends JPanel {
 	
 	
-	public HashMap<String, JItemButton> liste_buttons = new HashMap<>();
 	public HashMap<JCheckBox, String> check_box_ids = new HashMap<>();
 	public HashMap<JCheckBox, TableObject> check_box_table = new HashMap<>();
 	
@@ -60,13 +59,12 @@ public class ContainerAdmin extends JPanel {
         	
           JItemButton button = new JItemButton(table.getName(), this, type);
           
-      	  liste_buttons.put(table.getName(), button);
-      	  
           button.getButton().setMinimumSize(new Dimension(150,30));
       	  button.getButton().setMaximumSize(new Dimension(150,30));
         
       	  if(button.getName().equalsIgnoreCase(table_name)) {
       		  button.getButton().setBackground(Color.GRAY);
+      		  button.getButton().setForeground(Color.BLACK);
       	  }
       	  
           panel.add(button.getButton());
@@ -266,10 +264,14 @@ public class ContainerAdmin extends JPanel {
         JScrollPane scrollPane2 = new JScrollPane(pan);
         scrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane2.setBounds(0, 0, 835, 900);
+        
+        
+        scrollPane2.setBounds(0, 0, this.getWidth() - 150, 900);
+        
+        
         JPanel contentPane2 = new JPanel(null);
-        contentPane2.setMinimumSize(new Dimension(835,1000));
-        contentPane2.setMaximumSize(new Dimension(835,1000));
+        contentPane2.setMinimumSize(new Dimension(this.getWidth() - 150,1000));
+        contentPane2.setMaximumSize(new Dimension(this.getWidth() - 150,1000));
         contentPane2.add(scrollPane2);
         
         this.add(contentPane2);

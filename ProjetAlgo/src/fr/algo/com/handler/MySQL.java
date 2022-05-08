@@ -5,9 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class MySQL
-  extends Database
-{
+public class MySQL extends Database {
+	
   private String user;
   private String database;
   private String password;
