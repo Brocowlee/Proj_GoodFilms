@@ -48,7 +48,6 @@ public class AddingGui extends JFrame {
 	 	
 	 	this.table = table;
 	 	
-	 	
 	 	for(int i = 0; i < this.table.getColumnName().size(); i++) {
 	 		
 	 		String column = (String) this.table.getColumnName().toArray()[i];
@@ -75,13 +74,14 @@ public class AddingGui extends JFrame {
         
         for(int i = 0; i < this.table.getColumnName().size(); i++) {
 	 		
-        	JTextField lab = new JTextField();
+        	JTextField textField = new JTextField();
     		
-            lab.setBorder(new EmptyBorder(0,10,0,5));
-            lab.setBorder(BorderFactory.createLineBorder(Color.black));
-            lab.setMinimumSize(new Dimension(200,50));
-            lab.setMaximumSize(new Dimension(200,50));
-            a_panel.add(lab);
+        	textField.setBorder(new EmptyBorder(0,10,0,5));
+        	textField.setBorder(BorderFactory.createLineBorder(Color.black));
+        	textField.setMinimumSize(new Dimension(200,50));
+        	textField.setMaximumSize(new Dimension(200,50));
+            a_panel.add(textField);
+            this.textField_list.add(textField);
     		
 	 	}
     	
@@ -127,19 +127,30 @@ public class AddingGui extends JFrame {
 		    		JTextField text = textField_list.get(i);
 		    		
 		    		if(text.getText().length() > 0) {
-		    			
 		    			values.add(text.getText());
 		    			indexes.add(i);
-		    			
 		    		}
+		    		
+		    		
+		    		
 		    	}
 		    	
 		    	getAddingGui().dispose();
 		    	
+		    	if(values.size() < table.getTotalColumn()) {
+		    		System.out.println("Valeur non renseigné");
+		    		return;
+		    	}
+		    	
+		    	if(table.alreadyHasPrimaryKey(values.get(0))) {
+					System.out.println("PrimaryKeyAlreadyExistante");
+					return;
+				}
+		    	
+		    	
 		    	if(values.isEmpty() && indexes.isEmpty()) return;
 		    	
-		    	//table.insertInto(indexes, values);
-		    	
+		    	table.insertInto(indexes, values);
 		    	
 		    	containerAdmin.showTable(table);
 		    	

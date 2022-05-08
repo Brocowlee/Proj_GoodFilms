@@ -51,36 +51,61 @@ public class TableObject {
 		
 	}
 	
-	/*public void insertInto(List<Integer> indexes, ArrayList<String> value) {
+	public void insertInto(List<Integer> indexes, ArrayList<String> value) {
 		
-		String request = "UPDATE " + this.name + " SET";
+		String request = "INSERT INTO " + this.name + " VALUES(";
 		
 		for(int i = 0; i < indexes.size(); i++) {
 			
 			int index = indexes.get(i);
-			String column_name = (String) this.informations.keySet().toArray()[index];
 			
 			if(!(indexes.get(indexes.size() - 1) == index)) {
 				
-				request += " " + column_name + " = '" + value.get(i) + "',";
+				request += "'" + value.get(i) + "', ";
 				
 			} else {
 				
-				request += " " + column_name + " = '" + value.get(i) + "' WHERE " + this.informations.keySet().toArray()[0] + " = " + id + ";";
+				request += "'" + value.get(i) + "');";
 				
 			}
 			
+		}
+		
+		try {
+			Main.database.updateSQL(request);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			System.out.println("Mauvais type pour au moins une colonne.");
 			
 		}
 		
+	} 
+	
+	
+	public boolean alreadyHasPrimaryKey(String string) {
+		
+		int count = 0;
+		
+		try {
+			ResultSet rs = Main.database.querySQL("SELECT COUNT(*) AS rowcount FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = " + string + ";");
+			
+			rs.next();
+			count = rs.getInt("rowcount");
+			rs.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count > 0;
 		
 		
-	} */
+	}
 	
 	public void updateInto(int id, List<Integer> indexes, ArrayList<String> value) {
 		
-			
-			
 			String request = "UPDATE " + this.name + " SET";
 			
 			for(int i = 0; i < indexes.size(); i++) {
