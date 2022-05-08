@@ -87,8 +87,6 @@ public class AddingGui extends JFrame {
     	
         pan.add(a_panel);
         
-        
-        
         GridLayout g = new GridLayout(2,1,5,5);
         pan.setLayout(g);
         
@@ -150,11 +148,17 @@ public class AddingGui extends JFrame {
 		    	
 		    	if(values.isEmpty() && indexes.isEmpty()) return;
 		    	
-		    	table.insertInto(indexes, values);
+		    	if(table.insertInto(indexes, values)) {
+		    		
+		    		containerAdmin.showTable(table);
+		    		
+		    		containerAdmin.setAddButton(true);
+		    		
+		    	} else {
+		    		System.out.println("Au moins un valeur n'a pas le bon type.");
+		    	}
 		    	
-		    	containerAdmin.showTable(table);
 		    	
-		    	containerAdmin.setAddButton(true);
 		    	
 		    	
 		    	

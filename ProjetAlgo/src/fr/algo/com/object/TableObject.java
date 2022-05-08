@@ -1,5 +1,6 @@
 package fr.algo.com.object;
 
+import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class TableObject {
 		
 	}
 	
-	public void insertInto(List<Integer> indexes, ArrayList<String> value) {
+	public boolean insertInto(List<Integer> indexes, ArrayList<String> value) {
 		
 		String request = "INSERT INTO " + this.name + " VALUES(";
 		
@@ -72,14 +73,17 @@ public class TableObject {
 		}
 		
 		try {
+			
+			
 			Main.database.updateSQL(request);
+			return true;
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			
-			System.out.println("Mauvais type pour au moins une colonne.");
-			
+			return false;
 		}
+		return false;
 		
 	} 
 	
@@ -95,12 +99,36 @@ public class TableObject {
 			count = rs.getInt("rowcount");
 			rs.close();
 			
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (SQLException e) {	
 		}
 		
 		return count > 0;
 		
+		
+	}
+	
+	public boolean isRelationTable() {
+		
+		int count = 0;
+		
+		try {
+			DatabaseMetaData md = Main.database.connection.getMetaData();
+			
+			ResultSet rs = md.getPrimaryKeys("nicolath", null, this.name);
+			
+			while (rs.next()){
+				
+		        count++;
+		     
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count > 1;
 		
 	}
 	

@@ -275,7 +275,14 @@ public class ContainerAdmin extends JPanel {
     		int real_space = space - lab.getMaximumSize().width;
     		
     		if(i == 0) {
-    			lab.setBorder(new EmptyBorder(0,60,0,real_space));
+    			
+    			if(!table.isRelationTable()) {
+    				lab.setBorder(new EmptyBorder(0,60,0,real_space));
+    			} else {
+    				lab.setBorder(new EmptyBorder(0,30,0,real_space));
+    			}
+    			
+    			
     		} else {
     			lab.setBorder(new EmptyBorder(0,10,0,real_space));
     		}
@@ -298,11 +305,12 @@ public class ContainerAdmin extends JPanel {
             check_box_ids.put(checkbox, list.get(0));
             check_box_table.put(checkbox, table);
             
-            JItemButton editbutton = new JItemButton(this.editIcon,this,"Edit");
-            
-            a_panel.add(editbutton.getButton());
-            edit_ids.put(editbutton.getButton(), list.get(0));
-            edit_table.put(editbutton.getButton(), table);
+            if(!table.isRelationTable()) {
+            	  JItemButton editbutton = new JItemButton(this.editIcon,this,"Edit");
+                  a_panel.add(editbutton.getButton());
+                  edit_ids.put(editbutton.getButton(), list.get(0));
+                  edit_table.put(editbutton.getButton(), table);
+            }
             
         	for(String attribut : list) {
         		
