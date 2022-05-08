@@ -30,7 +30,7 @@ public class MyGUI extends JFrame{
 	
 	private JMenu menu3 = new JMenu("Help");
 	
-	
+	 
 	
 	public MyGUI() {
 		

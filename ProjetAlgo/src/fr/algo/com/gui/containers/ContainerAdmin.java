@@ -5,18 +5,22 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import fr.algo.com.gui.AddingGui;
 import fr.algo.com.gui.ReturnNavigationListener;
 import fr.algo.com.gui.containers.JItems.JItemButton;
 import fr.algo.com.handler.InitTable;
@@ -28,6 +32,14 @@ public class ContainerAdmin extends JPanel {
 	
 	public HashMap<JCheckBox, String> check_box_ids = new HashMap<>();
 	public HashMap<JCheckBox, TableObject> check_box_table = new HashMap<>();
+	public HashMap<JButton, String> edit_ids = new HashMap<>();
+	public HashMap<JButton, TableObject> edit_table = new HashMap<>();
+	public HashMap<JItemButton, TableObject> button_table = new HashMap<>();
+	
+	ImageIcon edit = new ImageIcon("./edit.png");
+	Image imgedit = edit.getImage();
+	private ImageIcon editIcon = new ImageIcon(imgedit.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH));
+	
 	
 	private JLabel Ldelete = new JLabel("La suppression");
     private JLabel Ldelete2 = new JLabel("a été effectué");
@@ -51,6 +63,8 @@ public class ContainerAdmin extends JPanel {
 	
 	public void showMenu(String table_name) {
 		
+		this.button_table.clear();
+		
 		String type = "Table";
 		JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -58,12 +72,13 @@ public class ContainerAdmin extends JPanel {
         for(TableObject table : InitTable.liste_tables.values()) {
         	
           JItemButton button = new JItemButton(table.getName(), this, type);
+          this.button_table.put(button,table);
           
           button.getButton().setMinimumSize(new Dimension(150,30));
       	  button.getButton().setMaximumSize(new Dimension(150,30));
         
       	  if(button.getName().equalsIgnoreCase(table_name)) {
-      		  button.getButton().setBackground(Color.GRAY);
+      		  button.getButton().setBackground(Color.LIGHT_GRAY);
       		  button.getButton().setForeground(Color.BLACK);
       	  }
       	  
@@ -98,6 +113,15 @@ public class ContainerAdmin extends JPanel {
         createTextArea(this.Ldeleterefused, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
         createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
         
+        
+        JItemButton adding = new JItemButton("Ajouter",this, "Ajouter");
+        adding.getButton().setMinimumSize(new Dimension(20,20));
+        adding.getButton().setMaximumSize(new Dimension(20,20));
+        adding.getButton().setBounds(25, 400, 100, 25);
+        contentPane.add(adding.getButton());
+        
+        
+        
         this.add(contentPane);
 		
 	}
@@ -109,6 +133,28 @@ public class ContainerAdmin extends JPanel {
 		text.setFont(new Font("Serif", Font.PLAIN, 13));
 		text.setVisible(bool);
         contentPane.add(text);
+		
+	}
+	
+	public void adding() {
+		TableObject table = null;
+		
+		for(JItemButton button : this.button_table.keySet()) {  
+			
+			if(button.getButton().getForeground() == Color.BLACK){
+				 table = button_table.get(button) ;
+			}
+		}
+
+		if(table == null) {
+			this.Ldeleterefused.setVisible(true);
+	        this.Ldeleterefused2.setVisible(true);
+			return;
+		}
+		
+		AddingGui gui = new AddingGui(this, table);
+		
+		gui.setVisible(true);
 		
 	}
 	
@@ -172,6 +218,8 @@ public class ContainerAdmin extends JPanel {
 		
 		this.check_box_ids.clear();
 		this.check_box_table.clear();
+		this.edit_ids.clear();
+		this.edit_table.clear();
 		removeAll();
 		
 		showMenu(table.getName());
@@ -210,7 +258,7 @@ public class ContainerAdmin extends JPanel {
     		int real_space = space - lab.getMaximumSize().width;
     		
     		if(i == 0) {
-    			lab.setBorder(new EmptyBorder(0,30,0,real_space));
+    			lab.setBorder(new EmptyBorder(0,60,0,real_space));
     		} else {
     			lab.setBorder(new EmptyBorder(0,10,0,real_space));
     		}
@@ -232,6 +280,12 @@ public class ContainerAdmin extends JPanel {
             a_panel.add(checkbox);
             check_box_ids.put(checkbox, list.get(0));
             check_box_table.put(checkbox, table);
+            
+            JItemButton editbutton = new JItemButton(this.editIcon,this,"Edit");
+            
+            a_panel.add(editbutton.getButton());
+            edit_ids.put(editbutton.getButton(), list.get(0));
+            edit_table.put(editbutton.getButton(), table);
             
         	for(String attribut : list) {
         		
@@ -256,7 +310,7 @@ public class ContainerAdmin extends JPanel {
         
         int total_lines = table.getTotalLine() + 1;
         
-        if(total_lines < 33) total_lines = 33;
+        if(total_lines < 29) total_lines = 29;
         
         GridLayout g = new GridLayout(total_lines,1,5,5);
         pan.setLayout(g);

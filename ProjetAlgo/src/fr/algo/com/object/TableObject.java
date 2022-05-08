@@ -51,14 +51,72 @@ public class TableObject {
 		
 	}
 	
+	/*public void insertInto(List<Integer> indexes, ArrayList<String> value) {
+		
+		String request = "UPDATE " + this.name + " SET";
+		
+		for(int i = 0; i < indexes.size(); i++) {
+			
+			int index = indexes.get(i);
+			String column_name = (String) this.informations.keySet().toArray()[index];
+			
+			if(!(indexes.get(indexes.size() - 1) == index)) {
+				
+				request += " " + column_name + " = '" + value.get(i) + "',";
+				
+			} else {
+				
+				request += " " + column_name + " = '" + value.get(i) + "' WHERE " + this.informations.keySet().toArray()[0] + " = " + id + ";";
+				
+			}
+			
+			
+		}
+		
+		
+		
+	} */
+	
+	public void updateInto(int id, List<Integer> indexes, ArrayList<String> value) {
+		
+			
+			
+			String request = "UPDATE " + this.name + " SET";
+			
+			for(int i = 0; i < indexes.size(); i++) {
+				
+				int index = indexes.get(i);
+				String column_name = (String) this.informations.keySet().toArray()[index];
+				
+				if(!(indexes.get(indexes.size() - 1) == index)) {
+					
+					request += " " + column_name + " = '" + value.get(i) + "',";
+					
+				} else {
+					
+					request += " " + column_name + " = '" + value.get(i) + "' WHERE " + this.informations.keySet().toArray()[0] + " = " + id + ";";
+					
+				}
+				
+				
+			}
+			
+			
+			try {
+				Main.database.updateSQL(request);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			
+					
+		
+	}
+	
 	public ArrayList<List<String>> selectAll() {
 		
 		ArrayList<List<String>> total_list = new ArrayList<>();
 		
 		String QUERY = "SELECT * FROM " + this.name;
-		
-		
-		
 		
 		try {
 			ResultSet rs = Main.database.querySQL(QUERY);
@@ -91,6 +149,46 @@ public class TableObject {
 		return total_list;
 		
 	}
+	
+	public ArrayList<String> selectLigne(String index) {
+		
+		ArrayList<String> list_attribut = new ArrayList<>();
+		
+		String QUERY = "SELECT * FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = +" + index + ";";
+		
+		try {
+			ResultSet rs = Main.database.querySQL(QUERY);
+				int cpt = 0;
+				while(rs.next()){
+					
+					
+						
+					for(String name : this.informations.keySet()) {
+							
+						if(cpt != 0) {
+							
+							if(this.informations.get(name).equalsIgnoreCase("INT")) {
+								list_attribut.add(String.valueOf(rs.getInt(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("VARCHAR")) {
+								list_attribut.add(rs.getString(name));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BIT")) {
+								list_attribut.add(String.valueOf(rs.getByte(name)));
+							}
+						}
+						cpt++;
+						
+					}	
+				}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list_attribut;	
+	}
+	
 	
 	/*public int getMaxSizeOfLine() {
 				
@@ -153,7 +251,7 @@ public class TableObject {
 	public void deleteLine(int index) {
 		
 		try {
-			Main.database.updateSQL("DELETE FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = +" + index + ";");
+			Main.database.updateSQL("DELETE FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = " + index + ";");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
