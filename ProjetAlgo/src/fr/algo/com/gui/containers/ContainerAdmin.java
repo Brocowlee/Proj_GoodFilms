@@ -46,6 +46,10 @@ public class ContainerAdmin extends JPanel {
     private JLabel Ldeleterefused = new JLabel("Veuillez choisir");
     private JLabel Ldeleterefused2 = new JLabel("une donnée");
     
+    private JLabel Ladd = new JLabel("L'ajout");
+    private JLabel Ladd2 = new JLabel("a été effectué");
+    private JLabel Laddrefused = new JLabel("Veuillez choisir");
+    private JLabel Laddrefused2 = new JLabel("une table");
     
 	private ReturnNavigationListener<ContainerAdmin> navigationListener;
 	
@@ -59,6 +63,13 @@ public class ContainerAdmin extends JPanel {
 	        
 	  //--------------------------------------------------------------------------------------------------------------------------      
 	        
+	}
+	
+	public void setAddButton(boolean bool) {
+		
+		this.Ladd.setVisible(bool);
+		this.Ladd2.setVisible(bool);
+		
 	}
 	
 	public void showMenu(String table_name) {
@@ -112,7 +123,11 @@ public class ContainerAdmin extends JPanel {
         createTextArea(this.Ldelete2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
         createTextArea(this.Ldeleterefused, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
         createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
-        
+        createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
+        createTextArea(this.Laddrefused, contentPane, new int[] {40, 440, 100, 25}, Color.RED, false);
+        createTextArea(this.Laddrefused2, contentPane, new int[] {40, 460, 100, 25}, Color.RED, false);
+        createTextArea(this.Ladd, contentPane, new int[] {50, 440, 100, 25}, Color.RED, false);
+        createTextArea(this.Ladd2, contentPane, new int[] {40, 460, 100, 25}, Color.RED, false);
         
         JItemButton adding = new JItemButton("Ajouter",this, "Ajouter");
         adding.getButton().setMinimumSize(new Dimension(20,20));
@@ -147,8 +162,8 @@ public class ContainerAdmin extends JPanel {
 		}
 
 		if(table == null) {
-			this.Ldeleterefused.setVisible(true);
-	        this.Ldeleterefused2.setVisible(true);
+			this.Laddrefused.setVisible(true);
+	        this.Laddrefused2.setVisible(true);
 			return;
 		}
 		
@@ -164,6 +179,8 @@ public class ContainerAdmin extends JPanel {
         this.Ldelete2.setVisible(false);
         this.Ldeleterefused.setVisible(false);
         this.Ldeleterefused2.setVisible(false);
+        this.Laddrefused.setVisible(false);
+        this.Laddrefused2.setVisible(false);
         
 		TableObject table = null;
 		

@@ -154,7 +154,7 @@ public class AddingGui extends JFrame {
 		    	
 		    	containerAdmin.showTable(table);
 		    	
-		    	
+		    	containerAdmin.setAddButton(true);
 		    	
 		    	
 		    	
