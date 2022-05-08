@@ -92,28 +92,84 @@ public class TableObject {
 		
 	}
 	
+	public ArrayList<String> selectLigne(String index) {
+		
+		ArrayList<String> list_attribut = new ArrayList<>();
+		
+		String QUERY = "SELECT * FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = +" + index + ";";
+		
+		try {
+			ResultSet rs = Main.database.querySQL(QUERY);
+				int cpt = 0;
+				while(rs.next()){
+					
+					
+						
+					for(String name : this.informations.keySet()) {
+							
+						if(cpt != 0) {
+							
+							if(this.informations.get(name).equalsIgnoreCase("INT")) {
+								list_attribut.add(String.valueOf(rs.getInt(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("VARCHAR")) {
+								list_attribut.add(rs.getString(name));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BIT")) {
+								list_attribut.add(String.valueOf(rs.getByte(name)));
+							}
+						}
+						cpt++;
+						
+					}	
+				}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list_attribut;	
+	}
+	
+	
 	/*public int getMaxSizeOfLine() {
 				
+				
+				
+	} */
+	
+	public ArrayList<String> getMaxSizeFromColumn() {
 		
+		ArrayList<String> maxvalue = new ArrayList<>();
 		
-		ArrayList<Integer> max_values = new ArrayList<>();
+		for(int i = 0; i < informations.keySet().size(); i++) {
+			maxvalue.add("");
+		}
 		
-		for(List<String> sous_list : this.selectAll()) {
+		for(List<String> sublist : this.selectAll()) {
 			
-			for(String attribut : sous_list) {
+			for(int i = 0; i< sublist.size(); i++) {
 				
-				int index = sous_list.indexOf(attribut);
+				String attribut = sublist.get(i);
 				
-				//if(attribut.length())
+				if(attribut.length() > maxvalue.get(i).length()) {
+					maxvalue.set(i, attribut);
+				}
 				
 				
 			}
 			
-			
 		}
-				
-				
-	}  */
+		
+		return maxvalue;
+		
+	}
+	
+	public int getTotalColumn() {
+		
+		return informations.keySet().size();
+		
+	}
 	
 	public int getTotalLine() {
 		
@@ -131,6 +187,16 @@ public class TableObject {
 		}
 		
 		return count;
+		
+	}
+
+	public void deleteLine(int index) {
+		
+		try {
+			Main.database.updateSQL("DELETE FROM " + this.name + " WHERE " + this.informations.keySet().toArray()[0] + " = +" + index + ";");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

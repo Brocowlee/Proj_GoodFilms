@@ -1,13 +1,12 @@
 package fr.algo.com.gui.containers;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import fr.algo.com.Main;
 import fr.algo.com.gui.ReturnNavigationListener;
 
+@SuppressWarnings("serial")
 public class MasterContainer extends JPanel{
 	
 	private ContainerInit Connect;

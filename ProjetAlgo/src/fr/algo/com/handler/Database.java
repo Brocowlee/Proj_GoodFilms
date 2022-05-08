@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class Database
-{
+public abstract class Database {
+	
   public Connection connection;
   
   protected Database()

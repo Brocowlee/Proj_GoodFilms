@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import fr.algo.com.gui.ReturnNavigationListener;
 
+@SuppressWarnings("serial")
 public class ContainerUser extends JPanel {
 	
 private ReturnNavigationListener<ContainerUser> navigationListener;
@@ -13,9 +14,6 @@ private ReturnNavigationListener<ContainerUser> navigationListener;
 		this.navigationListener = navigationListener;
 		
 
-	
-		
-		
 		
 		
 	}

@@ -18,21 +18,17 @@ public class TableBuilder {
 		this.name = name;
 	}
 	
-	public void addColumn() {
-		Column c1 = new Column("id");
-		c1.setType("int(11)");
-		c1.setAutoIncrement(true);
-		c1.setNotNull(true);
-		c1.setDefaultValue("");
-		c1.setPrimary(true);
+	public void addColumn(String name, String type, boolean auto_increment, boolean notNull, String defaultValue, boolean primary) {
 		
-		list_columns.add(c1);
+		Column column = new Column(name);
+		column.setType(type);
+		column.setAutoIncrement(auto_increment);
+		column.setNotNull(notNull);
+		column.setDefaultValue(defaultValue);
+		column.setPrimary(primary);
 		
-		/*Column c2 = new Column("name", "varchar(30)", true, false, "", false);
-		Column c3 = new Column("id_grade", "int(11)", true, false, "0", false);
+		list_columns.add(column);
 		
-		list_columns.add(c2);
-		list_columns.add(c3); */
 	}
 	
 	
