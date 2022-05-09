@@ -126,8 +126,8 @@ public class ContainerAdmin extends JPanel {
         createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
         createTextArea(this.Laddrefused, contentPane, new int[] {40, 440, 100, 25}, Color.RED, false);
         createTextArea(this.Laddrefused2, contentPane, new int[] {40, 460, 100, 25}, Color.RED, false);
-        createTextArea(this.Ladd, contentPane, new int[] {50, 440, 100, 25}, Color.RED, false);
-        createTextArea(this.Ladd2, contentPane, new int[] {40, 460, 100, 25}, Color.RED, false);
+        createTextArea(this.Ladd, contentPane, new int[] {50, 440, 100, 25}, Color.GREEN, false);
+        createTextArea(this.Ladd2, contentPane, new int[] {40, 460, 100, 25}, Color.GREEN, false);
         
         JItemButton adding = new JItemButton("Ajouter",this, "Ajouter");
         adding.getButton().setMinimumSize(new Dimension(20,20));
@@ -264,7 +264,7 @@ public class ContainerAdmin extends JPanel {
 	 			space += maxvalues.get(i) + 30;
 	 		} else {
 	 			
-	 			if(i < 4) {
+	 			if(i < maxvalues.size()-1) {
 	 				space += (maxvalues.get(i) / 2) + 30;
 	 				space += (maxvalues.get(i+1) / 2);
 	 			} else {

@@ -33,7 +33,7 @@ public class Main {
 		      
 		      InitTable.initTable();
 		      
-		      for(TableObject to : InitTable.liste_tables.values()) {
+		      /*for(TableObject to : InitTable.liste_tables.values()) {
 		    	  //to.alreadyHasPrimaryKey();
 		    	  //System.out.println(to.selectAll());
 		    	  //System.out.println(to.getName());

@@ -21,7 +21,7 @@ public class MyGUI extends JFrame{
 	
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menu = new JMenu("Fichier");
-	private JMenuItem menuItem = new JMenuItem("SUPPRIMER TABLE");
+	private JMenuItem menuItem = new JMenuItem("Nouvelle Fenêtre");
 	private JMenuItem menuItem2 = new JMenuItem("AJOUTER TABLE");
 	
 	private JMenu menu2 = new JMenu("Edition");
@@ -38,7 +38,7 @@ public class MyGUI extends JFrame{
 		//Application initialising :
 		setTitle("ZeFilmViewer");
 		setIconImage(icon.getImage());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setMinimumSize(new Dimension(1000,1000));
         setMaximumSize(new Dimension(1000,1000));
 		setLocationRelativeTo(null);
@@ -60,8 +60,15 @@ public class MyGUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			
 				
-				System.out.println("test");
+				MyGUI gui = new MyGUI();
+				
+				gui.setVisible(true);
+				
+				/*WarningGui gui = new WarningGui("jjjjjjj");
+				
+				gui.setVisible(true);*/
 				
 			}
 		});

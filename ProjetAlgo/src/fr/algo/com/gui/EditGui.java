@@ -40,6 +40,7 @@ public class EditGui extends JFrame{
 		setMinimumSize(new Dimension(800,300));
         setMaximumSize(new Dimension(800,300));
 		setLocationRelativeTo(null);
+		setResizable(false);
 		pack();
 		
 		JPanel pan = new JPanel();
