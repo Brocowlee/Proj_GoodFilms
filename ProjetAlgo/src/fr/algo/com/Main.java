@@ -3,7 +3,6 @@ package fr.algo.com;
 import java.sql.SQLException;
 
 import fr.algo.com.gui.MyGUI;
-import fr.algo.com.gui.containers.ContainerAdmin;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.handler.MySQL;
 import fr.algo.com.object.TableObject;
@@ -34,7 +33,8 @@ public class Main {
 		      
 		      InitTable.initTable();
 		      
-		      /*for(TableObject to : InitTable.liste_tables.values()) {
+		      for(TableObject to : InitTable.liste_tables.values()) {
+		    	  //to.alreadyHasPrimaryKey();
 		    	  //System.out.println(to.selectAll());
 		    	  //System.out.println(to.getName());
 		    	  //System.out.println(to.getTotalLine());

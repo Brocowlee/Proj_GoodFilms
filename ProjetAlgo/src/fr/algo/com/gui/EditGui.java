@@ -1,11 +1,11 @@
 package fr.algo.com.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -27,7 +27,10 @@ import fr.algo.com.object.TableObject;
 public class EditGui extends JFrame{
 
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
-	TableObject table;
+	
+	private ArrayList<JTextField> textField_list = new ArrayList<>();	
+	
+	private TableObject table;
 	
 	public EditGui(ContainerAdmin containerAdmin, JItemButton button) {
 		
@@ -37,6 +40,7 @@ public class EditGui extends JFrame{
 		setMinimumSize(new Dimension(800,300));
         setMaximumSize(new Dimension(800,300));
 		setLocationRelativeTo(null);
+		setResizable(false);
 		pack();
 		
 		JPanel pan = new JPanel();
@@ -72,6 +76,7 @@ public class EditGui extends JFrame{
         //---------------------------------------------------------------------------------------------
         
         List<String> list = this.table.selectLigne(containerAdmin.edit_ids.get(button.getButton()));
+        
         for(String attribut : list) {
 	 		
         	JLabel lab = new JLabel(attribut);
@@ -81,6 +86,7 @@ public class EditGui extends JFrame{
             lab.setMinimumSize(new Dimension(200,50));
             lab.setMaximumSize(new Dimension(200,50));
             panel2.add(lab);
+            
     		
 	 	}
     	
@@ -93,14 +99,14 @@ public class EditGui extends JFrame{
         
         for(int i = 1; i < this.table.getColumnName().size(); i++) {
 	 		
-        	JTextField lab = new JTextField();
+        	JTextField textField = new JTextField();
     		
-            lab.setBorder(new EmptyBorder(0,10,0,5));
-            lab.setBorder(BorderFactory.createLineBorder(Color.black));
-            lab.setMinimumSize(new Dimension(200,50));
-            lab.setMaximumSize(new Dimension(200,50));
-            a_panel.add(lab);
-    		
+        	textField.setBorder(new EmptyBorder(0,10,0,5));
+        	textField.setBorder(BorderFactory.createLineBorder(Color.black));
+        	textField.setMinimumSize(new Dimension(200,50));
+        	textField.setMaximumSize(new Dimension(200,50));
+            a_panel.add(textField);
+    		this.textField_list.add(textField);
 	 	}
     	
         pan.add(a_panel);
@@ -137,10 +143,32 @@ public class EditGui extends JFrame{
 		    public void actionPerformed(ActionEvent arg0) {
 		    	
 		    	
+		    	int id = Integer.parseInt(containerAdmin.edit_ids.get(button.getButton()));
+		    	
+		    	ArrayList<String> values = new ArrayList<>();
+		    	List<Integer> indexes = new ArrayList<>();
 		    	
 		    	
+		    	for(int i = 0; i < textField_list.size(); i++) {
+		    		
+		    		JTextField text = textField_list.get(i);
+		    		
+		    		if(text.getText().length() > 0) {
+		    			
+		    			values.add(text.getText());
+		    			indexes.add(i + 1);
+		    			
+		    		}
+		    	}
 		    	
 		    	getEditGui().dispose();
+		    	
+		    	if(values.isEmpty() && indexes.isEmpty()) return;
+		    	
+		    	table.updateInto(id, indexes, values);
+		    	
+		    	
+		    	containerAdmin.showTable(table);
 		    }
 		    
 		});

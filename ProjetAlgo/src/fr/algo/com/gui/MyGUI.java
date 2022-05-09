@@ -21,9 +21,8 @@ public class MyGUI extends JFrame{
 	
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menu = new JMenu("Fichier");
-		private JMenuItem menuItem = new JMenuItem("Je sais");
-		private JMenuItem menuItem2 = new JMenuItem("pas quoi");
-		private JMenuItem menuItem3 = new JMenuItem("mettre");
+	private JMenuItem menuItem = new JMenuItem("Nouvelle Fenêtre");
+	private JMenuItem menuItem2 = new JMenuItem("AJOUTER TABLE");
 	
 	private JMenu menu2 = new JMenu("Edition");
 		
@@ -53,7 +52,6 @@ public class MyGUI extends JFrame{
 		
 		menu.add(menuItem);
 		menu.add(menuItem2);
-		menu.add(menuItem3);
 		
 		setJMenuBar(menuBar);
 		
@@ -62,7 +60,15 @@ public class MyGUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			
 				
+				MyGUI gui = new MyGUI();
+				
+				gui.setVisible(true);
+				
+				/*WarningGui gui = new WarningGui("jjjjjjj");
+				
+				gui.setVisible(true);*/
 				
 			}
 		});

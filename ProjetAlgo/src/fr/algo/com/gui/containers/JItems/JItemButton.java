@@ -8,9 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import fr.algo.com.gui.AddingGui;
 import fr.algo.com.gui.EditGui;
-import fr.algo.com.gui.MyGUI;
 import fr.algo.com.gui.containers.ContainerAdmin;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.object.TableObject;

@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -25,9 +26,12 @@ import fr.algo.com.object.TableObject;
 public class AddingGui extends JFrame {
 	
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
-	TableObject table;
 	
-public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
+	private ArrayList<JTextField> textField_list = new ArrayList<>();	
+	
+	private TableObject table;
+	
+	public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
 		
 		setTitle("Ajouter une donnée");
 		setIconImage(icon.getImage());
@@ -35,6 +39,7 @@ public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
 		setMinimumSize(new Dimension(800,200));
         setMaximumSize(new Dimension(800,200));
 		setLocationRelativeTo(null);
+		setResizable(false);
 		pack();
 		
 		JPanel pan = new JPanel();
@@ -43,7 +48,6 @@ public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
 	 	panel1.setLayout(new BoxLayout(panel1,BoxLayout.X_AXIS));
 	 	
 	 	this.table = table;
-	 	
 	 	
 	 	for(int i = 0; i < this.table.getColumnName().size(); i++) {
 	 		
@@ -71,19 +75,18 @@ public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
         
         for(int i = 0; i < this.table.getColumnName().size(); i++) {
 	 		
-        	JTextField lab = new JTextField();
+        	JTextField textField = new JTextField();
     		
-            lab.setBorder(new EmptyBorder(0,10,0,5));
-            lab.setBorder(BorderFactory.createLineBorder(Color.black));
-            lab.setMinimumSize(new Dimension(200,50));
-            lab.setMaximumSize(new Dimension(200,50));
-            a_panel.add(lab);
+        	textField.setBorder(new EmptyBorder(0,10,0,5));
+        	textField.setBorder(BorderFactory.createLineBorder(Color.black));
+        	textField.setMinimumSize(new Dimension(200,50));
+        	textField.setMaximumSize(new Dimension(200,50));
+            a_panel.add(textField);
+            this.textField_list.add(textField);
     		
 	 	}
     	
         pan.add(a_panel);
-        
-        
         
         GridLayout g = new GridLayout(2,1,5,5);
         pan.setLayout(g);
@@ -114,12 +117,53 @@ public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
         bAjout.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
 		    	
+		    	ArrayList<String> values = new ArrayList<>();
+		    	List<Integer> indexes = new ArrayList<>();
 		    	
 		    	
-		    	
-		    	
+		    	for(int i = 0; i < textField_list.size(); i++) {
+		    		
+		    		JTextField text = textField_list.get(i);
+		    		
+		    		if(text.getText().length() > 0) {
+		    			values.add(text.getText());
+		    			indexes.add(i);
+		    		}
+		    		
+		    		
+		    		
+		    	}
 		    	
 		    	getAddingGui().dispose();
+		    	
+		    	if(values.size() < table.getTotalColumn()) {
+		    		System.out.println("Valeur non renseigné");
+		    		return;
+		    	}
+		    	
+		    	if(table.alreadyHasPrimaryKey(values.get(0))) {
+					System.out.println("PrimaryKeyAlreadyExistante");
+					return;
+				}
+		    	
+		    	
+		    	if(values.isEmpty() && indexes.isEmpty()) return;
+		    	
+		    	if(table.insertInto(indexes, values)) {
+		    		
+		    		containerAdmin.showTable(table);
+		    		
+		    		containerAdmin.setAddButton(true);
+		    		
+		    	} else {
+		    		System.out.println("Au moins un valeur n'a pas le bon type.");
+		    	}
+		    	
+		    	
+		    	
+		    	
+		    	
+		    	
 		    	
 		    }
 		    
