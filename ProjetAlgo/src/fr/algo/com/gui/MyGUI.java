@@ -13,12 +13,7 @@ public class MyGUI extends JFrame{
 
 	
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
-	
-	
-	
-	
-	 
-	
+
 	public MyGUI() {
 		
 		setContentPane(new MasterContainer(this));
@@ -30,9 +25,9 @@ public class MyGUI extends JFrame{
 		setMinimumSize(new Dimension(1000,1000));
         setMaximumSize(new Dimension(1000,1000));
 		setLocationRelativeTo(null);
+		setResizable(false);
 		pack();
 		
-		//Menu bar setup :
 	}
 	
 }

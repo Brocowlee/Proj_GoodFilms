@@ -21,35 +21,34 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import fr.algo.com.gui.AddColumnGui;
 import fr.algo.com.gui.containers.JItems.JItemButton;
 import fr.algo.com.object.Column;
 
 
 @SuppressWarnings("serial")
 public class ContainerCreateTable extends JPanel{
-	
-	private int nbColumn = 0;
+
 	private ArrayList<Column> lstColumns = new ArrayList<>();
 	public HashMap<JCheckBox, Column> check_box_column = new HashMap<>();
-	public HashMap<JButton, Column> edit_column = new HashMap<>();
 	
-	ImageIcon edit = new ImageIcon("./edit.png");
-	Image imgedit = edit.getImage();
-	private ImageIcon editIcon = new ImageIcon(imgedit.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH));
-	
-	Column col = new Column("Test");
-	Column col2 = new Column("Test22222222222222222222222");
+	private JTextField Ttable = new JTextField();
 	
 	public ContainerCreateTable() {
         
 		setLayout(new GridLayout());
-		col.setType("INT");
-		lstColumns.add(col);
-		
-		col2.setType("VARCHAR");
-		lstColumns.add(col2);
         
-        JPanel pan = new JPanel();
+        
+        ShowColumn();
+          
+    }
+	
+	public void ShowColumn() {
+		removeAll();
+
+		this.check_box_column.clear();
+		
+		JPanel pan = new JPanel();
         pan.setBorder(BorderFactory.createLineBorder(Color.black));
         
         
@@ -72,27 +71,21 @@ public class ContainerCreateTable extends JPanel{
         panel1.setBackground(Color.LIGHT_GRAY);
         pan.add(panel1);
         
-        
+        int nbColumn = 0;
         for(Column column : this.lstColumns) {
-        	this.nbColumn++;
+        	nbColumn++;
         	
         	JPanel a_panel = new JPanel();
             a_panel.setLayout(new BoxLayout(a_panel,BoxLayout.X_AXIS));
         	
-        	JLabel lab = new JLabel("Colonne " + this.nbColumn +" :");    
+        	JLabel lab = new JLabel("Colonne " + nbColumn +" :");    
     		lab.setBorder(new EmptyBorder(0,10,0,50));
     		a_panel.add(lab);
         	
         	JCheckBox checkbox = new JCheckBox();
             a_panel.add(checkbox);
-            check_box_column.put(checkbox, column);
+            this.check_box_column.put(checkbox, column);
             
-            
-            JItemButton editbutton = new JItemButton(this.editIcon,this,"Edit");
-            a_panel.add(editbutton.getButton());
-            edit_column.put(editbutton.getButton(), column);
-            
-        		
         	JLabel NameColumn = new JLabel(column.getName());
         	NameColumn.setBorder(new EmptyBorder(0,10,0, 100));
             a_panel.add(NameColumn);
@@ -148,9 +141,15 @@ public class ContainerCreateTable extends JPanel{
             pan.add(a_panel);
         }
         
+        if(nbColumn< 3) {
+        	GridLayout g = new GridLayout(3,1,5,5);
+            pan.setLayout(g);
+        }
+        else {
+        	GridLayout g = new GridLayout(nbColumn + 1,1,5,5);
+            pan.setLayout(g);
+        }
         
-        GridLayout g = new GridLayout(this.nbColumn + 1,1,5,5);
-        pan.setLayout(g);
         
         JScrollPane scrollPane2 = new JScrollPane(pan);
         scrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -176,44 +175,74 @@ public class ContainerCreateTable extends JPanel{
         JLabel Ltable = new JLabel("Nom de la table : ");
         Ltable.setBounds(300, 700, 100, 50);
         contentPane2.add(Ltable);
-        JTextField Ttable = new JTextField();
-        Ttable.setBounds(400, 700, 150, 50);
-        contentPane2.add(Ttable);
+        
+        this.Ttable.setBounds(400, 700, 150, 50);
+        contentPane2.add(this.Ttable);
         
         JButton BValid = new JButton("Ajouter Table");
         BValid.setBounds(400, 800, 150, 50);
         contentPane2.add(BValid);
         
-        add(contentPane2);
+        this.add(contentPane2);
         
-        setMinimumSize(new Dimension(800,100));
-        setMaximumSize(new Dimension(800,100));
+        this.setMinimumSize(new Dimension(800,100));
+        this.setMaximumSize(new Dimension(800,100));
         
+        revalidate();
+        repaint();
         
-        
-        //--------------Listeners---------------------------------------
+//--------------Listeners---------------------------------------
         
         BColumn.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	//TODO
+		    	AddColumnGui columnGui = new AddColumnGui(getContainerCreateTable());
+		    	columnGui.setVisible(true);
 		    }
 		    
 		});
         
         BDelete.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	//TODO
+		    	
+		    	Column column = null;
+		    	
+		    	for(JCheckBox box : check_box_column.keySet()){
+					
+					if(!check_box_column.keySet().isEmpty()) {
+						
+						if(box.isSelected()) {
+							
+							column = check_box_column.get(box);
+							
+							lstColumns.remove(column);
+						}
+					}
+				}
+		    	
+		    	ShowColumn();
 		    }
 		    
 		});
         
         BValid.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	//TODO
+		    	String tableName = getContainerCreateTable().Ttable.getText();
+		    	
+		    	
+		    	
 		    }
 		    
 		});
-        
-    }
+	}
+	
+	public void AddColumn(Column colonne) {
+		this.lstColumns.add(colonne);
+		ShowColumn();
+	}
+	
+	public ContainerCreateTable getContainerCreateTable() {
+		return this;
+		
+	}
     
 }

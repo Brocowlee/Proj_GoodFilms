@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import fr.algo.com.gui.AddColumnGui;
 import fr.algo.com.gui.MyGUI;
 import fr.algo.com.gui.ReturnNavigationListener;
 
@@ -118,9 +119,6 @@ public class MasterContainer extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				removeAll();
-				/*JPanel test = new JPanel();
-				test.add(new JButton("test"));
-				add(test);*/
 				ContainerCreateTable container = new ContainerCreateTable();
 				add(container);
 				revalidate();
@@ -133,7 +131,7 @@ public class MasterContainer extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 				
 			}
 		});
