@@ -10,6 +10,7 @@ import javax.swing.JButton;
 
 import fr.algo.com.gui.EditGui;
 import fr.algo.com.gui.containers.ContainerAdmin;
+import fr.algo.com.gui.containers.ContainerCreateTable;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.object.TableObject;
 
@@ -19,6 +20,7 @@ public class JItemButton {
 	private JButton button;
 	private String type;
 	private ContainerAdmin containerAdmin;
+	private ContainerCreateTable containerCreateTable;
 	
 	
 	public JItemButton(String name,ContainerAdmin containerAdmin, String type) {
@@ -61,6 +63,28 @@ public class JItemButton {
 		    		EditGui gui = new EditGui(containerAdmin, getItemButton());
 		    		
 		    		gui.setVisible(true);
+		    		
+		    	}
+		    }
+		    
+		});
+		
+	}
+	
+	public JItemButton(ImageIcon name,ContainerCreateTable containerCreateTable, String type) {
+		this.type = type;
+		this.containerCreateTable = containerCreateTable;
+		initButton(name);
+		
+		
+		this.button.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent arg0) {
+		    	
+		    	if (type.equalsIgnoreCase("Edit")) {
+		    		
+		    		//EditColumnGui gui = new EditColumnGui(containerCreateTable, getItemButton());
+		    		
+		    		//gui.setVisible(true);
 		    		
 		    	}
 		    }
@@ -112,6 +136,10 @@ public class JItemButton {
 	public JItemButton getItemButton() {
 		return this;
 		
+	}
+	
+	public ContainerCreateTable getContainerCreateTable() {
+		return this.containerCreateTable;
 	}
 	
 }

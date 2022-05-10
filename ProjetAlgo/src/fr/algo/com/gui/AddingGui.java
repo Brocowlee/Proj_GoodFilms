@@ -137,12 +137,16 @@ public class AddingGui extends JFrame {
 		    	getAddingGui().dispose();
 		    	
 		    	if(values.size() < table.getTotalColumn()) {
-		    		System.out.println("Valeur non renseigné");
+		    		
+		    		new WarningGui("Au moins une valeur non renseignée").setVisible(true);
+		    		
 		    		return;
 		    	}
 		    	
 		    	if(table.alreadyHasPrimaryKey(values.get(0))) {
-					System.out.println("PrimaryKeyAlreadyExistante");
+		    		
+		    		new WarningGui("Clé primaire déjà existante").setVisible(true);
+		    		
 					return;
 				}
 		    	
@@ -156,15 +160,11 @@ public class AddingGui extends JFrame {
 		    		containerAdmin.setAddButton(true);
 		    		
 		    	} else {
-		    		System.out.println("Au moins un valeur n'a pas le bon type.");
+		    		
+		    		new WarningGui("Au moins une valeur n'a pas le bon type").setVisible(true);
+		    		
+		    		
 		    	}
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
 		    }
 		    
 		});

@@ -119,9 +119,7 @@ public class TableObject {
 			ResultSet rs = md.getPrimaryKeys("nicolath", null, this.name);
 			
 			while (rs.next()){
-				
 		        count++;
-		     
 			}
 			
 			
@@ -241,13 +239,6 @@ public class TableObject {
 		
 		return list_attribut;	
 	}
-	
-	
-	/*public int getMaxSizeOfLine() {
-				
-				
-				
-	} */
 	
 	public ArrayList<String> getMaxSizeFromColumn() {
 		

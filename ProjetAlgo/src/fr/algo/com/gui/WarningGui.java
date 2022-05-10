@@ -18,12 +18,9 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class WarningGui extends JFrame{
 	
-	
 
-	private ImageIcon icon = new ImageIcon("./Icon.jpg");
-	
-	ImageIcon img = new ImageIcon("./attention.png");
-	Image attention1 = img.getImage();
+	public ImageIcon img = new ImageIcon("./attention.png");
+	public Image attention1 = img.getImage();
 	private ImageIcon attention = new ImageIcon(attention1.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
 	
 	private String message;
@@ -34,7 +31,6 @@ public class WarningGui extends JFrame{
 		this.message = message;
 		
 		setTitle("Warning");
-		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setMinimumSize(new Dimension(400,200));
         setMaximumSize(new Dimension(400,200));
