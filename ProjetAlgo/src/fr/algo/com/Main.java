@@ -1,11 +1,14 @@
 package fr.algo.com;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import fr.algo.com.gui.MyGUI;
+import fr.algo.com.gui.WarningGui;
+import fr.algo.com.handler.ConfigHandler;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.handler.MySQL;
-import fr.algo.com.object.TableObject;
+import fr.algo.com.utils.Config;
 
 public class Main {
 	
@@ -13,9 +16,9 @@ public class Main {
 	
 	public static void main(String args[]) {
 		
-		database = new MySQL("localhost", "3306", "nicolath", "root", "");
+		database = new MySQL(getConfig().getHost(), getConfig().getPort(), getConfig().getDatabase(), getConfig().getUser(), getConfig().getPassword());
 		
-		connectToDatabase(database);
+		if(!connectToDatabase(database)) return;
 		
 		MyGUI gui = new MyGUI();
 	
@@ -23,36 +26,36 @@ public class Main {
 		
 	}
 	
-	private static void connectToDatabase(MySQL datebase){
+	private static Config getConfig() {
 		
+		ConfigHandler handler = null;
+		try {
+			handler = ConfigHandler.getInstance();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	    return handler.getConfig();
+		
+	}
+	
+	private static boolean connectToDatabase(MySQL datebase){
+        
 		 try
 		    {
 		      database.openConnection();
-		      
 		      System.out.println("Connexion à la base de données réalisée avec succès.");
-		      
 		      InitTable.initTable();
-		      
-		      /*for(TableObject to : InitTable.liste_tables.values()) {
-		    	  //to.alreadyHasPrimaryKey();
-		    	  //System.out.println(to.selectAll());
-		    	  //System.out.println(to.getName());
-		    	  //System.out.println(to.getTotalLine());
-		    	  
-		      } 
-		      
-		      /*TableBuilder tb = new TableBuilder("test3");
-		      tb.addColumn();
-		      tb.build(); */
-		      
+		      return true;
 		      
 		    }
 		    catch (ClassNotFoundException | SQLException e)
 		    {
+		      new WarningGui("Connexion à la base de données échouée").setVisible(true);
 		      System.out.println("Impossible de se connecter à la base de données :");
 		      e.printStackTrace();
-		      return;
 		    } 
-		
+		return false;
 	}
+	
 }
