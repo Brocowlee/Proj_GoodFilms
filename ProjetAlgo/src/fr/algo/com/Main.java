@@ -13,6 +13,7 @@ import fr.algo.com.utils.Config;
 public class Main {
 	
 	public static MySQL database;
+	public static boolean connected;
 	
 	public static void main(String args[]) {
 		

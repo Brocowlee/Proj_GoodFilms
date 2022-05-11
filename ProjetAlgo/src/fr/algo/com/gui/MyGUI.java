@@ -25,9 +25,8 @@ public class MyGUI extends JFrame{
 		setMinimumSize(new Dimension(1000,1000));
         setMaximumSize(new Dimension(1000,1000));
 		setLocationRelativeTo(null);
-		setResizable(false);
+
 		pack();
 		
 	}
-	
 }

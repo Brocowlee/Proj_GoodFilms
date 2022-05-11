@@ -39,6 +39,8 @@ public class InitTable {
 	
 	public static void initTable() {
 		
+		liste_tables.clear();
+		
 		 try {
      		DatabaseMetaData md = database.connection.getMetaData();
      		String[] types = {"TABLE"};

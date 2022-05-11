@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import fr.algo.com.Main;
+
 
 @SuppressWarnings("serial")
 public class ContainerInit extends JPanel{
@@ -20,7 +22,6 @@ public class ContainerInit extends JPanel{
         public void presentAdminContainer(ContainerInit source);
 		public void presentUserContainer(ContainerInit source);
     }
-
 	
 	private JButton connect = new JButton("Connexion");
 	private JButton inscri = new JButton("Inscription");
@@ -37,6 +38,9 @@ public class ContainerInit extends JPanel{
 	public ContainerInit(NavigationListener navigationListener){
 		this.navigationListener = navigationListener;
 		
+		if(Main.connected == true) {
+			getNavigationListener().presentAdminContainer(ContainerInit.this);
+    	}
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
@@ -93,10 +97,14 @@ public class ContainerInit extends JPanel{
 				   		.addComponent(inscri)
 				);
 		
-		
 		this.connect.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
 		    	
+		    	//TODO Systeme de connection
+		    	
+		    	
+		    	
+		    	Main.connected = true;
 		    	getNavigationListener().presentAdminContainer(ContainerInit.this);
 		    	
 		    }

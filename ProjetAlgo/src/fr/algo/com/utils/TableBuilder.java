@@ -18,14 +18,14 @@ public class TableBuilder {
 		this.name = name;
 	}
 	
-	public void addColumn(String name, String type, boolean auto_increment, boolean notNull, String defaultValue, boolean primary) {
+	public void addColumn(Column column) {
 		
-		Column column = new Column(name);
+		/*Column column = new Column(name);
 		column.setType(type);
 		column.setAutoIncrement(auto_increment);
 		column.setNotNull(notNull);
 		column.setDefaultValue(defaultValue);
-		column.setPrimary(primary);
+		column.setPrimary(primary); */
 		
 		list_columns.add(column);
 		
@@ -74,6 +74,8 @@ public class TableBuilder {
 		String end_request = "PRIMARY KEY (`" + primary +  "`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;"  ;
 		
 		String final_request = request += end_request;
+		
+		System.out.println(final_request);
 		
 		return final_request;
 	}

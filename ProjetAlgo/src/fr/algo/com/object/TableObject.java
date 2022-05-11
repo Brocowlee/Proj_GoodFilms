@@ -42,7 +42,11 @@ public class TableObject {
 		
 		InitTable.liste_tables.remove(this.name);
 		
-		// Delete sql request
+		try {
+			Main.database.updateSQL("DROP TABLE if exists " + this.name + ";");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
