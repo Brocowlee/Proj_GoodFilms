@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 import fr.algo.com.Main;
 import fr.algo.com.object.TableObject;
@@ -39,6 +38,8 @@ public class InitTable {
 	}
 	
 	public static void initTable() {
+		
+		liste_tables.clear();
 		
 		 try {
      		DatabaseMetaData md = database.connection.getMetaData();

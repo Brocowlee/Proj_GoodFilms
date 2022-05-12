@@ -34,7 +34,7 @@ public class ContainerAdmin extends JPanel {
 	public HashMap<JCheckBox, TableObject> check_box_table = new HashMap<>();
 	public HashMap<JButton, String> edit_ids = new HashMap<>();
 	public HashMap<JButton, TableObject> edit_table = new HashMap<>();
-	public HashMap<JItemButton, TableObject> button_table = new HashMap<>();
+	public static HashMap<JItemButton, TableObject> button_table = new HashMap<>();
 	
 	ImageIcon edit = new ImageIcon("./edit.png");
 	Image imgedit = edit.getImage();
@@ -61,8 +61,11 @@ public class ContainerAdmin extends JPanel {
 		 
 			showMenu(null);
 	        
-	  //--------------------------------------------------------------------------------------------------------------------------      
-	        
+	}
+	
+	public void maj() {
+		removeAll();
+		showMenu(null);
 	}
 	
 	public void setAddButton(boolean bool) {
@@ -74,7 +77,7 @@ public class ContainerAdmin extends JPanel {
 	
 	public void showMenu(String table_name) {
 		
-		this.button_table.clear();
+		button_table.clear();
 		
 		String type = "Table";
 		JPanel panel = new JPanel();
@@ -83,7 +86,7 @@ public class ContainerAdmin extends JPanel {
         for(TableObject table : InitTable.liste_tables.values()) {
         	
           JItemButton button = new JItemButton(table.getName(), this, type);
-          this.button_table.put(button,table);
+          button_table.put(button,table);
           
           button.getButton().setMinimumSize(new Dimension(150,30));
       	  button.getButton().setMaximumSize(new Dimension(150,30));
@@ -152,15 +155,8 @@ public class ContainerAdmin extends JPanel {
 	}
 	
 	public void adding() {
-		TableObject table = null;
+		TableObject table = getCurrentTable();
 		
-		for(JItemButton button : this.button_table.keySet()) {  
-			
-			if(button.getButton().getForeground() == Color.BLACK){
-				 table = button_table.get(button) ;
-			}
-		}
-
 		if(table == null) {
 			this.Laddrefused.setVisible(true);
 	        this.Laddrefused2.setVisible(true);
@@ -361,6 +357,20 @@ public class ContainerAdmin extends JPanel {
         repaint();
 		
 		
+	}
+	
+	public static TableObject getCurrentTable() {
+		
+		TableObject table = null;
+		
+		for(JItemButton button : button_table.keySet()) {  
+			
+			if(button.getButton().getForeground() == Color.BLACK){
+				 table = button_table.get(button) ;
+			}
+		}
+		
+		return table;
 	}
 	
 	public ReturnNavigationListener<ContainerAdmin> getReturnNavigationListener() {

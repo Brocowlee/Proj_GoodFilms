@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files/Java/JDBC/mysql-connector-java-8.0.29/mysql-connector-java-8.0.29.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/Librairie/snakeyaml-1.23.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/Librairie/jbcrypt-0.3m.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

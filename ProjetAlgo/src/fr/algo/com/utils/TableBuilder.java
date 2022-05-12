@@ -18,14 +18,7 @@ public class TableBuilder {
 		this.name = name;
 	}
 	
-	public void addColumn(String name, String type, boolean auto_increment, boolean notNull, String defaultValue, boolean primary) {
-		
-		Column column = new Column(name);
-		column.setType(type);
-		column.setAutoIncrement(auto_increment);
-		column.setNotNull(notNull);
-		column.setDefaultValue(defaultValue);
-		column.setPrimary(primary);
+	public void addColumn(Column column) {
 		
 		list_columns.add(column);
 		

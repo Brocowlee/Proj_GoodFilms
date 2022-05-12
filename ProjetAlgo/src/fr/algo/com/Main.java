@@ -3,6 +3,8 @@ package fr.algo.com;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import fr.algo.com.gui.MyGUI;
 import fr.algo.com.gui.WarningGui;
 import fr.algo.com.handler.ConfigHandler;
@@ -13,6 +15,7 @@ import fr.algo.com.utils.Config;
 public class Main {
 	
 	public static MySQL database;
+	public static boolean connected;
 	
 	public static void main(String args[]) {
 		
@@ -20,9 +23,23 @@ public class Main {
 		
 		if(!connectToDatabase(database)) return;
 		
+		/*String hashed = BCrypt.hashpw("test", "$2a$10$8lYJu9EHPliYUhAsSwSJnYgQ");
+		
+		String candidate = "$2a$10$8lYJu9EHPliYUhAsSwSJnO/7mvBNBa9pMu.jt3tzHya39ELE7juA.";
+		
+		System.out.println("Java " + hashed);
+		System.out.println("PHP " + candidate);
+		
+		
+		if(candidate.equalsIgnoreCase(hashed))
+			System.out.println("It matches");
+		else
+			System.out.println("It does not match");  */
+		
+		
 		MyGUI gui = new MyGUI();
 	
-		gui.setVisible(true);
+		gui.setVisible(true); 
 		
 	}
 	
