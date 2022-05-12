@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3308
--- Généré le : ven. 06 mai 2022 à 08:39
--- Version du serveur :  5.7.33
--- Version de PHP : 7.4.14
+-- Hôte : 127.0.0.1:3306
+-- Généré le : jeu. 12 mai 2022 à 00:39
+-- Version du serveur : 5.7.36
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,82 +18,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `gonaya`
+-- Base de données : `nicolath`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Film`
+-- Structure de la table `film`
 --
 
-CREATE TABLE `Film` (
-  `id_f` int(15) NOT NULL,
+DROP TABLE IF EXISTS `film`;
+CREATE TABLE IF NOT EXISTS `film` (
+  `id_f` int(15) NOT NULL AUTO_INCREMENT,
   `titre` varchar(25) NOT NULL,
   `resume` varchar(300) NOT NULL,
   `annee_sortie` int(4) NOT NULL,
-  `duree` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `duree` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_f`)
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Film`
+-- Déchargement des données de la table `film`
 --
 
-INSERT INTO `Film` (`id_f`, `titre`, `resume`, `annee_sortie`, `duree`) VALUES
-(1, 'Avatar', 'Pandora bla bla bla...', 2016, '0'),
-(2, 'Titanic', 'Glou glou', 1998, '0'),
-(3, 'Dick Johnson Is Dead', 'As her father nears the end of his life, filmmaker Kirsten Johnson stages his death in inventive and comical ways to help them both face the inevitable.', 2020, '90 min'),
-(4, 'Sankofa', 'On a photo shoot in Ghana, an American model slips back in time, becomes enslaved on a plantation and bears witness to the agony of her ancestral past.', 1993, '125 min'),
-(5, 'The Starling', 'A woman adjusting to life after a loss contends with a feisty bird that\'s taken over her garden — and a husband who\'s struggling to find a way forward.', 2021, '104 min'),
-(6, 'Je Suis Karl', 'After most of her family is murdered in a terrorist bombing, a young woman is unknowingly lured into joining the very group that killed them.', 2021, '127 min'),
-(7, 'Intrusion', 'After a deadly home invasion at a couple’s new dream house, the traumatized wife searches for answers — and learns the real danger is just beginning.', 2021, '94 min'),
-(8, 'Avvai Shanmughi', 'Newly divorced and denied visitation rights with his daughter, a doting father disguises himself as a gray-haired nanny in order to spend time with her.', 1996, '161 min'),
-(9, 'Jeans', 'When the father of the man she loves insists that his twin sons marry twin sisters, a woman creates an alter ego that might be a bit too convincing.', 1998, '166 min'),
-(10, 'Minsara Kanavu', 'A tangled love triangle ensues when a man falls for a woman studying to become a nun — and she falls for the friend he enlists to help him pursue her.', 1997, '147 min'),
-(11, 'Grown Ups', 'Mourning the loss of their beloved junior high basketball coach, five middle-aged pals reunite at a lake house and rediscover the joys of being a kid.', 2010, '103 min'),
-(12, 'Dark Skies', 'A family’s idyllic suburban life shatters when an alien force invades their home, and as they struggle to convince others of the deadly threat.', 2013, '97 min'),
-(13, 'Paranoia', 'Blackmailed by his company\'s CEO, a low-level employee finds himself forced to spy on the boss\'s rival and former mentor.', 2013, '106 min'),
-(14, 'Ankahi Kahaniya', 'As big city life buzzes around them, lonely souls discover surprising sources of connection and companionship in three tales of love, loss and longing.', 2021, '111 min'),
-(15, 'The Stronghold', 'Tired of the small-time grind, three Marseille cops get a chance to bust a major drug network. But lines blur when a key informant makes a big ask.', 2021, '105 min'),
-(16, 'Birth of the Dragon', 'A young Bruce Lee angers kung fu traditionalists by teaching outsiders, leading to a showdown with a Shaolin master in this film based on real events.', 2017, '96 min'),
-(17, 'Jaws', 'When an insatiable great white shark terrorizes Amity Island, a police chief, an oceanographer and a grizzled shark hunter seek to destroy the beast.', 1975, '124 min'),
-(18, 'Jaws 2', 'Four years after the last deadly shark attacks, police chief Martin Brody fights to protect Amity Island from another killer great white.', 1978, '116 min'),
-(19, 'Jaws 3', 'After the staff of a marine theme park try to capture a young great white shark, they discover its mother has invaded the enclosure and is out for blood.', 1983, '98 min'),
-(20, 'Jaws: The Revenge', 'After another deadly shark attack, Ellen Brody has had enough of Amity Island and moves to the Caribbean – but a great white shark follows her there.', 1987, '91 min'),
-(21, 'My Heroes Were Cowboys', 'Robin Wiltshire\'s painful childhood was rescued by Westerns. Now he lives on the frontier of his dreams, training the horses he loves for the big screen.', 2021, '23 min'),
-(22, 'Safe House', 'Young CIA operative Matt Weston must get a dangerous criminal out of an agency safe house that\'s come under attack and get him to a securer location.', 2012, '115 min'),
-(23, 'Training Day', 'A rookie cop with one day to prove himself to a veteran LAPD narcotics officer receives a crash course in his mentor\'s questionable brand of justice.', 2001, '122 min'),
-(24, 'Nightbooks', 'Scary story fan Alex must tell a spine-tingling tale every night — or stay trapped with his new friend in a wicked witch\'s magical apartment forever.', 2021, '103 min'),
-(25, 'Schumacher', 'Through exclusive interviews and archival footage, this documentary traces an intimate portrait of seven-time Formula 1 champion Michael Schumacher.', 2021, '113 min'),
-(26, 'King of Boys', 'When a powerful businesswoman’s political ambitions are threatened by her underworld connections, the ensuing power struggle could cost her everything.', 2018, '182 min'),
-(27, 'You vs. Wild: Out Cold', 'After a plane crash leaves Bear with amnesia, he must make choices to save the missing pilot and survive in this high-stakes interactive adventure.', 2021, '106 min'),
-(28, 'Tughlaq Durbar', 'A budding politician has devious plans to rise in the ranks — until an unexpected new presence begins to interfere with his every crooked move.', 2020, '145 min'),
-(29, 'Tughlaq Durbar (Telugu)', 'A budding politician has devious plans to rise in the ranks — until an unexpected new presence begins to interfere with his every crooked move.', 2021, '145 min'),
-(30, 'Kate', 'Slipped a fatal poison on her final job, a ruthless assassin working in Tokyo has less than 24 hours to find out who ordered the hit and exact revenge.', 2021, '106 min'),
-(31, 'Omo Ghetto: the Saga', 'Twins are reunited as a good-hearted female gangster and her uptight rich sister take on family, crime, cops and all of the trouble that follows them.', 2020, '147 min'),
-(32, 'Prey', 'A hiking trip into the wild turns into a desperate bid for survival for five friends on the run from a mysterious shooter.', 2021, '87 min'),
-(33, 'Paradise Hills', 'Uma wakes up in a lush tropical facility designed to turn willful girls into perfect ladies. That’s bad enough, but its real purpose is even worse.', 2019, '95 min'),
-(34, 'JJ+E', 'Elisabeth and John-John live in the same city, but they inhabit different worlds. Can a passionate first love break through class and cultural barriers?', 2021, '91 min'),
-(35, 'Show Dogs', 'A rough and tough police dog must go undercover with an FBI agent as a prim and proper pet at a dog show to save a baby panda from an illegal sale.', 2018, '90 min'),
-(36, 'Untold: Breaking Point', 'Under pressure to continue a winning tradition in American tennis, Mardy Fish faced mental health challenges that changed his life on and off the court.', 2021, '80 min'),
-(37, 'Shadow Parties', 'A family faces destruction in a long-running conflict between communities that pits relatives against each other amid attacks and reprisals.', 2020, '117 min'),
-(38, 'Angamaly Diaries', 'After growing up amidst the gang wars of his hometown, Vincent forms an entrepreneurial squad of his own and ends up on the wrong side of the law.', 2017, '128 min'),
-(39, 'A Champion Heart', 'When a grieving teen must work off her debt to a ranch, she cares for a wounded horse that teaches her more about healing than she expected.', 2018, '90 min'),
-(40, 'Worth', 'In the wake of the Sept. 11 attacks, a lawyer faces an emotional reckoning as he attempts to put a dollar value on the lives lost. Based on real events.', 2021, '119 min'),
-(41, 'Afterlife of the Party', 'Cassie lives to party... until she dies in a freak accident. Now this social butterfly needs to right her wrongs on Earth if she wants to earn her wings.', 2021, '110 min'),
-(42, 'Anjaam', 'A wealthy industrialist’s dangerous obsession with a flight attendant destroys her world, until she takes matters into her own hands to exact revenge.', 1994, '143 min'),
-(43, 'Bright Star', 'This drama details the passionate three-year romance between Romantic poet John Keats – who died tragically at age 25 – and his great love and muse.', 2009, '119 min'),
-(44, 'Dhanak', 'A movie-loving 10-year-old and her blind little brother trek to meet Indian superstar Shah Rukh Khan for help in getting the boy an eye operation.', 2015, '114 min'),
-(45, 'Final Account', 'This documentary stitches together never-before-seen interviews with the last living generation of people who participated in Hitler\'s Third Reich.', 2021, '94 min'),
-(46, 'Gurgaon', 'When the daughter of a wealthy family returns from college, she gets a frosty welcome from her brother, who has problems – and plans – of his own.', 2017, '106 min'),
-(47, 'Here and There', 'After meeting through a heated exchange on social media, two people with different backgrounds begin an online romance in the midst of a pandemic.', 2020, '99 min'),
-(48, 'In the Cut', 'After embarking on an affair with the cop probing the murder of a young woman, an insular schoolteacher suspects her lover was involved in the crime.', 2003, '118 min'),
-(49, 'Shikara', 'A couple must strive to remain resilient after regional hostilities drive them from their beloved home into a refugee camp.', 2020, '115 min'),
-(50, 'A Cinderella Story', 'Teen Sam meets the boy of her dreams at a dance before returning to toil in her stepmother\'s diner. Can her lost cell phone bring them together?', 2004, '95 min'),
-(51, 'An Unfinished Life', 'A grieving widow and her daughter move in with her estranged father-in-law in Wyoming, where time allows them to heal and forgive.', 2005, '108 min'),
-(52, 'Chappie', 'In a futuristic society where an indestructible robot police force keeps crime at bay, a lone droid evolves to the next level of artificial intelligence.', 2015, '121 min'),
-(53, 'Clear and Present Danger', 'When the president\'s friend is murdered, CIA Deputy Director Jack Ryan becomes unwittingly involved in an illegal war against a Colombian drug cartel.', 1994, '142 min'),
-(54, 'Cliffhanger', 'Ranger Gabe Walker and his partner are called to rescue a group of stranded climbers, only to learn the climbers are actually thieving hijackers.', 1993, '113 min'),
+INSERT INTO `film` (`id_f`, `titre`, `resume`, `annee_sortie`, `duree`) VALUES
+(1, 'avatar', 'pandora', 20009, '170 min'),
 (55, 'Cold Mountain', 'This drama follows a wounded Civil War soldier making the long journey home, while his faraway love fights for survival on her deceased father\'s farm.', 2003, '154 min'),
 (56, 'Dear John', 'While on summer leave, a U.S. soldier falls for a college student. But when he\'s forced to reenlist, their handwritten letters hold the lovers together.', 2010, '108 min'),
 (57, 'Do the Right Thing', 'On a sweltering day in Brooklyn, simmering racial tensions between residents rise to the surface and ignite rage, violence and tragedy.', 1989, '120 min'),
@@ -143,7 +92,6 @@ INSERT INTO `Film` (`id_f`, `titre`, `resume`, `annee_sortie`, `duree`) VALUES
 (101, 'LSD: Love, Sex Aur Dhokha', 'This provocative drama examines how the voyeuristic nature of modern society affects three unusual couples in Northern India.', 2010, '112 min'),
 (102, 'Ragini MMS', 'A couple out to have a sensuous weekend at a house outside of Mumbai finds it rigged with surveillance cameras and occupied by an evil entity.', 2011, '93 min'),
 (103, 'Ragini MMS 2', 'The horror continues when Ragini\'s video goes viral and a sleazy director decides to make a movie about the incident in the original house.', 2014, '113 min'),
-(104, 'Shootout at Lokhandwala', 'Based on a true story, this action film follows an incident that stunned a nation in the early 1990s. In Mumbai, India, the notorious gangster Maya holds off veteran cop Khan and a force of more than 200 policemen in a six-hour bloody gunfight.', 2007, '116 min'),
 (105, 'Shor In the City', 'When three small-time Mumbai crooks steal a bag on a train, they find that it\'s filled with weapons and realize that their lives may be in danger.', 2011, '106 min'),
 (106, 'The Dirty Picture', 'After running away from home in search of movie stardom, a village girl rises to become a prominent sex symbol.', 2011, '145 min'),
 (107, 'Really Love', 'A rising Black painter tries to break into a competitive art world while balancing an unexpected romance with an ambitious law student.', 2020, '95 min'),
@@ -180,12 +128,14 @@ INSERT INTO `Film` (`id_f`, `titre`, `resume`, `annee_sortie`, `duree`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Genre`
+-- Structure de la table `genre`
 --
 
-CREATE TABLE `Genre` (
-  `id_g` int(15) NOT NULL,
-  `genre` varchar(20) NOT NULL
+DROP TABLE IF EXISTS `genre`;
+CREATE TABLE IF NOT EXISTS `genre` (
+  `id_g` int(15) NOT NULL AUTO_INCREMENT,
+  `genre` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_g`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -194,10 +144,20 @@ CREATE TABLE `Genre` (
 -- Structure de la table `genres2films`
 --
 
-CREATE TABLE `genres2films` (
+DROP TABLE IF EXISTS `genres2films`;
+CREATE TABLE IF NOT EXISTS `genres2films` (
   `id_g` int(15) NOT NULL,
-  `id_f` int(15) NOT NULL
+  `id_f` int(15) NOT NULL,
+  PRIMARY KEY (`id_g`,`id_f`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `genres2films`
+--
+
+INSERT INTO `genres2films` (`id_g`, `id_f`) VALUES
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -205,7 +165,8 @@ CREATE TABLE `genres2films` (
 -- Structure de la table `joue`
 --
 
-CREATE TABLE `joue` (
+DROP TABLE IF EXISTS `joue`;
+CREATE TABLE IF NOT EXISTS `joue` (
   `id_p` int(15) NOT NULL,
   `id_f` int(15) NOT NULL,
   `personnage` varchar(25) NOT NULL
@@ -217,10 +178,12 @@ CREATE TABLE `joue` (
 -- Structure de la table `note`
 --
 
-CREATE TABLE `note` (
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE IF NOT EXISTS `note` (
   `id_u` int(15) NOT NULL,
   `id_f` int(15) NOT NULL,
-  `note` int(2) NOT NULL
+  `note` int(2) NOT NULL,
+  PRIMARY KEY (`id_u`,`id_f`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -234,21 +197,24 @@ INSERT INTO `note` (`id_u`, `id_f`, `note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Personne`
+-- Structure de la table `personne`
 --
 
-CREATE TABLE `Personne` (
-  `id_p` int(15) NOT NULL,
+DROP TABLE IF EXISTS `personne`;
+CREATE TABLE IF NOT EXISTS `personne` (
+  `id_p` int(15) NOT NULL AUTO_INCREMENT,
   `nom` varchar(25) NOT NULL,
-  `prenom` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `prenom` varchar(25) NOT NULL,
+  PRIMARY KEY (`id_p`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Personne`
+-- Déchargement des données de la table `personne`
 --
 
-INSERT INTO `Personne` (`id_p`, `nom`, `prenom`) VALUES
-(1, 'Cameron', 'James');
+INSERT INTO `personne` (`id_p`, `nom`, `prenom`) VALUES
+(1, 'Cameron', 'James'),
+(2, 'Nicolas', 'Thomas');
 
 -- --------------------------------------------------------
 
@@ -256,7 +222,8 @@ INSERT INTO `Personne` (`id_p`, `nom`, `prenom`) VALUES
 -- Structure de la table `realise`
 --
 
-CREATE TABLE `realise` (
+DROP TABLE IF EXISTS `realise`;
+CREATE TABLE IF NOT EXISTS `realise` (
   `id_f` int(15) NOT NULL,
   `id_p` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -267,97 +234,35 @@ CREATE TABLE `realise` (
 
 INSERT INTO `realise` (`id_f`, `id_p`) VALUES
 (1, 1),
-(2, 1);
+(2, 1),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Utilisateur`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `Utilisateur` (
-  `id_u` int(15) NOT NULL, 
-  `nom_u` varchar(25) NOT NULL,
-  `prenom_u` varchar(25) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  `login` varchar(25) NOT NULL,
-  `mdp` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(30) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL,
+  `admin` int(11) NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_utilisateur`,`login`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Utilisateur`
+-- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `Utilisateur` (`id_u`, `nom_u`, `prenom_u`, `admin`, `login`, `mdp`) VALUES
-(1, 'Takhashi', 'Vincent', 1, 'azerty', 'azerty');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `Film`
---
-ALTER TABLE `Film`
-  ADD PRIMARY KEY (`id_f`);
-
---
--- Index pour la table `Genre`
---
-ALTER TABLE `Genre`
-  ADD PRIMARY KEY (`id_g`);
-
---
--- Index pour la table `genres2films`
---
-ALTER TABLE `genres2films`
-  ADD PRIMARY KEY (`id_g`,`id_f`);
-
---
--- Index pour la table `note`
---
-ALTER TABLE `note`
-  ADD PRIMARY KEY (`id_u`,`id_f`);
-
---
--- Index pour la table `Personne`
---
-ALTER TABLE `Personne`
-  ADD PRIMARY KEY (`id_p`);
-
---
--- Index pour la table `Utilisateur`
---
-ALTER TABLE `Utilisateur`
-  ADD PRIMARY KEY (`id_u`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `Film`
---
-ALTER TABLE `Film`
-  MODIFY `id_f` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
-
---
--- AUTO_INCREMENT pour la table `Genre`
---
-ALTER TABLE `Genre`
-  MODIFY `id_g` int(15) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `Personne`
---
-ALTER TABLE `Personne`
-  MODIFY `id_p` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT pour la table `Utilisateur`
---
-ALTER TABLE `Utilisateur`
-  MODIFY `id_u` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mot_de_passe`, `admin`, `salt`) VALUES
+(2, 'test', '$2a$10$8lYJu9EHPliYUhAsSwSJnO/7mvBNBa9pMu.jt3tzHya39ELE7juA.', 0, '$2a$10$8lYJu9EHPliYUhAsSwSJnYgQ');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

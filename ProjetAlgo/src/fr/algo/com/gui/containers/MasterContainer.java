@@ -15,7 +15,7 @@ import fr.algo.com.gui.ReturnNavigationListener;
 import fr.algo.com.object.TableObject;
 
 @SuppressWarnings("serial")
-public class MasterContainer extends JPanel{
+public class MasterContainer extends JPanel {
 	
 	private ContainerInit Connect;
 	private ContainerAdmin Admin;
@@ -41,10 +41,9 @@ public class MasterContainer extends JPanel{
         					presentMenu();
     	                }
     	            });
-        			setMinimumSize(Admin.getMinimumSize());
-        			setMaximumSize(Admin.getMaximumSize());
-        			setSize(Admin.getMinimumSize());
+        			
         			gui.setJMenuBar(CreateMenuBar(gui));
+        			gui.setResizable(true);
         			present(Admin);
     	        }
     	              
@@ -56,6 +55,7 @@ public class MasterContainer extends JPanel{
     	        			presentMenu();
     	                }
     	            });
+    	        	gui.setResizable(true);
     	            present(containerUser);
     	        }
     	                
@@ -64,10 +64,12 @@ public class MasterContainer extends JPanel{
     	}
         	
         if(Main.connected == false) {
+        	gui.setResizable(false);
         	add(Connect);
     	}
         else {
         	present(Admin);
+        	gui.setResizable(true);
         	Admin.maj();
         }
         
@@ -170,4 +172,3 @@ public class MasterContainer extends JPanel{
 		
 	}
 }
-

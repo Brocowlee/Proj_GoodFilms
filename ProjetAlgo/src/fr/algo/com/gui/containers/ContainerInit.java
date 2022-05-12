@@ -1,18 +1,21 @@
 package fr.algo.com.gui.containers;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -48,8 +51,8 @@ public class ContainerInit extends JPanel{
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
-		setMinimumSize(new Dimension(340,190));
-		setMaximumSize(new Dimension(340,190));
+		setBorder(BorderFactory.createLineBorder(Color.black));
+		setBorder(new EmptyBorder(400, 275, 0, 0));
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
 		
@@ -111,12 +114,12 @@ public class ContainerInit extends JPanel{
 						Main.connected = true;
 			    	} else {
 			    		//TODO Régler le problème de non affichage
-			    		new WarningGui("Login ou mot de passe incorrect.");
+			    		new WarningGui("Login ou mot de passe incorrect.").setVisible(true);;
 					} 
 
 		    	} else {
 		    		//TODO Régler le problème de non affichage
-		    		new WarningGui("Login ou mot de passe incorrect.");
+		    		new WarningGui("Login ou mot de passe incorrect.").setVisible(true);;
 		    	}
 		    	
 		    }
