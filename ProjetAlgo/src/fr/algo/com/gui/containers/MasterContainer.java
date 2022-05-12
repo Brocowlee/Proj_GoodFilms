@@ -15,7 +15,7 @@ import fr.algo.com.gui.ReturnNavigationListener;
 import fr.algo.com.object.TableObject;
 
 @SuppressWarnings("serial")
-public class MasterContainer extends JPanel{
+public class MasterContainer extends JPanel {
 	
 	private ContainerInit Connect;
 	private ContainerAdmin Admin;
@@ -172,4 +172,3 @@ public class MasterContainer extends JPanel{
 		
 	}
 }
-

@@ -39,7 +39,7 @@ public class TableBuilder {
 	
 	public String writeRequest(List<Column> list_columns) {
 		
-		String primary = "";
+		ArrayList<String> primary_keys = new ArrayList<>();
 		
 		String request = "CREATE TABLE IF NOT EXISTS `" + this.name + "` ( "; 
 		
@@ -57,14 +57,26 @@ public class TableBuilder {
 					request += " AUTO_INCREMENT";
 				}
 				if(column.isPrimary()) {
-					primary = column.getName();
+					primary_keys.add(column.getName());
 				}
 				request += ", ";
 				
 		}
 		
+		String primary = "";
 		
-		String end_request = "PRIMARY KEY (`" + primary +  "`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;"  ;
+		for(String prim : primary_keys) {
+			
+			if(!(primary_keys.get(primary_keys.size() - 1) == prim)) {
+				primary += "`" + prim + "`, ";
+				
+			} else {
+				primary += "`" + prim + "`";
+			}
+			
+		}
+		
+		String end_request = "PRIMARY KEY (" + primary + ") ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;"  ;
 		
 		String final_request = request += end_request;
 		
