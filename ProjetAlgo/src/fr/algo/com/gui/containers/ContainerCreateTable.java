@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import fr.algo.com.gui.AddColumnGui;
+import fr.algo.com.gui.WarningGui;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.object.Column;
 import fr.algo.com.utils.TableBuilder;
@@ -240,6 +241,14 @@ public class ContainerCreateTable extends JPanel{
 		    		table_builder.addColumn(column);
 		    		
 		    	}
+		    	
+		    	if(lstColumns.isEmpty()) return;
+		    	
+		    	if(tableName.isBlank()) {
+		    		new WarningGui("Veuillez ajouter un nom de table").setVisible(true);
+		    		return;
+		    	}
+		    		
 		    	
 		    	table_builder.build();
 		    	
