@@ -18,9 +18,16 @@
 
         function getUserFirstName(){
             $db=$this->dbConnect();
-            $sql="SELECT prenom_u FROM Utilisateur WHERE login='".$_POST["login"]."' and mdp = '".$_POST["mdp"]."';";
+            $sql="SELECT prenom_u FROM Utilisateur WHERE login='".$_SESSION["login"]."' and mdp = '".$_SESSION["mdp"]."';";
             $result=mysqli_query($db, $sql);
             return $result;
+        }
+
+        function getUserId(){
+            $db=$this->dbConnect();
+            $sql="SELECT id_u FROM Utilisateur WHERE login='".$_SESSION["login"]."' and mdp = '".$_SESSION["mdp"]."';";
+            $result=mysqli_query($db, $sql);
+            return $result->fetch_assoc()["id_u"];
         }
 
 

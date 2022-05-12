@@ -15,14 +15,15 @@
         
 
         <?php 
-        if(isset($_SESSION["Connexion"])){
-            if ($_SESSION["Connexion"]=="errors"){
+        if(isset($_SESSION["connexion"])){
+            if ($_SESSION["connexion"]=="error"){
                 echo "login ou mot de passe invalide. Veuillez réessayer :";
             }
+        
+            else {
+                echo "Veuillez renseigner votre identifiant et votre mot de passe :";
+            }
         } 
-        else {
-            echo "Veuillez renseigner votre identifiant et votre mot de passe :";
-        }
         ?>
         
         <form id="informations" method="POST">
