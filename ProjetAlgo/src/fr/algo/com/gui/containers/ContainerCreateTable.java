@@ -3,7 +3,6 @@ package fr.algo.com.gui.containers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -22,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import fr.algo.com.gui.AddColumnGui;
-import fr.algo.com.gui.containers.JItems.JItemButton;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.object.Column;
 import fr.algo.com.utils.TableBuilder;

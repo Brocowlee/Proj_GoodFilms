@@ -41,10 +41,9 @@ public class MasterContainer extends JPanel{
         					presentMenu();
     	                }
     	            });
-        			setMinimumSize(Admin.getMinimumSize());
-        			setMaximumSize(Admin.getMaximumSize());
-        			setSize(Admin.getMinimumSize());
+        			
         			gui.setJMenuBar(CreateMenuBar(gui));
+        			gui.setResizable(true);
         			present(Admin);
     	        }
     	              
@@ -56,6 +55,7 @@ public class MasterContainer extends JPanel{
     	        			presentMenu();
     	                }
     	            });
+    	        	gui.setResizable(true);
     	            present(containerUser);
     	        }
     	                
@@ -64,10 +64,12 @@ public class MasterContainer extends JPanel{
     	}
         	
         if(Main.connected == false) {
+        	gui.setResizable(false);
         	add(Connect);
     	}
         else {
         	present(Admin);
+        	gui.setResizable(true);
         	Admin.maj();
         }
         
