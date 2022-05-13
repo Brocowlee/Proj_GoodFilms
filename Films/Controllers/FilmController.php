@@ -11,11 +11,22 @@
         }
 
         function displayFilmsTitles(){
-
             $films = $this->filmModel->getAllFilmsTitles();
+            return $films;
+        }
 
-            while($donnees = $films->fetch_array()){
-                echo"<li>".$donnees['titre']."</li>";      
-            }      
+        function displayOneFilm(){
+            $film = $this->filmModel->getOneFilm();
+            return $film->fetch_array();
+        }
+
+        function displayMyFilms(){
+            $mes_films = $this->filmModel->getMyFilms();
+            return $mes_films;
+        }
+
+        function displayResearch(){
+            $recherche = $this->filmModel->getResearchFilm();
+            return $recherche;
         }
     }

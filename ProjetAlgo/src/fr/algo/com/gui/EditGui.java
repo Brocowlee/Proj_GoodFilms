@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -58,9 +59,7 @@ public class EditGui extends JFrame{
 	 		JLabel lab = new JLabel(column);
 	 		
 	 		lab.setBorder(new EmptyBorder(0,50,0,0));
-	 		lab.setMinimumSize(new Dimension(200,50));
-            lab.setMaximumSize(new Dimension(200,50));
-            
+	 		setSizeAdd(lab,new Dimension(200,50),panel1);
             panel1.add(lab);
             
 	 	}
@@ -83,11 +82,7 @@ public class EditGui extends JFrame{
     		
             lab.setBorder(new EmptyBorder(0,10,0,5));
             lab.setAlignmentX(CENTER_ALIGNMENT);
-            lab.setMinimumSize(new Dimension(200,50));
-            lab.setMaximumSize(new Dimension(200,50));
-            panel2.add(lab);
-            
-    		
+            setSizeAdd(lab,new Dimension(200,50),panel2);
 	 	}
     	
         pan.add(panel2);
@@ -103,9 +98,7 @@ public class EditGui extends JFrame{
     		
         	textField.setBorder(new EmptyBorder(0,10,0,5));
         	textField.setBorder(BorderFactory.createLineBorder(Color.black));
-        	textField.setMinimumSize(new Dimension(200,50));
-        	textField.setMaximumSize(new Dimension(200,50));
-            a_panel.add(textField);
+        	setSizeAdd(textField,new Dimension(200,50),a_panel);
     		this.textField_list.add(textField);
 	 	}
     	
@@ -126,15 +119,10 @@ public class EditGui extends JFrame{
         contentPane.add(scrollPane);
         
         JButton bModif = new JButton("Modifier");
-        bModif.setMinimumSize(new Dimension(800,505));
-        bModif.setMaximumSize(new Dimension(800,505));
+        setSizeAdd(bModif,new Dimension(800,505),contentPane);
         bModif.setBounds(350, 205, 100, 50);
-        contentPane.add(bModif);
-        
-        
         
         setContentPane(contentPane);
-        
         
         revalidate();
         repaint();
@@ -173,6 +161,13 @@ public class EditGui extends JFrame{
 		    
 		});
         
+	}
+	
+	public static void setSizeAdd(JComponent test,Dimension dim,JPanel pan) {
+		
+		test.setMinimumSize(dim);
+        test.setMaximumSize(dim);
+        pan.add(test);
 	}
 	
 	public EditGui getEditGui() {

@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -84,6 +85,13 @@ public class MasterContainer extends JPanel {
         repaint();
     }
     
+    public void addMenu(JComponent main_menu, JComponent... components ) {
+    	
+    	for(JComponent component : components) {
+    		main_menu.add(component);
+    	}
+    }
+    
     public JMenuBar CreateMenuBar(MyGUI gui) {
     	
     	JMenuBar menuBar = new JMenuBar();
@@ -99,16 +107,10 @@ public class MasterContainer extends JPanel {
     	JMenuItem menu3Item = new JMenuItem("Site");
     	JMenuItem menu3Item2 = new JMenuItem("GitHub");
 		
-    	menuBar.add(menu);
-		menuBar.add(menu2);
-		menuBar.add(menu3);
-		
-		menu.add(menuItem);
-		menu2.add(menu2Item);
-		menu2.add(menu2Item2);
-		
-		menu3.add(menu3Item);
-		menu3.add(menu3Item2);
+    	addMenu(menuBar, menu, menu2, menu3);
+    	addMenu(menu, menuItem);
+    	addMenu(menu2, menu2Item, menu2Item2);
+    	addMenu(menu3, menu3Item, menu3Item2);
 		
 		menuItem.addActionListener(new ActionListener() {
 			
@@ -119,10 +121,6 @@ public class MasterContainer extends JPanel {
 				MyGUI gui = new MyGUI();
 				
 				gui.setVisible(true);
-				
-				/*WarningGui gui = new WarningGui("jjjjjjj");
-				
-				gui.setVisible(true);*/
 				
 			}
 		});

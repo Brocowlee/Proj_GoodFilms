@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +24,7 @@ import fr.algo.com.object.Column;
 
 
 @SuppressWarnings("serial")
-public class AddColumnGui extends JFrame{
+public class AddColumnGui extends JFrame {
 
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 	
@@ -40,6 +41,19 @@ public class AddColumnGui extends JFrame{
 	private JLabel LisPrimary = new JLabel("Primary Key ? : ");
 	private JCheckBox CisPrimary = new JCheckBox();
 	
+	private void showPannels(JPanel pannel, JComponent... components) {
+		
+		for(JComponent component : components) {
+			if(component instanceof JLabel) {
+				component.setBorder(new EmptyBorder(0, 30, 0, 0));
+			}
+			pannel.add(component);
+		}
+		
+		for(int i = 0; i<3; i++) pannel.add(new JLabel(""));
+		
+	}
+	
 	public AddColumnGui(ContainerCreateTable containerCreateTable) {
 		
 		setTitle("Ajouter une colonne");
@@ -53,28 +67,8 @@ public class AddColumnGui extends JFrame{
 		
 		JPanel pan = new JPanel(new GridLayout(8,2,0,0));
 		
-		pan.add(LName);
-		this.LName.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(TName);
-		pan.add(LType);
-		this.LType.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(setType(this.CBType));
-		pan.add(LDefaultValue);
-		this.LDefaultValue.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(TDefaultValue);
-		pan.add(LisNull);
-		this.LisNull.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(CisNull);
-		pan.add(LisAutoIncrement);
-		this.LisAutoIncrement.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(CisAutoIncrement);
-		pan.add(LisPrimary);
-		this.LisPrimary.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(CisPrimary);
+		showPannels(pan, LName, TName, LType, setType(this.CBType), LDefaultValue, TDefaultValue, LisNull, CisNull, LisAutoIncrement, CisAutoIncrement, LisPrimary, CisPrimary); 
 		
-		pan.add(new JLabel(""));
-		pan.add(new JLabel(""));
-		pan.add(new JLabel(""));
 		JButton button = new JButton("Ajouter");
 		pan.add(button);
 		
