@@ -70,28 +70,6 @@ public class JItemButton {
 		});
 		
 	}
-	
-	public JItemButton(ImageIcon name,ContainerCreateTable containerCreateTable, String type) {
-		this.type = type;
-		this.containerCreateTable = containerCreateTable;
-		initButton(name);
-		
-		
-		this.button.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent arg0) {
-		    	
-		    	if (type.equalsIgnoreCase("Edit")) {
-		    		
-		    		//EditColumnGui gui = new EditColumnGui(containerCreateTable, getItemButton());
-		    		
-		    		//gui.setVisible(true);
-		    		
-		    	}
-		    }
-		    
-		});
-		
-	}
 
 	private void initButton(String name) {
 		this.button = new JButton(name);

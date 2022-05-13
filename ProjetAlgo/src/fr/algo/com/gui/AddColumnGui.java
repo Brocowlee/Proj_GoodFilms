@@ -136,9 +136,10 @@ public class AddColumnGui extends JFrame{
 	public JComboBox setType(JComboBox box) {
 		
 		ArrayList<String> lstType = new ArrayList<>(Arrays.asList("INT","VARCHAR(20)","VARCHAR(50)","VARCHAR(100)","CHAR(20)","CHAR(50)","CHAR(100)","BINARY(20)","BINARY(50)","BINARY(100)",
-																	"VARBINARY(20)","VARBINARY(50)","VARBINARY(100)","TINYBLOB","TINYTEXT","TEXT","BLOB(20)","BLOB(50)","BLOB(100)",
-																	"MEDIUMTEXT","MEDIUMBLOB","LONGTEXT","LONGBLOB","BIT(20)","BIT(50)","BIT(100)","TINYINT","BOOL","BOOLEAN","SMALLINT","MEDIUMINT",
-																	"BIGINT","FLOAT","DOUBLE","DECIMAL","DATE","DATETIME","TIMESTAMP","TIME","YEAR"));
+				"VARBINARY(20)","VARBINARY(50)","VARBINARY(100)","TINYBLOB","TINYTEXT","TEXT","BLOB(20)","BLOB(50)","BLOB(100)",
+				"MEDIUMTEXT","MEDIUMBLOB","LONGTEXT","LONGBLOB","BIT(20)","BIT(50)","BIT(100)","TINYINT","BOOL","BOOLEAN","SMALLINT","MEDIUMINT",
+				"BIGINT","FLOAT","DOUBLE","DECIMAL","DATE","DATETIME","TIMESTAMP","TIME"));
+		
 		for(String item : lstType) {
 			box.addItem(item);
 		}

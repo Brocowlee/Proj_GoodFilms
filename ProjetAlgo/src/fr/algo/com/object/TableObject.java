@@ -222,7 +222,89 @@ public class TableObject {
 							
 						if(cpt != 0) {
 							
-							if(this.informations.get(name).equalsIgnoreCase("INT")) {
+							switch (this.informations.get(name)) {
+								case "INT": {
+									list_attribut.add(String.valueOf(rs.getInt(name)));
+								}
+								case "VARCHAR": {
+									list_attribut.add(rs.getString(name));
+								}
+								case "BIT": {
+									list_attribut.add(String.valueOf(rs.getByte(name)));
+								}
+								case "CHAR": {
+									list_attribut.add(String.valueOf(rs.getString(name)));
+								}
+								case "BINARY": {
+									list_attribut.add(String.valueOf(rs.getByte(name)));
+								}
+								case "VARBINARY": {
+									list_attribut.add(String.valueOf(rs.getByte(name)));
+								}
+								case "TINYTEXT": {
+									list_attribut.add(String.valueOf(rs.getString(name)));
+								}
+								case "MEDIUMTEXT": {
+									list_attribut.add(String.valueOf(rs.getString(name)));
+								}
+								case "LONGTEXT": {
+									list_attribut.add(String.valueOf(rs.getString(name)));
+								}
+								case "TINYINT": {
+									list_attribut.add(String.valueOf(rs.getShort(name)));
+								}
+								case "BOOL": {
+									list_attribut.add(String.valueOf(rs.getBoolean(name)));
+								}
+								case "BOOLEAN": {
+									list_attribut.add(String.valueOf(rs.getBoolean(name)));
+								}
+								case "SMALLINT": {
+									list_attribut.add(String.valueOf(rs.getShort(name)));
+								}
+								case "MEDIUMINT": {
+									list_attribut.add(String.valueOf(rs.getInt(name)));
+								}
+								case "BIGINT": {
+									list_attribut.add(String.valueOf(rs.getLong(name)));
+								}
+								case "FLOAT": {
+									list_attribut.add(String.valueOf(rs.getDouble(name)));
+								}
+								case "DOUBLE": {
+									list_attribut.add(String.valueOf(rs.getDouble(name)));
+								}
+								case "DECIMAL": {
+									list_attribut.add(String.valueOf(rs.getBigDecimal(name)));
+								}
+								case "DATE": {
+									list_attribut.add(String.valueOf(rs.getDate(name)));
+								}
+								case "DATETIME": {
+									list_attribut.add(String.valueOf(rs.getTimestamp(name)));
+								}
+								case "TIMESTAMP": {
+									list_attribut.add(String.valueOf(rs.getTimestamp(name)));
+								}
+								case "TIME": {
+									list_attribut.add(String.valueOf(rs.getTime(name)));
+								}
+								case "TINYBLOB": {
+									list_attribut.add(String.valueOf(rs.getBlob(name)));
+								}
+								case "BLOB": {
+									list_attribut.add(String.valueOf(rs.getBlob(name)));
+								}
+								case "MEDIUMBLOB": {
+									list_attribut.add(String.valueOf(rs.getBlob(name)));
+								}
+								case "LONGBLOB": {
+									list_attribut.add(String.valueOf(rs.getBlob(name)));
+								}
+							}
+							
+							
+							/*if(this.informations.get(name).equalsIgnoreCase("INT")) {
 								list_attribut.add(String.valueOf(rs.getInt(name)));
 							}
 							if(this.informations.get(name).equalsIgnoreCase("VARCHAR")) {
@@ -231,6 +313,75 @@ public class TableObject {
 							if(this.informations.get(name).equalsIgnoreCase("BIT")) {
 								list_attribut.add(String.valueOf(rs.getByte(name)));
 							}
+							if(this.informations.get(name).equalsIgnoreCase("CHAR")) {
+								list_attribut.add(String.valueOf(rs.getString(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BINARY")) {
+								list_attribut.add(String.valueOf(rs.getByte(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("VARBINARY")) {
+								list_attribut.add(String.valueOf(rs.getByte(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("TINYTEXT")) {
+								list_attribut.add(String.valueOf(rs.getString(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("MEDIUMTEXT")) {
+								list_attribut.add(String.valueOf(rs.getString(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("LONGTEXT")) {
+								list_attribut.add(String.valueOf(rs.getString(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("TINYINT")) {
+								list_attribut.add(String.valueOf(rs.getShort(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BOOL")) {
+								list_attribut.add(String.valueOf(rs.getInt(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BOOLEAN")) {
+								list_attribut.add(String.valueOf(rs.getInt(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("SMALLINT")) {
+								list_attribut.add(String.valueOf(rs.getShort(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("MEDIUMINT")) {
+								list_attribut.add(String.valueOf(rs.getInt(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BIGINT")) {
+								list_attribut.add(String.valueOf(rs.getLong(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("FLOAT")) {
+								list_attribut.add(String.valueOf(rs.getFloat(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("DOUBLE")) {
+								list_attribut.add(String.valueOf(rs.getDouble(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("DECIMAL")) {
+								list_attribut.add(String.valueOf(rs.getBigDecimal(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("DATE")) {
+								list_attribut.add(String.valueOf(rs.getDate(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("DATETIME")) {
+								list_attribut.add(String.valueOf(rs.getTimestamp(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("TIMESTAMP")) {
+								list_attribut.add(String.valueOf(rs.getTimestamp(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("TIME")) {
+								list_attribut.add(String.valueOf(rs.getTime(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("TINYBLOB")) {
+								list_attribut.add(String.valueOf(rs.getBlob(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("BLOB")) {
+								list_attribut.add(String.valueOf(rs.getBlob(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("MEDIUMBLOB")) {
+								list_attribut.add(String.valueOf(rs.getBlob(name)));
+							}
+							if(this.informations.get(name).equalsIgnoreCase("LONGBLOB")) {
+								list_attribut.add(String.valueOf(rs.getBlob(name)));
+							} */
 						}
 						cpt++;
 						

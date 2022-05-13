@@ -146,6 +146,8 @@ public class MasterContainer extends JPanel {
 				
 				TableObject table = ContainerAdmin.getCurrentTable();
 				
+				if(table == null) return;
+				
 				table.deleteTable();
 				
 				presentMenu();

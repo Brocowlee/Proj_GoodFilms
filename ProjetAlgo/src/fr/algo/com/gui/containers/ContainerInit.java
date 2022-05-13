@@ -107,19 +107,25 @@ public class ContainerInit extends JPanel{
 		    	
 		    	if(isKnownLogin(login)) {
 		    		
-		    		String current_pass = BCrypt.hashpw(password, getSaltFromLogin(login));
-			    	
-					if (current_pass.equalsIgnoreCase(getPasswordFromLogin(login))) {
-						getNavigationListener().presentAdminContainer(ContainerInit.this);	
-						Main.connected = true;
-			    	} else {
-			    		//TODO Régler le problème de non affichage
-			    		new WarningGui("Login ou mot de passe incorrect.").setVisible(true);;
-					} 
+		    		if(isAdmin(login)) {
+		    			String current_pass = BCrypt.hashpw(password, getSaltFromLogin(login));
+				    	
+						if (current_pass.equalsIgnoreCase(getPasswordFromLogin(login))) {
+							
+							getNavigationListener().presentAdminContainer(ContainerInit.this);	
+							Main.connected = true;
+							
+							
+				    	} else {
+				    		new WarningGui("Login ou mot de passe incorrect.").setVisible(true);
+						} 
+		    		} else {
+		    			new WarningGui("Ce compte n'est pas autorisé.").setVisible(true);
+		    		}
+		    		
 
 		    	} else {
-		    		//TODO Régler le problème de non affichage
-		    		new WarningGui("Login ou mot de passe incorrect.").setVisible(true);;
+		    		new WarningGui("Login ou mot de passe incorrect.").setVisible(true);
 		    	}
 		    	
 		    }
@@ -127,6 +133,25 @@ public class ContainerInit extends JPanel{
 		});
 
 		
+		
+	}
+	
+	private boolean isAdmin(String login) {
+		
+		int count = 0;
+		
+		try {
+			ResultSet rs = Main.database.querySQL("SELECT admin as value FROM utilisateur WHERE login = '" + login + "';");
+			
+			rs.next();
+			count = rs.getInt("value");
+			rs.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count == 1;
 		
 	}
 	
