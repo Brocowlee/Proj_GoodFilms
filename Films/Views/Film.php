@@ -10,13 +10,19 @@
     <?php require("Views/header.php"); ?>
 
     <body>
-        <h1><?php $film["titre"] ?> </h1>
+        <h1><?php echo $titre ?> </h1>
+        année de sortie : <?php echo $donnees['annee_sortie'] ?>
+
+        <h2>Résumé</h2>
+        <?php echo $donnees['resume'] ?>
         </br>
-
-
-        Vous avez mis la note de : 
-
-
-
+        <?php 
+        if (isset($donnees['note'])){
+            echo "Vous avez mis la note de ".$donnees['note']."/10";
+        }
+        else{
+            echo "</br>Vous n'avez pas noté ce film";
+        }
+        ?>
     </body>
 </content>

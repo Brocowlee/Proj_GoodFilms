@@ -5,12 +5,12 @@
     }
     $_SESSION['connexion']="deconnecte";
 
-    //import tout les controlleurs 
+    //import tous les controlleurs 
     require_once("Controllers/FilmController.php");
     require_once("Controllers/UserController.php");
     require_once("Controllers/GenreController.php");
 
-    //Declarer les controlleurs
+    //Initialiser tous les controlleurs
     $filmController = new FilmController();
     $userController = new UserController();
     $genreController = new GenreController();
@@ -77,9 +77,7 @@
             case "un_film" : 
                 //Si l'utilisateur veut voir les détails d'un film
                 $titre = $_POST["film"];
-                echo "Tout va bien";
-                echo $titre;
-                $film = $filmController->displayOneFilm();
+                $donnees = $filmController->displayOneFilm();
 
                 require("Views/Film.php");
 

@@ -14,10 +14,13 @@
         <ul>
         <?php while($donnees = $mes_films->fetch_array()){ ?>
             <li>
-                <?php echo $donnees['titre']." : ".$donnees['note']." ";?>
-                <button name="action" value="<?php $donnees['titre'] ?>">
-                    détails
-                </button>
+                <form id="form_film" method='POST'>
+                    <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
+                    <?php echo  $donnees['titre'] ?>
+                    <button type="submit" name="action" value="un_film">
+                        Détails
+                    </button>
+                </form>
             </li>      
         <?php } ?> 
         </ul>

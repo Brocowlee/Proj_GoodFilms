@@ -17,7 +17,7 @@
 
         function displayOneFilm(){
             $film = $this->filmModel->getOneFilm();
-            return $film->fetch_array();
+            return $film;
         }
 
         function displayMyFilms(){

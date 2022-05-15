@@ -19,16 +19,13 @@
             <?php while($donnees = $liste_films->fetch_array()){ ?>
                 
                 <li>
-                <form method='POST' >
-                    <select name="film">
-                        <option value="<?php $donnees['titre'] ?>">
-                            <?php echo  $donnees['titre'] ?>
-                        </option>
-                    </select>
-                    <button type="submit" name="action" value="un_film">
-                        Détails
-                    </button>   
-                </form>
+                    <form id="form_film" method='POST'>
+                        <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
+                        <?php echo  $donnees['titre'] ?>
+                        <button type="submit" name="action" value="un_film">
+                            Détails
+                        </button>
+                    </form>
                 </li>      
             <?php } ?>     
         </ul>
