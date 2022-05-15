@@ -65,6 +65,15 @@
                 require("Views/Genre.php");
 
                 break;
+
+            case "un_genre" : 
+                //Si on choisit un genre pour en voir les films
+                $genre = $_POST["genre"];
+                $un_genre = $filmController->displayOneGenre();
+
+                require("Views/UnGenre.php");
+
+                break;
             
             case "recherche" :
                 //Si l'utilisateur fait une recherche
@@ -83,6 +92,26 @@
 
                 break;
 
+            case "notation" :
+                //Si l'utilisateur change la note d'un film
+
+                $id_u = $userController->displayOneUserID();
+                $val = $id_u->fetch_assoc();
+                $id_utilisateur = $val["id_u"];
+                $id_f = $filmController->displayOneFilmID();
+                $val = $id_f->fetch_assoc();
+                $id_film = $val["id_f"];
+
+                $titre = $_POST["film"];
+                $filmController-> changeNote($id_utilisateur, $id_film);
+                $donnees = $filmController->displayOneFilm();
+
+                
+
+                require("Views/Film.php");
+
+                break;
+                
         }
     }
     else {

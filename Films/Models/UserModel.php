@@ -27,7 +27,7 @@
             $db=$this->dbConnect();
             $sql="SELECT id_u FROM Utilisateur WHERE login='".$_SESSION["login"]."' and mdp = '".$_SESSION["mdp"]."';";
             $result=mysqli_query($db, $sql);
-            return $result->fetch_assoc()["id_u"];
+            return $result;
         }
 
 

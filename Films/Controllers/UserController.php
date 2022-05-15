@@ -19,7 +19,8 @@
                 $_SESSION["connexion"]="ok";
                 $_SESSION["login"]=$_POST["login"];
                 $_SESSION["mdp"]=$_POST["mdp"];
-                $_SESSION["user_id"] = $this->userModel->getUserId();
+                $val=$this->userModel->getUserId();
+                $_SESSION["user_id"] = $val->fetch_assoc();
                 $firstName = $this->userModel->getUserFirstName();
                 
                 return $firstName;
@@ -38,5 +39,10 @@
 
         function displayAccueil(){
             return $this->userModel->getUserFirstName();
+        }
+
+        function displayOneUserID(){
+            $id = $this->userModel->getUserID();
+            return $id;
         }
     }
