@@ -17,10 +17,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Base de données : `gonaya`
---
-
 -- --------------------------------------------------------
 
 --
@@ -28,7 +24,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Film` (
-  `id_Film` int(15) NOT NULL,
+  `id_film` int(15) NOT NULL,
   `titre` varchar(100) NOT NULL,
   `resume` varchar(1000) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `annee_sortie` int(4) NOT NULL,
@@ -40,7 +36,7 @@ CREATE TABLE `Film` (
 -- Déchargement des données de la table `Film`
 --
 
-INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
+INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
 (1, 'Loin du périph', 'Dix ans après avoir fait équipe, Ousmane et François, deux flics que tout oppose, reforment à contrecœur leur tandem de choc. Pas franchement ravis de se retrouver, ils mettent le cap sur une petite ville des Alpes pour enquêter sur un meurtre particulièrement sordide. Mais, alors qu\'ils pensent avoir élucidé l’affaire, Ousmane et François découvrent une réalité bien plus terrifiante ! De surprises en rebondissements, leur escapade loin du périph les pousserait même à s’apprécier…', 2022, '1h 59min', 'https://images.justwatch.com/poster/275311396/s592/loin-du-periph'),
 (2, 'Choose or Die', 'In pursuit of an unclaimed $125,000 prize, a broke college dropout decides to play an obscure, 1980s survival computer game. But the game curses her, and she’s faced with dangerous choices and reality-warping challenges. After a series of unexpectedly terrifying moments, she realizes she’s no longer playing for the money but for her life.', 2022, '1h 25min', 'https://images.justwatch.com/poster/271368225/s592/choose-or-die'),
 (3, 'The Northman', 'En Islande, le jeune prince Amleth vient tout juste de devenir un homme quand son père est brutalement assassiné par son oncle qui s\'empare alors de la mère du garçon. Amleth fuit son royaume insulaire en barque, en jurant de se venger. Deux décennies plus tard, devenu un berserkr, un guerrier viking capable d\'entrer dans une fureur bestiale, Amleth revient en sa faisant passer pour un esclave afin d\'accomplir son vœu : secourir sa mère, tuer son oncle et venger son père.', 2022, '2h 17min', 'https://images.justwatch.com/poster/272141791/s592/the-northman'),
@@ -138,7 +134,7 @@ INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 (95, 'Les Nouveaux Mutants', 'Les Mutants sont les plus dangereux, pour eux-mêmes comme pour les autres, lorsqu’ils découvrent leurs pouvoirs. Détenus dans une division secrète contre leur volonté,  cinq nouveaux mutants doivent apprivoiser leurs dons et assumer les erreurs graves de leur passé. Traqués par une puissance surnaturelle, leurs peurs les plus terrifiantes vont devenir réalité.', 2020, '1h 34min', 'https://images.justwatch.com/poster/245154505/s592/les-nouveaux-mutants'),
 (96, 'Mandibules', 'Jean-Gab et Manu, deux amis simples d\'esprit, trouvent une mouche géante coincée dans le coffre d\'une voiture et se mettent en tête de la dresser pour gagner de l\'argent avec.', 2020, '1h 17min', 'https://images.justwatch.com/poster/243441604/s592/mandibules'),
 (97, 'USS Greyhound : La Bataille de l\'Atlantique', 'Le capitaine Ernest Krause dirige une flotte internationale de 37 navires venant ravitailler en soldats et en vivres des forces alliées qui en manquent cruellement.', 2020, '1h 31min', 'https://images.justwatch.com/poster/193807859/s592/greyhound');
-INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
+INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
 (98, 'Downton Abbey : Le film', 'Les Crawley et leur personnel intrépide se préparent à vivre l\'événement le plus important de leur vie : une visite du roi et de la reine d\'Angleterre. Cette venue ne tardera pas à déclencher scandales, intrigues amoureuses et manigances qui pèseront sur l\'avenir même de Downton.', 2019, '2h 2min', 'https://images.justwatch.com/poster/170553735/s592/downton-abbey'),
 (99, 'Spider-Man : Far From Home', 'Peter et ses amis passent leurs vacances d’été en Europe. Mais ils n’auront pas vraiment l’occasion de se reposer puisque Peter accepte d’aider Nick Fury pour débusquer les mystérieuses créatures qui sont la cause des catastrophes naturelles qui frappent le continent.', 2019, '2h 9min', 'https://images.justwatch.com/poster/130454311/s592/spider-man-far-from-home'),
 (100, 'Avengers : Endgame', 'Après leur défaite face au Titan Thanos qui dans le film précédent s\'est approprié toutes les pierres du Gant de l\'infini , les Avengers et les Gardiens de la Galaxie ayant survécu à son claquement de doigts qui a pulvérisé « la moitié de toute forme de vie dans l\'Univers », Captain America, Thor, Bruce Banner, Natasha Romanoff, War Machine, Tony Stark, Nébula et Rocket, vont essayer de trouver une solution pour ramener leurs coéquipiers disparus et vaincre Thanos en se faisant aider par Ronin alias Clint Barton, Captain Marvel et Ant-Man.', 2019, '3h 1min', 'https://images.justwatch.com/poster/209725861/s592/avengers-4'),
@@ -234,7 +230,7 @@ INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 (190, 'Cinquante nuances plus sombres', 'Dépassée par les sombres secrets de Christian Grey, Ana Steele a mis un terme à leur relation pour se consacrer à sa carrière d\'éditrice. Mais son désir pour Grey occupe toujours toutes ses pensées et lorsqu\'il lui propose un nouvel accord, elle ne peut y résister. Peu à peu, elle en apprend davantage sur le douloureux passé de son ténébreux M. Grey, toujours aussi passionné. Tandis que Christian lutte contre ses démons intérieurs, Ana doit prendre la décision la plus importante de sa vie.', 2017, '1h 58min', 'https://images.justwatch.com/poster/9365167/s592/cinquante-nuances-plus-sombres'),
 (191, 'John Wick 2', 'John Wick est forcé de sortir de sa retraite volontaire par un de ses ex-associés qui cherche à prendre le contrôle d’une mystérieuse confrérie de tueurs internationaux. Parce qu’il est lié à cet homme par un serment, John se rend à Rome, où il va devoir affronter certains des tueurs les plus dangereux du monde.', 2017, '2h 2min', 'https://images.justwatch.com/poster/8864174/s592/john-wick-2'),
 (192, 'Rendel', 'Un Homme devient RENDEL, super-héros justicier et masqué pour se venger de l’organisation criminelle VALA, responsable du meurtre de sa famille.', 2017, '1h 45min', 'https://images.justwatch.com/poster/249817153/s592/rendel');
-INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
+INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
 (193, 'Mektoub, My Love: Canto Uno', 'En France en 1994, Amin, parisien d\'adoption, retourne en été dans le Midi de la France où il a passé sa jeunesse chez ses parents qui tiennent un restaurant tunisien à Sète. Amin retrouve sa famille et ses amis de jeunesse, comme son cousin dragueur Tony ou sa meilleure amie Ophélie ; il passe son temps entre le restaurant familial, les bars du coin et la plage où viennent bronzer de jolies vacancières. Alors que Tony a du succès, Amin est plutôt timide. Il se trouve une occupation en photographiant la côte méditerranéenne dont il trouve la lumière fascinante.', 2017, '3h 0min', 'https://images.justwatch.com/poster/248403508/s592/mektoub-my-love-canto-uno'),
 (194, '3 Billboards : Les Panneaux de la vengeance', 'Après des mois sans que l’enquête sur la mort de sa fille ait avancé, Mildred Hayes prend les choses en main, affichant un message controversé visant le très respecté chef de la police sur trois grands panneaux à l’entrée de leur ville.', 2017, '1h 55min', 'https://images.justwatch.com/poster/45246994/s592/three-billboards-outside-ebbing-missouri'),
 (195, 'Ça', 'À Derry, dans le Maine, aux États-Unis, 7 gamins, ayant du mal à s’intégrer, se sont regroupés au sein du Club des Ratés. Rejetés par leurs camarades, ils sont les cibles favorites des gros durs de l’école. Ils ont aussi en commun d’avoir éprouvé leur plus grande terreur face à un terrible prédateur métamorphe qu’ils appellent Ça...', 2017, '2h 15min', 'https://images.justwatch.com/poster/10619182/s592/ca'),
@@ -323,7 +319,7 @@ INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 (278, 'Comment c\'est loin', 'Après une dizaine d’années de non-productivité, Orel et Gringe, la trentaine, galèrent à écrire leur premier album de rap. Leurs textes, truffés de blagues de mauvais goût et de références alambiquées, évoquent leur quotidien dans une ville moyenne de province. Le problème : impossible de terminer une chanson. A l’issue d’une séance houleuse avec leurs producteurs, ils sont au pied du mur : ils ont 24h pour sortir une chanson digne de ce nom. Leurs vieux démons, la peur de l’échec, la procrastination, les potes envahissants, les problèmes de couple, etc. viendront se mettre en travers de leur chemin. Chemin qu’ils n’avaient de toute façon pas pris dans le bon sens…', 2015, '1h 30min', 'https://images.justwatch.com/poster/10069532/s592/comment-cest-loin'),
 (279, 'Halo : The Fall of Reach', 'Des enfants kidnappés dès leur plus jeune âge sont enrôlés de force dans un entraînement militaire brutal et un programme d’amélioration. Connus sous le nom de Spartan, ces enfants sont destinés à devenir l’arme ultime contre le chaos et la révolte. Mais quand une dangereuse alliance étrangère, appelée Covenant, déclare la guerre à l’humanité, les Spartans semblent être notre seul espoir de survie.', 2015, '1h 7min', 'https://images.justwatch.com/backdrop/770064/s480/halo-the-fall-of-reach'),
 (280, 'Docteur Frankenstein', 'Le scientifique aux méthodes radicales Victor Frankenstein et son tout aussi brillant protégé Igor Strausman partagent une vision noble : celle d’aider l’humanité à travers leurs recherches innovantes sur l’immortalité. Mais les expériences de Victor vont trop loin, et son obsession engendre de terrifiantes conséquences. Seul Igor peut ramener son ami à la raison et le sauver de sa création monstrueuse. Une version enflammée et moderne d’une légende intemporelle.', 2015, '1h 49min', 'https://images.justwatch.com/poster/175955725/s592/docteur-frankenstein');
-INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
+INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
 (281, 'Good Kill', 'Le Commandant Tommy Egan, pilote de chasse reconverti en pilote de drone, combat douze heures par jour les Talibans derrière sa télécommande, depuis sa base, à Las Vegas. De retour chez lui, il passe l’autre moitié de la journée à se quereller avec sa femme, Molly et ses enfants. Tommy remet cependant sa mission en question. Ne serait-il pas en train de générer davantage de terroristes qu’il n’en extermine ? L’histoire d’un soldat, une épopée lourde de conséquences.', 2015, '1h 44min', 'https://images.justwatch.com/poster/9932971/s592/good-kill'),
 (282, 'Un Voisin trop parfait', 'Une mère, récemment divorcée, a une aventure avec un jeune homme de son quartier. Quand ce dernier sympathise avec son fils et qu\'elle décide de mettre fin à leur relation, les problèmes commencent...', 2015, '1h 31min', 'https://images.justwatch.com/poster/175430478/s592/un-voisin-trop-parfait'),
 (283, 'The Amityville Playhouse', 'Following the tragic death of her parents Fawn Harriman discovers she has inherited a theatre in the town of Amityville. She, along with 3 friends, decides to spend the weekend there looking the place over. Meanwhile one of her High School teachers begins an investigation into the village\'s past and makes a connection with something that goes back beyond recorded history.', 2015, '1h 39min', 'https://images.justwatch.com/backdrop/2505580/s480/the-amityville-playhouse'),
@@ -342,7 +338,7 @@ INSERT INTO `Film` (`id_Film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 --
 
 CREATE TABLE `Genre` (
-  `id_Genre` int(15) NOT NULL,
+  `id_genre` int(15) NOT NULL,
   `genre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -350,7 +346,7 @@ CREATE TABLE `Genre` (
 -- Déchargement des données de la table `Genre`
 --
 
-INSERT INTO `Genre` (`id_Genre`, `genre`) VALUES
+INSERT INTO `Genre` (`id_genre`, `genre`) VALUES
 (1, 'Action & Aventure'),
 (2, 'Comédie'),
 (3, 'Crime & Thriller'),
@@ -377,15 +373,15 @@ INSERT INTO `Genre` (`id_Genre`, `genre`) VALUES
 --
 
 CREATE TABLE `genres2films` (
-  `id_Genre` int(15) NOT NULL,
-  `id_Film` int(15) NOT NULL
+  `id_genre` int(15) NOT NULL,
+  `id_film` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `genres2films`
 --
 
-INSERT INTO `genres2films` (`id_Genre`, `id_Film`) VALUES
+INSERT INTO `genres2films` (`id_genre`, `id_film`) VALUES
 (1, 1),
 (1, 3),
 (1, 4),
@@ -1294,15 +1290,15 @@ INSERT INTO `genres2films` (`id_Genre`, `id_Film`) VALUES
 --
 
 CREATE TABLE `joue` (
-  `id_Personne` int(15) NOT NULL,
-  `id_Film` int(15) NOT NULL
+  `id_personne` int(15) NOT NULL,
+  `id_film` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `joue`
 --
 
-INSERT INTO `joue` (`id_Personne`, `id_Film`) VALUES
+INSERT INTO `joue` (`id_personne`, `id_film`) VALUES
 (1, 118),
 (1, 254),
 (1, 286),
@@ -3842,8 +3838,8 @@ INSERT INTO `joue` (`id_Personne`, `id_Film`) VALUES
 --
 
 CREATE TABLE `note` (
-  `id_Utilisateur` int(15) NOT NULL,
-  `id_Film` int(15) NOT NULL,
+  `id_utilisateur` int(15) NOT NULL,
+  `id_film` int(15) NOT NULL,
   `note` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -3854,7 +3850,7 @@ CREATE TABLE `note` (
 --
 
 CREATE TABLE `Personne` (
-  `id_Personne` int(15) NOT NULL,
+  `id_personne` int(15) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -3863,7 +3859,7 @@ CREATE TABLE `Personne` (
 -- Déchargement des données de la table `Personne`
 --
 
-INSERT INTO `Personne` (`id_Personne`, `nom`, `prenom`) VALUES
+INSERT INTO `Personne` (`id_personne`, `nom`, `prenom`) VALUES
 (1, 'Leterrier', 'Louis'),
 (2, 'Sy', 'Omar'),
 (3, 'Lafitte', 'Laurent'),
@@ -5838,7 +5834,7 @@ INSERT INTO `Personne` (`id_Personne`, `nom`, `prenom`) VALUES
 (1972, 'Toyonaga', 'Toshiyuki'),
 (1973, 'Barré', 'Jonathan'),
 (1974, 'Farcy', 'Bernard');
-INSERT INTO `Personne` (`id_Personne`, `nom`, `prenom`) VALUES
+INSERT INTO `Personne` (`id_personne`, `nom`, `prenom`) VALUES
 (1975, 'Pinon', 'Dominique'),
 (1976, 'Pestel', 'Julien'),
 (1977, 'Vial', 'Alice'),
@@ -6095,15 +6091,15 @@ INSERT INTO `Personne` (`id_Personne`, `nom`, `prenom`) VALUES
 --
 
 CREATE TABLE `realise` (
-  `id_Film` int(10) NOT NULL,
-  `id_Personne` int(10) NOT NULL
+  `id_film` int(10) NOT NULL,
+  `id_personne` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `realise`
 --
 
-INSERT INTO `realise` (`id_Film`, `id_Personne`) VALUES
+INSERT INTO `realise` (`id_film`, `id_personne`) VALUES
 (1, 1),
 (2, 11),
 (3, 21),
@@ -6422,43 +6418,43 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mot_de_passe`, `admin`, `
 -- Index pour la table `Film`
 --
 ALTER TABLE `Film`
-  ADD PRIMARY KEY (`id_Film`);
+  ADD PRIMARY KEY (`id_film`);
 
 --
 -- Index pour la table `Genre`
 --
 ALTER TABLE `Genre`
-  ADD PRIMARY KEY (`id_Genre`);
+  ADD PRIMARY KEY (`id_genre`);
 
 --
 -- Index pour la table `genres2films`
 --
 ALTER TABLE `genres2films`
-  ADD PRIMARY KEY (`id_Genre`,`id_Film`);
+  ADD PRIMARY KEY (`id_genre`,`id_film`);
 
 --
 -- Index pour la table `joue`
 --
 ALTER TABLE `joue`
-  ADD PRIMARY KEY (`id_Personne`,`id_Film`);
+  ADD PRIMARY KEY (`id_personne`,`id_film`);
 
 --
 -- Index pour la table `note`
 --
 ALTER TABLE `note`
-  ADD PRIMARY KEY (`id_Utilisateur`,`id_Film`);
+  ADD PRIMARY KEY (`id_utilisateur`,`id_film`);
 
 --
 -- Index pour la table `Personne`
 --
 ALTER TABLE `Personne`
-  ADD PRIMARY KEY (`id_Personne`);
+  ADD PRIMARY KEY (`id_personne`);
 
 --
 -- Index pour la table `realise`
 --
 ALTER TABLE `realise`
-  ADD PRIMARY KEY (`id_Film`,`id_Personne`);
+  ADD PRIMARY KEY (`id_film`,`id_personne`);
 
 --
 -- Index pour la table `utilisateur`
@@ -6474,13 +6470,13 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `Film`
 --
 ALTER TABLE `Film`
-  MODIFY `id_Film` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `id_film` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT pour la table `Personne`
 --
 ALTER TABLE `Personne`
-  MODIFY `id_Personne` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2223;
+  MODIFY `id_personne` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2223;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
