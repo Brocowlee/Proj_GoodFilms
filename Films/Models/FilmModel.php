@@ -80,4 +80,10 @@ class FilmModel extends Model {
 
         return $result;
     }
+
+    function deleteMark($id_u, $id_f){
+        $db=$this->dbConnect();
+        $sql="DELETE FROM note WHERE id_u='".$id_u."' AND id_f='".$id_f."'";
+        $result=mysqli_query($db, $sql);
+    }
 }

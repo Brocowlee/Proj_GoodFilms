@@ -19,6 +19,15 @@
         <?php 
             if (isset($donnees['note'])){
                 echo "Vous avez mis la note de ".$donnees['note']."/10";
+        ?>
+            <form id="form_film" method='POST'>
+                <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
+                <button type="submit" name="action" value="sup_note">
+                    Supprimer la note
+                </button>
+            </form>
+
+        <?php
 
             }
             else{
@@ -42,7 +51,7 @@
                 <option value=10>10</option>
                 </select>
                 <button type="submit" name="action" value="notation">
-                Détails
+                Valider
             </button>
         </form>
     </body>

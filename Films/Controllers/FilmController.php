@@ -43,4 +43,8 @@
         function changeNote($id_u, $id_f){
             $this -> filmModel -> changeMark($id_u, $id_f, $_POST["new_note"]);
         }
+
+        function suppNote($id_u, $id_f){
+            $this -> filmModel -> deleteMark($id_u, $id_f);
+        }
     }
