@@ -15,7 +15,7 @@ class FilmModel extends Model {
     function getOneFilm(){
 
         $db=$this->dbConnect();
-        $sql="SELECT titre, resume, annee_sortie, duree, note FROM Film, Utilisateur, note WHERE Film.titre='".$_POST["film"]."' and Film.id_f=note.id_f and note.id_u=Utilisateur.id_u and Utilisateur.login='".$_SESSION['login']."'";
+        $sql="SELECT Film.id_f, titre, resume, annee_sortie, duree, note FROM Film, Utilisateur, note WHERE Film.titre='".$_POST["film"]."' and Film.id_f=note.id_f and note.id_u=Utilisateur.id_u and Utilisateur.login='".$_SESSION['login']."'";
         $result=mysqli_query($db, $sql);
         $donnees=$result->fetch_assoc();
 
@@ -23,7 +23,7 @@ class FilmModel extends Model {
             return $donnees;
         }
         else{
-            $sql="SELECT titre, resume, annee_sortie, duree FROM Film WHERE Film.titre='".$_POST["film"]."'";
+            $sql="SELECT * FROM Film WHERE Film.titre='".$_POST["film"]."'";
             $result=mysqli_query($db, $sql);
             $donnees=$result->fetch_assoc();
             return $donnees;

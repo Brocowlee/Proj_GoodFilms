@@ -16,23 +16,25 @@
         }
 
         function displayOneFilm(){
-            $film = $this->filmModel->getOneFilm();
-            return $film;
+            $donnees = $this->filmModel->getOneFilm();
+            $titre = $_POST["film"];
+            require("Views/Film.php");
         }
 
         function displayMyFilms(){
             $mes_films = $this->filmModel->getMyFilms();
-            return $mes_films;
+            require("Views/MesFilms.php");
         }
 
         function displayResearch(){
-            $recherche = $this->filmModel->getResearchFilm();
-            return $recherche;
+            $films_recherche = $this->filmModel->getResearchFilm();
+            require("Views/Recherche.php");
         }
 
         function displayOneGenre(){
-            $films_du_genre = $this->filmModel->getFilmsOneGenre();
-            return $films_du_genre;
+            $un_genre = $this->filmModel->getFilmsOneGenre();
+            $genre = $_POST["genre"];
+            require("Views/UnGenre.php");
         }
 
         function displayOneFilmID(){

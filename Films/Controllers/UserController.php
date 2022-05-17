@@ -1,12 +1,15 @@
 <?php 
     require_once("Models/UserModel.php");
+    require_once("Models/FilmModel.php");
 
     class UserController{
 
         private $userModel;
+        private $filmModel;
 
         function __construct(){
             $this->userModel = new UserModel();
+            $this->filmModel = new FilmModel();
         }
 
         function displayConnexion(){
@@ -23,11 +26,12 @@
                 $_SESSION["user_id"] = $val->fetch_assoc();
                 $firstName = $this->userModel->getUserFirstName();
                 
-                return $firstName;
+                $liste_films = $this->filmModel->getAllFilmsTitles();
+                require("Views/Accueil.php");
             }
             else {
                 $_SESSION["connexion"]="error";
-                return false;
+                require("Views/Connexion.php");
             }  
         }
 
@@ -35,14 +39,36 @@
             unset($_SESSION['login']);
             unset($_SESSION['mdp']);
             $_SESSION['connexion']="deconnecte";
+            require("Views/Connexion.php");
         }
 
         function displayAccueil(){
-            return $this->userModel->getUserFirstName();
+            $userName = $this->userModel->getUserFirstName();
+            $liste_films = $this->filmModel->getAllFilmsTitles();
+            require("Views/Accueil.php");
         }
 
-        function displayOneUserID(){
-            $id = $this->userModel->getUserID();
-            return $id;
+        function displayModifyMark(){
+            $id_u = $this->userModel->getUserID();
+            $val = $id_u->fetch_assoc();
+            $id_utilisateur = $val["id_u"];
+            $id_f = $this->filmModel->getOneFilm();
+            $id_film = $id_f["id_f"];
+            $titre = $_POST["film"];
+            $this->filmModel-> changeMark($id_utilisateur, $id_film, $_POST["new_note"]);
+            $donnees = $this->filmModel->getOneFilm();
+            require("Views/Film.php");
+        }
+
+        function displayDeleteMark(){
+            $id_u = $this->userModel->getUserID();
+            $val = $id_u->fetch_assoc();
+            $id_utilisateur = $val["id_u"];
+            $id_f = $this->filmModel->getOneFilm();
+            $id_film = $id_f["id_f"];
+            $titre = $_POST["film"];
+            $this->filmModel->deleteMark($id_utilisateur, $id_film);
+            $donnees = $this->filmModel->getOneFilm();
+            require("Views/Film.php");
         }
     }

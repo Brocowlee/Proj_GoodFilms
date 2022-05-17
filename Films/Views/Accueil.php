@@ -10,7 +10,7 @@
     <?php require("Views/header.php"); ?>
 
     <body>
-        <h1>Vous nous avez manqué <?php echo $userName->fetch_assoc()["prenom_u"] ?></h1>
+        <h1>Vous nous avez manqué <?php echo $firstName->fetch_assoc()["prenom_u"] ?></h1>
         </br>
 
         <h3>Voici les derniers films sortis :</h3>

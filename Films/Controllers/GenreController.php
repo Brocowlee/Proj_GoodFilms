@@ -12,7 +12,7 @@
 
         function displayAllGenres(){
             $genres = $this->genreModel->getAllGenres();
-            return $genres;
+            require("Views/Genre.php");
         }
 
     }
