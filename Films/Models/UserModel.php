@@ -6,7 +6,7 @@
 
         function verifyUser(){
             $db=$this->dbConnect();
-            $sql="SELECT * FROM Utilisateur WHERE login='".$_POST["login"]."' and mdp = '".$_POST["mdp"]."';";
+            $sql="SELECT * FROM utilisateur WHERE login='".$_POST["login"]."' and mot_de_passe = '".$_POST["mdp"]."';";
             $result=mysqli_query($db, $sql);
             if($result->fetch_array()==NULL){
                 return FALSE;
@@ -18,14 +18,14 @@
 
         function getUserFirstName(){
             $db=$this->dbConnect();
-            $sql="SELECT prenom_u FROM Utilisateur WHERE login='".$_SESSION["login"]."' and mdp = '".$_SESSION["mdp"]."';";
+            $sql="SELECT login FROM utilisateur WHERE login='".$_SESSION["login"]."' and mot_de_passe = '".$_SESSION["mdp"]."';";
             $result=mysqli_query($db, $sql);
             return $result;
         }
 
         function getUserId(){
             $db=$this->dbConnect();
-            $sql="SELECT id_u FROM Utilisateur WHERE login='".$_SESSION["login"]."' and mdp = '".$_SESSION["mdp"]."';";
+            $sql="SELECT id_utilisateur FROM utilisateur WHERE login='".$_SESSION["login"]."' and mot_de_passe = '".$_SESSION["mdp"]."';";
             $result=mysqli_query($db, $sql);
             return $result;
         }
