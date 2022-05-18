@@ -2,6 +2,8 @@
 
 class Model {
     
+
+    
     protected function dbConnect(){
         /*https://tp-epua.univ-smb.fr/~takahasv/*/
         /*Connexion à la base de données sur le serveur tp-epua*/

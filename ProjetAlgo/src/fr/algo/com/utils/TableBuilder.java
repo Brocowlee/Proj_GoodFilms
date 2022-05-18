@@ -7,24 +7,49 @@ import java.util.List;
 import fr.algo.com.Main;
 import fr.algo.com.object.Column;
 
+/**
+ * <b>Classe permettant de créer de nouvelles tables</b>
+ * 
+ * @author Thomas
+ * @version 1.0
+ */
+
 public class TableBuilder {
 
+	/**
+     * Nom de l'instance
+     */
 	private String name;
 	
+	/**
+     * Liste des colonnes
+     * 
+     * @see Column
+     */
 	private ArrayList<Column> list_columns = new ArrayList<>();
 	
+	/**
+	* Constructeur de la classe
+	* @param name nom de la classe
+	*/
 	public TableBuilder(String name) {
 		
 		this.name = name;
 	}
 	
+	/**
+	 * Méthode qui ajoute une instance de colonne à la liste totale de colonnes
+     * @param column correspond à une instance de colonne
+	 */
 	public void addColumn(Column column) {
 		
 		list_columns.add(column);
 		
 	}
 	
-	
+	/**
+	 * Méthode qui envoie une requête sql au serveur
+	 */
 	public void build() {
 		
 		  try {
@@ -37,6 +62,12 @@ public class TableBuilder {
 		
 	}
 	
+	  /**
+     * Retourne la requête sql de création de table
+     * @param list_columns une liste de colonnes
+     * @return un String, qui correspond à une requête
+     * @see Column
+     */
 	public String writeRequest(List<Column> list_columns) {
 		
 		ArrayList<String> primary_keys = new ArrayList<>();

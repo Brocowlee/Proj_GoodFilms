@@ -11,19 +11,13 @@ import fr.algo.com.handler.MySQL;
 import fr.algo.com.utils.Config;
 
 /**
- * <b>Zero est la classe représentant un membre du Site du Zéro.</b>
+ * <b>Classe principale du projet</b>
  * <p>
- *   Un membre du SDZ est caractérisé par les informations suivantes :
- *   <ul>
- *     <li>Un identifiant unique attribué définitivement.</li>
- *     <li>Un pseudo, suceptible d'être changé.</li>
- *     <li>Un "level". Il peut être "zéro", newser, validateur, modérateur, etc.</li>
- *   </ul>
- * <p> 	De plus, un Zéro a une liste d'amis Zéro. Le membre pourra ajouter ou enlever des amis à cette liste.
+ *   Cette classe va réaliser la connexion à la base de données puis ouvrir le gui principal
  * @see Main
  * 
- * @author dworkin
- * @version 3.0
+ * @author Thomas, Benjamin
+ * @version 1.0
  */
 
 public class Main {
@@ -50,7 +44,7 @@ public class Main {
 		
 		database = new MySQL(getConfig().getHost(), getConfig().getPort(), getConfig().getDatabase(), getConfig().getUser(), getConfig().getPassword());
 		
-		if(!connectToDatabase(database)) return;
+		if(!connectToDatabase()) return;
 		
 		MyGUI gui = new MyGUI();
 	
@@ -63,6 +57,7 @@ public class Main {
      * 
      * @return Une instance de Config, qui correspond à un fichier configuration.
      * 
+     * @throws FileNotFoundException si le fichier est introuvable
      * @see Config
      */
 	private static Config getConfig() {
@@ -82,10 +77,11 @@ public class Main {
      * Fonction de connexion à la base de donnée.
      * 
      * @return True si la connexion est réussie, False si elle a échoué.
-     * 
+     * @throws ClassNotFoundException si la classe est introuvable
+     * @throws SQLException si la requête sql n'a pas fonctionné
      * @see MySQL
      */
-	private static boolean connectToDatabase(MySQL datebase){
+	private static boolean connectToDatabase(){
         
 		 try
 		    {

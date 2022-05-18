@@ -263,6 +263,7 @@ public class ContainerAdmin extends JPanel {
 	 			if(i < maxvalues.size()-1) {
 	 				space += (maxvalues.get(i) / 2) + 30;
 	 				space += (maxvalues.get(i+1) / 2);
+	 				space += (maxvalues.get(i+1) / 35);
 	 			} else {
 	 				space += maxvalues.get(i) + 30;
 	 			}
