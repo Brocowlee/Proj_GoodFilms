@@ -338,7 +338,7 @@ INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 --
 
 CREATE TABLE `Genre` (
-  `id_Genre` int(15) NOT NULL,
+  `id_genre` int(15) NOT NULL,
   `genre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -346,7 +346,7 @@ CREATE TABLE `Genre` (
 -- Déchargement des données de la table `Genre`
 --
 
-INSERT INTO `Genre` (`id_Genre`, `genre`) VALUES
+INSERT INTO `Genre` (`id_genre`, `genre`) VALUES
 (1, 'Action & Aventure'),
 (2, 'Comédie'),
 (3, 'Crime & Thriller'),
@@ -374,7 +374,7 @@ INSERT INTO `Genre` (`id_Genre`, `genre`) VALUES
 -- Index pour la table `Genre`
 --
 ALTER TABLE `Genre`
-  ADD PRIMARY KEY (`id_Genre`);
+  ADD PRIMARY KEY (`id_genre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -3856,8 +3856,6 @@ CREATE TABLE `note` (
   `id_utilisateur` int(15) NOT NULL,
   `id_film` int(15) NOT NULL,
   `note` int(2) NOT NULL
-  FOREIGN KEY (id_utilisateur) REFERENCES utilisateur
-  FOREIGN KEY (id_film) REFERENCES film
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -6419,7 +6417,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `mot_de_passe` varchar(255) NOT NULL,
   `admin` int(11) NOT NULL,
   `salt` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_utilisateur`,`login`)
+  PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
@@ -6462,7 +6460,9 @@ ALTER TABLE `joue`
 -- Index pour la table `note`
 --
 ALTER TABLE `note`
-  ADD PRIMARY KEY (`id_utilisateur`,`id_film`);
+  ADD PRIMARY KEY (`id_utilisateur`,`id_film`),
+  ADD FOREIGN KEY (`id_utilisateur`) REFERENCES utilisateur(id_utilisateur),
+  ADD FOREIGN KEY (`id_film`) REFERENCES film(id_film);
 
 --
 -- Index pour la table `Personne`
