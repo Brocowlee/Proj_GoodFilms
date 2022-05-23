@@ -26,18 +26,51 @@ import fr.algo.com.object.Column;
 import fr.algo.com.utils.TableBuilder;
 
 
+/**
+ * <b>Classe JPanel de creation de tables</b>
+ * <p>
+ *   Cette classe va gérer la création d'une table
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class ContainerCreateTable extends JPanel{
 
+	/**
+     * Liste de colonnes
+     */
 	private ArrayList<Column> lstColumns = new ArrayList<>();
+	
+	/**
+     * HashMap reliant une checkbox à sa colonne
+     */
 	public HashMap<JCheckBox, Column> check_box_column = new HashMap<>();
+	
+	/**
+     * Liste des valeurs maximales
+     */
 	private ArrayList<Integer> max_values = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
 	
+	/**
+     * Liste d'attributs
+     */
 	private ArrayList<String> attributs = new ArrayList<>(Arrays.asList("Nom","Type","Null","Valeur par défaut","Auto Increment","Clé Primaire"));
 	
+	/**
+     * Zone de texte pour le nom de la table
+     */
 	private JTextField Ttable = new JTextField();
+	
+	/**
+     * Container JPanel de gestion d'affichage
+     */
 	private MasterContainer mastercontainer;
 	
+	/**
+	* Constructeur de la classe
+	* @param mastercontainer container de gestion d'affichage
+	*/
 	public ContainerCreateTable(MasterContainer mastercontainer) {
         
 		this.mastercontainer = mastercontainer;
@@ -48,6 +81,10 @@ public class ContainerCreateTable extends JPanel{
           
     }
 	
+	/**
+     * Methode permettant l'affichage des différentes colonne
+     * 
+     */
 	public void ShowColumn() {
 		removeAll();
 
@@ -254,12 +291,16 @@ public class ContainerCreateTable extends JPanel{
 		    	
 		    	InitTable.initTable();
 		    	
-		    	getMasterContainer().ReturnFromCreateTabe();
+		    	getMasterContainer().returnFromCreateTable();
 		    }
 		    
 		});
 	}
 	
+	/**
+     * Initialise les valeurs des colonnes
+     * 
+     */
 	public void initListColumn() {
 		
 		for(String attribut : attributs) {
@@ -340,6 +381,13 @@ public class ContainerCreateTable extends JPanel{
 		
 	}
 	
+	/**
+     * Recupère l'espace nécessaire entre deux colonnes
+     * 
+     * @param width largeur
+     * @param id_column id de la colonne
+     * @return un entier correspondant a l'espace
+     */
 	public int getSpace(int width, int id_column) {
 		
 		int space = max_values.get(id_column) + 30;
@@ -349,16 +397,31 @@ public class ContainerCreateTable extends JPanel{
 		
 	}
 	
+	/**
+     * Ajoute la nouvelle colonne à la liste de colonnes
+     * 
+     * @param colonne colonne à ajouter
+     */
 	public void AddColumn(Column colonne) {
 		this.lstColumns.add(colonne);
 		ShowColumn();
 	}
 	
+	/**
+     * Getter de cet objet
+     * 
+     * @return une instance de cette classe
+     */
 	public ContainerCreateTable getContainerCreateTable() {
 		return this;
 		
 	}
 	
+	/**
+     * Getter de masterContainer
+     * 
+     * @return une intance de MasterContainer
+     */
 	public MasterContainer getMasterContainer() {
 		return this.mastercontainer;
 		

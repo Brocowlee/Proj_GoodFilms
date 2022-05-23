@@ -23,15 +23,38 @@ import javax.swing.border.EmptyBorder;
 import fr.algo.com.gui.containers.ContainerAdmin;
 import fr.algo.com.object.TableObject;
 
+/**
+ * <b>Classe permettant d'ajouter une ligne à une table dans un GUI</b>
+ * <p>
+ *   Cette classe va réaliser le gui permettant l'ajout d'une ligne
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
+
 @SuppressWarnings("serial")
 public class AddingGui extends JFrame {
 	
+	/**
+     * Image servant d'icon.
+     */
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 	
+	/**
+     * Liste de zone de text
+     */
 	private ArrayList<JTextField> textField_list = new ArrayList<>();	
 	
+	/**
+     * Objet TableObject contenant la table d'où la ligne provient
+     */
 	private TableObject table;
 	
+	/**
+	* Constructeur de la classe
+	* @param containerAdmin panel contenant l'affichage de la table
+	* @param table table dans laquelle la ligne va être ajouté
+	*/
 	public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
 		
 		setTitle("Ajouter une donnée");
@@ -164,6 +187,13 @@ public class AddingGui extends JFrame {
         
 	}
 	
+	/**
+     * Definit la taille d'un composant et l'ajoute a son JPanel
+     * 
+     * @param test composant de GUI
+     * @param dim dimension
+     * @param pan Jpanel 
+     */
 	public static void setSizeAdd(Object test,Dimension dim,JPanel pan) {
 		
 		((JComponent) test).setMinimumSize(dim);
@@ -171,6 +201,11 @@ public class AddingGui extends JFrame {
         pan.add((JComponent) test);
 	}
 
+	/**
+     * Retourne un objet AddingGui.
+     *
+     * @return Une instance d'un AddingGui
+     */
 	public AddingGui getAddingGui() {
 		return this;
 	

@@ -26,34 +26,97 @@ import fr.algo.com.gui.containers.JItems.JItemButton;
 import fr.algo.com.handler.InitTable;
 import fr.algo.com.object.TableObject;
 
+/**
+ * <b>Classe JPanel d'affichage des tables</b>
+ * <p>
+ *   Cette classe va l'affichage des tables
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
+
 @SuppressWarnings("serial")
 public class ContainerAdmin extends JPanel {
 	
-	
+	/**
+     * HashMap reliant une checkbox à l'id d'une ligne
+     */
 	public HashMap<JCheckBox, String> check_box_ids = new HashMap<>();
+	
+	/**
+     * HashMap reliant une checkbox à un objet TableObject
+     */
 	public HashMap<JCheckBox, TableObject> check_box_table = new HashMap<>();
+	
+	/**
+     * HashMap reliant un bouton d'édition à l'id d'une ligne
+     */
 	public HashMap<JButton, String> edit_ids = new HashMap<>();
+	
+	/**
+     * HashMap reliant un bouton d'édition à un objet TableObject
+     */
 	public HashMap<JButton, TableObject> edit_table = new HashMap<>();
+	
+	/**
+     * HashMap reliant un bouton de table à un objet TableObject
+     */
 	public static HashMap<JItemButton, TableObject> button_table = new HashMap<>();
 	
-	ImageIcon edit = new ImageIcon("./edit.png");
-	Image imgedit = edit.getImage();
-	private ImageIcon editIcon = new ImageIcon(imgedit.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH));
+	/**
+     * Image bouton éditer
+     */
+	private ImageIcon editIcon = new ImageIcon(new ImageIcon("./edit.png").getImage().getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH));
 	
-	
+	/**
+     * Label réussite de la suppression partie 1
+     */
 	private JLabel Ldelete = new JLabel("La suppression");
+	
+	/**
+     * Label réussite de la suppression partie 2
+     */
     private JLabel Ldelete2 = new JLabel("a été effectué");
+    
+    /**
+     * Label échec de la suppression partie 1
+     */
     private JLabel Ldeleterefused = new JLabel("Veuillez choisir");
+    
+    /**
+     * Label échec de la suppression partie 2
+     */
     private JLabel Ldeleterefused2 = new JLabel("une donnée");
     
+    /**
+     * Label réussite de l'ajout partie 1
+     */
     private JLabel Ladd = new JLabel("L'ajout");
+    
+    /**
+     * Label réussite de l'ajout partie 2
+     */
     private JLabel Ladd2 = new JLabel("a été effectué");
+    
+    /**
+     * Label échec de l'ajout partie 1
+     */
     private JLabel Laddrefused = new JLabel("Veuillez choisir");
+    
+    /**
+     * Label échec de l'ajout partie 2
+     */
     private JLabel Laddrefused2 = new JLabel("une table");
     
+    /**
+     * Listener de retour
+     */
 	private ReturnNavigationListener<ContainerAdmin> navigationListener;
 	
-	
+	/**
+	* Constructeur de la classe
+	* @param navigationListener listener de retour
+	*/
 	public ContainerAdmin(ReturnNavigationListener<ContainerAdmin> navigationListener){
 			this.navigationListener = navigationListener;
 		
@@ -63,11 +126,20 @@ public class ContainerAdmin extends JPanel {
 	        
 	}
 	
+	/**
+	* Methode de mise à jour de la classe
+	*
+	*/
 	public void maj() {
 		removeAll();
 		showMenu(null);
 	}
 	
+	/**
+	* Methode permettant de changer la visibilité des bouton de réussite d'ajout
+	*
+	*@param bool un boolean
+	*/
 	public void setAddButton(boolean bool) {
 		
 		this.Ladd.setVisible(bool);
@@ -75,6 +147,11 @@ public class ContainerAdmin extends JPanel {
 		
 	}
 	
+	/**
+	* Methode permettant d'afficher le menu des tables
+	*
+	*@param table_name nom de la table sélectionée
+	*/
 	public void showMenu(String table_name) {
 		
 		button_table.clear();
@@ -144,6 +221,15 @@ public class ContainerAdmin extends JPanel {
 		
 	}
 	
+	/**
+	* Methode permettant de changer le format des JLabel
+	*
+	*@param text le label a modifier
+	*@param contentPane le JPanel où l'on ajoute le JLabel
+	*@param list liste de positions
+	*@param color couleur de fond du JLabel
+	*@param bool un boolean pour la visibilité
+	*/
 	private void createTextArea(JLabel text, JPanel contentPane, int[] list, Color color, boolean bool) {
 		
 		text.setBounds(list[0], list[1], list[2], list[3]);
@@ -154,6 +240,11 @@ public class ContainerAdmin extends JPanel {
 		
 	}
 	
+	/**
+	* Methode d'ajout d'une ligne
+	* @see AddingGui
+	*
+	*/
 	public void adding() {
 		TableObject table = getCurrentTable();
 		
@@ -168,7 +259,12 @@ public class ContainerAdmin extends JPanel {
 		gui.setVisible(true);
 		
 	}
-	
+
+	/**
+	* Methode de suppression d'une ligne
+	* @see TableObject
+	*
+	*/
 	public void delete() {
 		
 		this.Ldelete.setVisible(false);
@@ -213,6 +309,11 @@ public class ContainerAdmin extends JPanel {
 		
 	}
 	
+	/**
+	* Methode permettant d'obtenir la liste les valeurs maximals entre deux attributs
+	*
+	*@param table la table dans laquelle on recupère les attributs
+	*/
 	private List<Integer> getMaxValues(TableObject table) {
 		
 		 List<Integer> maxvalues = new ArrayList<>();
@@ -227,6 +328,11 @@ public class ContainerAdmin extends JPanel {
 	     return maxvalues;
 	}
 	
+	/**
+	* Methode permettant d'afficher les informations d'une table
+	*
+	*@param table table sélectionée
+	*/
 	public void showTable(TableObject table) {
 		
 		this.check_box_ids.clear();
@@ -263,6 +369,7 @@ public class ContainerAdmin extends JPanel {
 	 			if(i < maxvalues.size()-1) {
 	 				space += (maxvalues.get(i) / 2) + 30;
 	 				space += (maxvalues.get(i+1) / 2);
+	 				space += (maxvalues.get(i+1) / 35);
 	 			} else {
 	 				space += maxvalues.get(i) + 30;
 	 			}
@@ -359,6 +466,11 @@ public class ContainerAdmin extends JPanel {
 		
 	}
 	
+	/**
+	* Methode permettant d'obtenir la table actuellement selectioné
+	*
+	*@return table sélectionée
+	*/
 	public static TableObject getCurrentTable() {
 		
 		TableObject table = null;
@@ -373,6 +485,11 @@ public class ContainerAdmin extends JPanel {
 		return table;
 	}
 	
+	/**
+	* Getter du Listener
+	*
+	*@return le listener de la classe
+	*/
 	public ReturnNavigationListener<ContainerAdmin> getReturnNavigationListener() {
         return navigationListener;
     }

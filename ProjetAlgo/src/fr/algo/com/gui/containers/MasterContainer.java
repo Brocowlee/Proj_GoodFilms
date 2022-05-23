@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -14,19 +15,48 @@ import fr.algo.com.gui.MyGUI;
 import fr.algo.com.gui.ReturnNavigationListener;
 import fr.algo.com.object.TableObject;
 
+/**
+ * <b>Classe JPanel de controle </b>
+ * <p>
+ *   Cette classe gère les différents JPanel à afficher 
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
+
 @SuppressWarnings("serial")
 public class MasterContainer extends JPanel {
 	
+	/**
+     * ContainerInit principal
+     */
 	private ContainerInit Connect;
+	
+	/**
+     * ContainerAdmin principal
+     */
 	private ContainerAdmin Admin;
+	
+	/**
+     * Gui principal
+     */
 	private MyGUI gui;
 
+	/**
+	* Constructeur de la classe
+	* @param gui dans lequel sera affiché le container
+	*/
     public MasterContainer(MyGUI gui) {
     	this.gui = gui;
         setLayout(new GridLayout());
         presentMenu();
     }
     
+    /**
+     * 
+     * Choisi le bon Container grâce à un listener
+     * 
+     */
     protected void presentMenu() {
         removeAll();
         
@@ -45,18 +75,6 @@ public class MasterContainer extends JPanel {
         			gui.setJMenuBar(CreateMenuBar(gui));
         			gui.setResizable(true);
         			present(Admin);
-    	        }
-    	              
-    	        @Override
-    	        public void presentUserContainer(ContainerInit source) {
-    	        	ContainerUser containerUser = new ContainerUser(new ReturnNavigationListener<ContainerUser>() {
-    	        		@Override
-    	                public void returnFrom(ContainerUser source) {
-    	        			presentMenu();
-    	                }
-    	            });
-    	        	gui.setResizable(true);
-    	            present(containerUser);
     	        }
     	                
         	});
@@ -77,6 +95,11 @@ public class MasterContainer extends JPanel {
         repaint();
     }
 
+    /**
+     * 
+     * Affiche le bon Container grâce à un listener
+     * 
+     */
     protected void present(JPanel panel) {
         removeAll();
         add(panel);
@@ -84,6 +107,26 @@ public class MasterContainer extends JPanel {
         repaint();
     }
     
+    /**
+     * Ajoute des elements à un menu
+     * 
+     * @param main_menu menu ou l'on ajoute les components
+     * @param components liste de JComponents
+     */
+    public void addMenu(JComponent main_menu, JComponent... components ) {
+    	
+    	for(JComponent component : components) {
+    		main_menu.add(component);
+    	}
+    }
+    
+    /**
+     * Créer le menu ainsi que ses elements
+     * 
+     * @param gui instance de MyGUI
+     * 
+     * @return le menu
+     */
     public JMenuBar CreateMenuBar(MyGUI gui) {
     	
     	JMenuBar menuBar = new JMenuBar();
@@ -99,16 +142,10 @@ public class MasterContainer extends JPanel {
     	JMenuItem menu3Item = new JMenuItem("Site");
     	JMenuItem menu3Item2 = new JMenuItem("GitHub");
 		
-    	menuBar.add(menu);
-		menuBar.add(menu2);
-		menuBar.add(menu3);
-		
-		menu.add(menuItem);
-		menu2.add(menu2Item);
-		menu2.add(menu2Item2);
-		
-		menu3.add(menu3Item);
-		menu3.add(menu3Item2);
+    	addMenu(menuBar, menu, menu2, menu3);
+    	addMenu(menu, menuItem);
+    	addMenu(menu2, menu2Item, menu2Item2);
+    	addMenu(menu3, menu3Item, menu3Item2);
 		
 		menuItem.addActionListener(new ActionListener() {
 			
@@ -119,10 +156,6 @@ public class MasterContainer extends JPanel {
 				MyGUI gui = new MyGUI();
 				
 				gui.setVisible(true);
-				
-				/*WarningGui gui = new WarningGui("jjjjjjj");
-				
-				gui.setVisible(true);*/
 				
 			}
 		});
@@ -158,17 +191,31 @@ public class MasterContainer extends JPanel {
     	return menuBar;
     }
     
-    public void ReturnFromCreateTabe() {
+    /**
+     * Mise à jour du menu des tables dès l'ajout d'une nouvelle table
+     * 
+     */
+    public void returnFromCreateTable() {
 
     	presentMenu();
 	
     }
     
+    /**
+     * Getter d'une instance de ContainerAdmin
+     * 
+     * @return instance de ContainerAdmin
+     */
     public ContainerAdmin getContainerAdmin() {
 		return this.Admin;
     	
     }
     
+    /**
+     * Getter d'une instance de MasterContainer
+     * 
+     * @return instance de MasterContainer
+     */
     public MasterContainer getMasterContainer() {
 		return this;
 		

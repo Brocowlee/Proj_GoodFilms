@@ -3,8 +3,6 @@ package fr.algo.com;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import fr.algo.com.gui.MyGUI;
 import fr.algo.com.gui.WarningGui;
 import fr.algo.com.handler.ConfigHandler;
@@ -12,30 +10,41 @@ import fr.algo.com.handler.InitTable;
 import fr.algo.com.handler.MySQL;
 import fr.algo.com.utils.Config;
 
+/**
+ * <b>Classe principale du projet</b>
+ * <p>
+ *   Cette classe va réaliser la connexion à la base de données puis ouvrir le gui principal
+ * @see Main
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
+
 public class Main {
 	
+	/**
+     * Initialiser un objet MySQL
+     * 
+     * @see MySQL#MySQL(String, String, String, String, String)
+     */
 	public static MySQL database;
+	
+	
+	/**
+     * Variable pour connaître l'état de la connexion.
+     * 
+     */
 	public static boolean connected;
 	
+	 /**
+     * Fonction principale du programme.
+     * @param args[]
+     */
 	public static void main(String args[]) {
 		
 		database = new MySQL(getConfig().getHost(), getConfig().getPort(), getConfig().getDatabase(), getConfig().getUser(), getConfig().getPassword());
 		
-		if(!connectToDatabase(database)) return;
-		
-		/*String hashed = BCrypt.hashpw("test", "$2a$10$8lYJu9EHPliYUhAsSwSJnYgQ");
-		
-		String candidate = "$2a$10$8lYJu9EHPliYUhAsSwSJnO/7mvBNBa9pMu.jt3tzHya39ELE7juA.";
-		
-		System.out.println("Java " + hashed);
-		System.out.println("PHP " + candidate);
-		
-		
-		if(candidate.equalsIgnoreCase(hashed))
-			System.out.println("It matches");
-		else
-			System.out.println("It does not match");  */
-		
+		if(!connectToDatabase()) return;
 		
 		MyGUI gui = new MyGUI();
 	
@@ -43,6 +52,14 @@ public class Main {
 		
 	}
 	
+	  /**
+     * Retourne le fichier de configuration.
+     * 
+     * @return Une instance de Config, qui correspond à un fichier configuration.
+     * 
+     * @throws FileNotFoundException si le fichier est introuvable
+     * @see Config
+     */
 	private static Config getConfig() {
 		
 		ConfigHandler handler = null;
@@ -56,7 +73,15 @@ public class Main {
 		
 	}
 	
-	private static boolean connectToDatabase(MySQL datebase){
+	 /**
+     * Fonction de connexion à la base de donnée.
+     * 
+     * @return True si la connexion est réussie, False si elle a échoué.
+     * @throws ClassNotFoundException si la classe est introuvable
+     * @throws SQLException si la requête sql n'a pas fonctionné
+     * @see MySQL
+     */
+	private static boolean connectToDatabase(){
         
 		 try
 		    {

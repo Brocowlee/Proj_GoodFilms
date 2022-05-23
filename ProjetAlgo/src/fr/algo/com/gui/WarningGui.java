@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,17 +16,39 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.SwingConstants;
 
+import fr.algo.com.utils.Config;
+
+/**
+ * <b>Classe GUI d'erreur </b>
+ * <p>
+ *   Cette classe va réaliser le gui permettant d'avoir un affichage d'erreur
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
+
 @SuppressWarnings("serial")
 public class WarningGui extends JFrame{
 	
-
-	public ImageIcon img = new ImageIcon("./attention.png");
-	public Image attention1 = img.getImage();
-	private ImageIcon attention = new ImageIcon(attention1.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
+	/**
+     * Image panneau attention.
+     */
+	private ImageIcon attention = new ImageIcon(new ImageIcon("./attention.png").getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
 	
+	/**
+     * message d'erreur.
+     */
 	private String message;
+	
+	/**
+     * Button "ok".
+     */
 	private JButton button;
 	
+	/**
+	* Constructeur de la classe
+	* @param message message à afficher
+	*/
 	public WarningGui(String message) {
 	
 		this.message = message;
@@ -64,6 +87,12 @@ public class WarningGui extends JFrame{
 		
 	}
 	
+	 /**
+     * Retourne un objet WarningGUI.
+     * 
+     * @return Une instance d'un WarningGUI
+     * 
+     */
 	public WarningGui getWarningGui() {
 		return this;
 		

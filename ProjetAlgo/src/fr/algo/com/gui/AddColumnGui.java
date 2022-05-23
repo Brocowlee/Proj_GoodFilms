@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,26 +21,91 @@ import javax.swing.border.EmptyBorder;
 
 import fr.algo.com.gui.containers.ContainerCreateTable;
 import fr.algo.com.object.Column;
+import fr.algo.com.object.TableObject;
 
+/**
+ * <b>Classe permettant d'ajouter une colonne à une table dans un GUI</b>
+ * <p>
+ *   Cette classe va réaliser le gui permettant l'ajout d'une colonne à une table
+ *
+ * @see ContainerCreateTable
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
 
 @SuppressWarnings("serial")
-public class AddColumnGui extends JFrame{
-
+public class AddColumnGui extends JFrame {
+	
+	/**
+     * Image servant d'icon.
+     */
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 	
+	/**
+     * Label pour le nom
+     */
 	private JLabel LName = new JLabel("Nom de la colonne : ");
+	
+	/**
+     * Zone de text pour le nom
+     */
 	private JTextField TName = new JTextField();
+	
+	/**
+     * Label pour le type
+     */
 	private JLabel LType = new JLabel("Type de la colonne : ");
+	
+	/**
+     * ComboBox pour le type
+     */
 	private JComboBox<String> CBType = new JComboBox<>();
+	
+	/**
+     * Label pour la valeur par defaut
+     */
 	private JLabel LDefaultValue = new JLabel("Valeur par défaut : ");
+	
+	/**
+     * Zone de text pour la valeur par defaut
+     */
 	private JTextField TDefaultValue = new JTextField();
+	
+	/**
+     * Label si la valeur peut etre nul
+     */
 	private JLabel LisNull = new JLabel("Valeur null ? : ");
+	
+	/**
+     * CheckBox isNull
+     */
 	private JCheckBox CisNull = new JCheckBox();
+	
+	/**
+     * Label si la valeur peut etre autoIncrement
+     */
 	private JLabel LisAutoIncrement = new JLabel("Auto Increment ? : ");
+	
+	/**
+     * Checkbox is AutoIncrement
+     */
 	private JCheckBox CisAutoIncrement = new JCheckBox();
+	
+	/**
+     * Label si la valeur est une clé primaire
+     */
 	private JLabel LisPrimary = new JLabel("Primary Key ? : ");
+	
+	/**
+     * Checkbox is Pramary
+     */
 	private JCheckBox CisPrimary = new JCheckBox();
 	
+	/**
+	* Constructeur de la classe
+	* @param containerCreateTable instance de creation d'une nouvelle
+	*/
 	public AddColumnGui(ContainerCreateTable containerCreateTable) {
 		
 		setTitle("Ajouter une colonne");
@@ -53,28 +119,8 @@ public class AddColumnGui extends JFrame{
 		
 		JPanel pan = new JPanel(new GridLayout(8,2,0,0));
 		
-		pan.add(LName);
-		this.LName.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(TName);
-		pan.add(LType);
-		this.LType.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(setType(this.CBType));
-		pan.add(LDefaultValue);
-		this.LDefaultValue.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(TDefaultValue);
-		pan.add(LisNull);
-		this.LisNull.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(CisNull);
-		pan.add(LisAutoIncrement);
-		this.LisAutoIncrement.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(CisAutoIncrement);
-		pan.add(LisPrimary);
-		this.LisPrimary.setBorder(new EmptyBorder(0, 30, 0, 0));
-		pan.add(CisPrimary);
+		addJComponents2JPanel(pan, LName, TName, LType, setType(this.CBType), LDefaultValue, TDefaultValue, LisNull, CisNull, LisAutoIncrement, CisAutoIncrement, LisPrimary, CisPrimary); 
 		
-		pan.add(new JLabel(""));
-		pan.add(new JLabel(""));
-		pan.add(new JLabel(""));
 		JButton button = new JButton("Ajouter");
 		pan.add(button);
 		
@@ -131,7 +177,32 @@ public class AddColumnGui extends JFrame{
 		});
         
 	}
+	
+	/**
+     * Ajoute un nombre indéfinis de JComponent à un JPanel tout en définissanr l'espace entre les JComponents
+     * 
+     * @param pan Jpanel 
+     * @param components liste de JComponent
+     */
+	private void addJComponents2JPanel(JPanel pannel, JComponent... components) {
+		
+		for(JComponent component : components) {
+			if(component instanceof JLabel) {
+				component.setBorder(new EmptyBorder(0, 30, 0, 0));
+			}
+			pannel.add(component);
+		}
+		
+		for(int i = 0; i<3; i++) pannel.add(new JLabel(""));
+		
+	}
 
+	/**
+     * Definit les elements de la checkbox de types
+     * 
+     * @param box JCheckBox de type
+     * @return une JComboBox contenant tous les types
+     */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public JComboBox setType(JComboBox box) {
 		
@@ -148,7 +219,11 @@ public class AddColumnGui extends JFrame{
 		
 	}
 	
-	
+	/**
+     * Retourne un objet AddColumnGui.
+     *
+     * @return Une instance d'un AddColumnGui
+     */
 	public AddColumnGui getAddColumnGui() {
 		return this;
 		

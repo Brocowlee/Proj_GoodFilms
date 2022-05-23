@@ -11,33 +11,55 @@ import java.util.Set;
 import fr.algo.com.Main;
 import fr.algo.com.handler.InitTable;
 
+/**
+ * <b>Classe d'une table</b>
+ * <p>
+ *   Cette classe permet de réaliser des instances de tables
+ * 
+ * @author Thomas, Benjamin
+ * @version 1.0
+ */
 public class TableObject {
-
+	
+	/**
+     * Nom de la table
+     */
 	private String name;
+	
+	/**
+     * Dictionnaire avec comme clé un nom de colonne et comme valeur son type
+     * Dictionnaire avec un ordre d'itération connu
+     */
 	private LinkedHashMap<String, String> informations = new LinkedHashMap<>();
 	
+	/**
+	* Constructeur de la classe
+	* @param table_name nom de la table
+	*/
 	public TableObject(String table_name) {
 		this.name = table_name;
 	}
 	
+	/**
+	 * Méthode qui ajoute une colonne à son dictionnaire de colonnes
+     * @param column_name un nom de colonne
+     * @param column_type un type de colonne
+	 */
 	public void addColumn(String column_name, String column_type) {
 		this.informations.put(column_name, column_type);
 	}
 	
+	 /**
+     * Retourne le nom de la table
+     * @return un String, qui correspond au nom
+     */
 	public String getName() {
 		return this.name;
 	}
 	
-	public void showColumn() {
-		
-		for(String column_name : informations.keySet()) {
-			
-			System.out.println("Colonne : " + column_name + " | Type : " + informations.get(column_name));
-			
-		}
-		
-	}
-	
+	/**
+	 * Méthode qui supprime la table
+	 */
 	public void deleteTable() {
 		
 		InitTable.liste_tables.remove(this.name);
@@ -50,12 +72,22 @@ public class TableObject {
 		
 	}
 	
+	 /**
+     * Retourne la collection des clés du dictionnaire
+     * @return une collection de String
+     */
 	public Set<String> getColumnName(){
 		
 		return this.informations.keySet();
 		
 	}
 	
+	/**
+	 * Méthode qui insert des valeurs dans la table
+     * @param indexes liste d'entier 
+     * @param value liste de String
+     * @return true si la requête a fonctionné, false sinon
+	 */
 	public boolean insertInto(List<Integer> indexes, ArrayList<String> value) {
 		
 		String request = "INSERT INTO " + this.name + " VALUES(";
@@ -73,11 +105,9 @@ public class TableObject {
 				request += "'" + value.get(i) + "');";
 				
 			}
-			
 		}
 		
 		try {
-			
 			
 			Main.database.updateSQL(request);
 			return true;
@@ -91,7 +121,11 @@ public class TableObject {
 		
 	} 
 	
-	
+	/**
+	 * Méthode qui vérifie si une clé primaire existe déjà
+     * @param string un String
+     * @return true si la table contient déjà une clé primaire, false sinon
+	 */
 	public boolean alreadyHasPrimaryKey(String string) {
 		
 		int count = 0;
@@ -113,12 +147,16 @@ public class TableObject {
 		
 	}
 	
+	/**
+	 * Méthode qui vérifie si la table est une table de relation
+     * @return true si la table contient déjà une clé primaire, false sinon
+	 */
 	public boolean isRelationTable() {
 		
 		int count = 0;
 		
 		try {
-			DatabaseMetaData md = Main.database.connection.getMetaData();
+			DatabaseMetaData md = Main.database.connexion.getMetaData();
 			
 			ResultSet rs = md.getPrimaryKeys("nicolath", null, this.name);
 			
@@ -134,6 +172,12 @@ public class TableObject {
 		
 	}
 	
+	/**
+	 * Méthode qui met à jour des valeurs
+     * @param id un entier
+     * @param indexes une liste d'entiers
+     * @param value une liste de String
+	 */
 	public void updateInto(int id, List<Integer> indexes, ArrayList<String> value) {
 		
 			String request = "UPDATE " + this.name + " SET";
@@ -167,6 +211,11 @@ public class TableObject {
 		
 	}
 	
+	/**
+	 * Méthode qui renvoie une selection totale des valeurs de la table
+     * @return une liste comprenant elle même des listes
+     * 		chaque liste correpondant à une ligne de la table
+	 */
 	public ArrayList<List<String>> selectAll() {
 		
 		ArrayList<List<String>> total_list = new ArrayList<>();
@@ -182,15 +231,7 @@ public class TableObject {
 					
 					for(String name : this.informations.keySet()) {
 						
-						if(this.informations.get(name).equalsIgnoreCase("INT")) {
-							 sublist.add(String.valueOf(rs.getInt(name)));
-						}
-						if(this.informations.get(name).equalsIgnoreCase("VARCHAR")) {
-							 sublist.add(rs.getString(name));
-						}
-						if(this.informations.get(name).equalsIgnoreCase("BIT")) {
-							 sublist.add(String.valueOf(rs.getByte(name)));
-						}
+						sublist.add(getValueOf(rs, name));
 						
 					}
 					total_list.add(sublist);
@@ -205,6 +246,12 @@ public class TableObject {
 		
 	}
 	
+	/**
+	 * Méthode qui renvoie une ligne précise en fonction de l'id
+     * @return une liste comprenant elle même des listes
+     * 		chaque liste correpondant à une ligne de la table
+     * @param index String correspondant à l'id d'une ligne
+	 */
 	public ArrayList<String> selectLigne(String index) {
 		
 		ArrayList<String> list_attribut = new ArrayList<>();
@@ -216,172 +263,12 @@ public class TableObject {
 				int cpt = 0;
 				while(rs.next()){
 					
-					
-						
 					for(String name : this.informations.keySet()) {
 							
 						if(cpt != 0) {
 							
-							switch (this.informations.get(name)) {
-								case "INT": {
-									list_attribut.add(String.valueOf(rs.getInt(name)));
-								}
-								case "VARCHAR": {
-									list_attribut.add(rs.getString(name));
-								}
-								case "BIT": {
-									list_attribut.add(String.valueOf(rs.getByte(name)));
-								}
-								case "CHAR": {
-									list_attribut.add(String.valueOf(rs.getString(name)));
-								}
-								case "BINARY": {
-									list_attribut.add(String.valueOf(rs.getByte(name)));
-								}
-								case "VARBINARY": {
-									list_attribut.add(String.valueOf(rs.getByte(name)));
-								}
-								case "TINYTEXT": {
-									list_attribut.add(String.valueOf(rs.getString(name)));
-								}
-								case "MEDIUMTEXT": {
-									list_attribut.add(String.valueOf(rs.getString(name)));
-								}
-								case "LONGTEXT": {
-									list_attribut.add(String.valueOf(rs.getString(name)));
-								}
-								case "TINYINT": {
-									list_attribut.add(String.valueOf(rs.getShort(name)));
-								}
-								case "BOOL": {
-									list_attribut.add(String.valueOf(rs.getBoolean(name)));
-								}
-								case "BOOLEAN": {
-									list_attribut.add(String.valueOf(rs.getBoolean(name)));
-								}
-								case "SMALLINT": {
-									list_attribut.add(String.valueOf(rs.getShort(name)));
-								}
-								case "MEDIUMINT": {
-									list_attribut.add(String.valueOf(rs.getInt(name)));
-								}
-								case "BIGINT": {
-									list_attribut.add(String.valueOf(rs.getLong(name)));
-								}
-								case "FLOAT": {
-									list_attribut.add(String.valueOf(rs.getDouble(name)));
-								}
-								case "DOUBLE": {
-									list_attribut.add(String.valueOf(rs.getDouble(name)));
-								}
-								case "DECIMAL": {
-									list_attribut.add(String.valueOf(rs.getBigDecimal(name)));
-								}
-								case "DATE": {
-									list_attribut.add(String.valueOf(rs.getDate(name)));
-								}
-								case "DATETIME": {
-									list_attribut.add(String.valueOf(rs.getTimestamp(name)));
-								}
-								case "TIMESTAMP": {
-									list_attribut.add(String.valueOf(rs.getTimestamp(name)));
-								}
-								case "TIME": {
-									list_attribut.add(String.valueOf(rs.getTime(name)));
-								}
-								case "TINYBLOB": {
-									list_attribut.add(String.valueOf(rs.getBlob(name)));
-								}
-								case "BLOB": {
-									list_attribut.add(String.valueOf(rs.getBlob(name)));
-								}
-								case "MEDIUMBLOB": {
-									list_attribut.add(String.valueOf(rs.getBlob(name)));
-								}
-								case "LONGBLOB": {
-									list_attribut.add(String.valueOf(rs.getBlob(name)));
-								}
-							}
+							list_attribut.add(getValueOf(rs, name));
 							
-							
-							/*if(this.informations.get(name).equalsIgnoreCase("INT")) {
-								list_attribut.add(String.valueOf(rs.getInt(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("VARCHAR")) {
-								list_attribut.add(rs.getString(name));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("BIT")) {
-								list_attribut.add(String.valueOf(rs.getByte(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("CHAR")) {
-								list_attribut.add(String.valueOf(rs.getString(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("BINARY")) {
-								list_attribut.add(String.valueOf(rs.getByte(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("VARBINARY")) {
-								list_attribut.add(String.valueOf(rs.getByte(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("TINYTEXT")) {
-								list_attribut.add(String.valueOf(rs.getString(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("MEDIUMTEXT")) {
-								list_attribut.add(String.valueOf(rs.getString(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("LONGTEXT")) {
-								list_attribut.add(String.valueOf(rs.getString(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("TINYINT")) {
-								list_attribut.add(String.valueOf(rs.getShort(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("BOOL")) {
-								list_attribut.add(String.valueOf(rs.getInt(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("BOOLEAN")) {
-								list_attribut.add(String.valueOf(rs.getInt(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("SMALLINT")) {
-								list_attribut.add(String.valueOf(rs.getShort(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("MEDIUMINT")) {
-								list_attribut.add(String.valueOf(rs.getInt(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("BIGINT")) {
-								list_attribut.add(String.valueOf(rs.getLong(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("FLOAT")) {
-								list_attribut.add(String.valueOf(rs.getFloat(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("DOUBLE")) {
-								list_attribut.add(String.valueOf(rs.getDouble(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("DECIMAL")) {
-								list_attribut.add(String.valueOf(rs.getBigDecimal(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("DATE")) {
-								list_attribut.add(String.valueOf(rs.getDate(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("DATETIME")) {
-								list_attribut.add(String.valueOf(rs.getTimestamp(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("TIMESTAMP")) {
-								list_attribut.add(String.valueOf(rs.getTimestamp(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("TIME")) {
-								list_attribut.add(String.valueOf(rs.getTime(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("TINYBLOB")) {
-								list_attribut.add(String.valueOf(rs.getBlob(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("BLOB")) {
-								list_attribut.add(String.valueOf(rs.getBlob(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("MEDIUMBLOB")) {
-								list_attribut.add(String.valueOf(rs.getBlob(name)));
-							}
-							if(this.informations.get(name).equalsIgnoreCase("LONGBLOB")) {
-								list_attribut.add(String.valueOf(rs.getBlob(name)));
-							} */
 						}
 						cpt++;
 						
@@ -395,6 +282,105 @@ public class TableObject {
 		return list_attribut;	
 	}
 	
+	/**
+	 * Méthode qui un string à partir d'un type de variable d'une base de données
+     * @return un type sql casté en String
+     * @throws SQLException erreur dans la requête sql
+     * @param rs Un ResultSet
+     * @param un String correspondant au non d'une colonne
+	 */
+	private String getValueOf(ResultSet rs, String name) throws SQLException {
+	
+		switch (this.informations.get(name)) {
+		
+			case "INT": {
+				return (String.valueOf(rs.getInt(name)));
+			}
+			case "VARCHAR": {
+				return (rs.getString(name));
+			}
+			case "BIT": {
+				return (String.valueOf(rs.getByte(name)));
+			}
+			case "CHAR": {
+				return (String.valueOf(rs.getString(name)));
+			}
+			case "BINARY": {
+				return (String.valueOf(rs.getByte(name)));
+			}
+			case "VARBINARY": {
+				return (String.valueOf(rs.getByte(name)));
+			}
+			case "TINYTEXT": {
+				return (String.valueOf(rs.getString(name)));
+			}
+			case "MEDIUMTEXT": {
+				return (String.valueOf(rs.getString(name)));
+			}
+			case "LONGTEXT": {
+				return (String.valueOf(rs.getString(name)));
+			}
+			case "TINYINT": {
+				return (String.valueOf(rs.getShort(name)));
+			}
+			case "BOOL": {
+				return (String.valueOf(rs.getBoolean(name)));
+			}
+			case "BOOLEAN": {
+				return (String.valueOf(rs.getBoolean(name)));
+			}
+			case "SMALLINT": {
+				return (String.valueOf(rs.getShort(name)));
+			}
+			case "MEDIUMINT": {
+				return (String.valueOf(rs.getInt(name)));
+			}
+			case "BIGINT": {
+				return (String.valueOf(rs.getLong(name)));
+			}
+			case "FLOAT": {
+				return (String.valueOf(rs.getDouble(name)));
+			}
+			case "DOUBLE": {
+				return (String.valueOf(rs.getDouble(name)));
+			}
+			case "DECIMAL": {
+				return (String.valueOf(rs.getBigDecimal(name)));
+			}
+			case "DATE": {
+				return (String.valueOf(rs.getDate(name)));
+			}
+			case "DATETIME": {
+				return (String.valueOf(rs.getTimestamp(name)));
+			}
+			case "TIMESTAMP": {
+				return (String.valueOf(rs.getTimestamp(name)));
+			}
+			case "TIME": {
+				return (String.valueOf(rs.getTime(name)));
+			}
+			case "TINYBLOB": {
+				return (String.valueOf(rs.getBlob(name)));
+			}
+			case "BLOB": {
+				return (String.valueOf(rs.getBlob(name)));
+			}
+			case "MEDIUMBLOB": {
+				return (String.valueOf(rs.getBlob(name)));
+			}
+			case "LONGBLOB": {
+				return (String.valueOf(rs.getBlob(name)));
+			}
+			default:
+				return null;
+		}
+		
+	}
+	
+	/**
+	 * Méthode qui renvoie une liste des plus grandes chaînes de caractères par colonne
+     * @return une liste des plus grandes chaînes de caractères par colonne
+	 */
 	public ArrayList<String> getMaxSizeFromColumn() {
 		
 		ArrayList<String> maxvalue = new ArrayList<>();
@@ -413,21 +399,27 @@ public class TableObject {
 					maxvalue.set(i, attribut);
 				}
 				
-				
 			}
 			
 		}
-		
 		return maxvalue;
 		
 	}
 	
+	/**
+	 * Méthode qui renvoie un entier
+     * @return un entier correspondant au nombre de colonnes
+	 */
 	public int getTotalColumn() {
 		
 		return informations.keySet().size();
 		
 	}
 	
+	/**
+	 * Méthode qui renvoie un entier
+     * @return un entier correspondant au nombre total de lignes
+	 */
 	public int getTotalLine() {
 		
 		int count = 0;
@@ -446,7 +438,11 @@ public class TableObject {
 		return count;
 		
 	}
-
+	
+	/**
+	 * Méthode qui supprime une ligne
+	 * @param index entier correspondant à un id
+	 */
 	public void deleteLine(int index) {
 		
 		try {
