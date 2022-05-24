@@ -3850,6 +3850,19 @@ CREATE TABLE `note` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `commentaire`
+--
+
+CREATE TABLE `commentaire` (
+  `id_utilisateur` int(15) NOT NULL,
+  `id_film` int(15) NOT NULL,
+  `commentaire` TEXT NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `Personne`
 --
 
@@ -6435,6 +6448,7 @@ ALTER TABLE `Genre`
 --
 ALTER TABLE `genres2films`
   ADD PRIMARY KEY (`id_genre`,`id_film`),
+  ADD KEY `FK_genre` (`id_genre`),
   ADD KEY `FK_film` (`id_film`);
 
 --
@@ -6442,14 +6456,24 @@ ALTER TABLE `genres2films`
 --
 ALTER TABLE `joue`
   ADD PRIMARY KEY (`id_personne`,`id_film`),
-  ADD KEY `FK_film_joue` (`id_film`);
+  ADD KEY `FK_film_joue` (`id_film`),
+  ADD KEY `FK_personne_joue` (`id_personne`);
 
 --
 -- Index pour la table `note`
 --
 ALTER TABLE `note`
   ADD PRIMARY KEY (`id_utilisateur`,`id_film`),
-  ADD KEY `FK_film_note` (`id_film`);
+  ADD KEY `FK_film_note` (`id_film`),
+  ADD KEY `FK_utilisateur_note` (`id_utilisateur`);
+  
+--
+-- Index pour la table `commentaire`
+--
+ALTER TABLE `commentaire`
+  ADD PRIMARY KEY (`id_utilisateur`,`id_film`),
+  ADD KEY `FK_film_note` (`id_film`),
+  ADD KEY `FK_utilisateur_note` (`id_utilisateur`);
 
 --
 -- Index pour la table `Personne`
@@ -6462,6 +6486,7 @@ ALTER TABLE `Personne`
 --
 ALTER TABLE `realise`
   ADD PRIMARY KEY (`id_film`,`id_personne`),
+  ADD KEY `FK_film_realise` (`id_film`),
   ADD KEY `FK_personne_realise` (`id_personne`);
 
 --
@@ -6514,10 +6539,15 @@ ALTER TABLE `joue`
 -- Contraintes pour la table `note`
 --
 ALTER TABLE `note`
-  ADD CONSTRAINT `FK_film_note` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`);
-  
-ALTER TABLE `note` 
+  ADD CONSTRAINT `FK_film_note` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`), 
   ADD CONSTRAINT `FK_utilisateur_note` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
+
+--
+-- Contraintes pour la table `commentaire`
+--
+ALTER TABLE `note`
+  ADD CONSTRAINT `FK_film_commentaire` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`), 
+  ADD CONSTRAINT `FK_utilisateur_commentaire` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `realise`
