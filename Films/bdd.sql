@@ -3850,6 +3850,17 @@ CREATE TABLE `note` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `amis`
+--
+
+CREATE TABLE `amis` (
+  `id_utilisateur1` int(15) NOT NULL,
+  `id_utilisateur2` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `commentaire`
 --
 
@@ -6466,6 +6477,14 @@ ALTER TABLE `note`
   ADD PRIMARY KEY (`id_utilisateur`,`id_film`),
   ADD KEY `FK_film_note` (`id_film`),
   ADD KEY `FK_utilisateur_note` (`id_utilisateur`);
+
+--
+-- Index pour la table `amis`
+--
+ALTER TABLE `amis`
+  ADD PRIMARY KEY (`id_utilisateur1`,`id_utilisateur2`),
+  ADD KEY `FK_utilisateur_amis1` (`id_utilisateur1`),
+  ADD KEY `FK_utilisateur_amis2` (`id_utilisateur2`);
   
 --
 -- Index pour la table `commentaire`
@@ -6541,6 +6560,13 @@ ALTER TABLE `joue`
 ALTER TABLE `note`
   ADD CONSTRAINT `FK_film_note` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`), 
   ADD CONSTRAINT `FK_utilisateur_note` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
+  
+--
+-- Contraintes pour la table `amis`
+--
+ALTER TABLE `amis`
+  ADD CONSTRAINT `FK_utilisateur_amis1` FOREIGN KEY (`id_utilisateur1`) REFERENCES `Utilisateur` (`id_utilisateur`), 
+  ADD CONSTRAINT `FK_utilisateur_amis2` FOREIGN KEY (`id_utilisateur2`) REFERENCES `Utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `commentaire`
