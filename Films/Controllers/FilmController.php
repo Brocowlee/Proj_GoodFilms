@@ -44,6 +44,11 @@
             return $id;
         }
 
+        function displayRealisateur($id_film){
+            $donnees = $this->filmModel->getRealisateur($id_film);
+            return $donnees;
+        }
+
         function displayNoteMean($id){
             $avg = $this->filmModel->getNoteMean($id);
             return $avg;
@@ -64,5 +69,13 @@
             $this -> filmModel -> deleteMark($id_u, $id_f);
         }
 
+<<<<<<< HEAD
 
     }
+=======
+        function showLastComments($titre){
+            $donnees = $this -> filmModel -> showComments($titre);
+            return $donnees;
+        }
+    }
+>>>>>>> f7b3e66c491ee0b2f1887c2b34077f90127c75a3

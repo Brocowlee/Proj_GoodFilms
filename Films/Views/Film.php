@@ -18,7 +18,20 @@
         Durée : <?php echo $donnees['duree']?>
         <br>
         <?php
+
             $id_film = $donnees['id_film'];
+
+            $realisateur = $filmController->displayRealisateur($id_film); 
+
+            while($rea_donnees = $realisateur->fetch_array()){ 
+                $nom = $rea_donnees['nom']; 
+                $prenom = $rea_donnees["prenom"];
+                echo "Réalisateur : ".$nom." ".$prenom;
+            }
+
+            echo'<br>';
+        
+                
             if($filmController->hasNote($id_film)){
                 $value = number_format($filmController->displayNoteMean($id_film),1,",",".");
                 echo "Note global : ".$value;
