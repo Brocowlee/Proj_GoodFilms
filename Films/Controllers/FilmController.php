@@ -69,13 +69,8 @@
             $this -> filmModel -> deleteMark($id_u, $id_f);
         }
 
-<<<<<<< HEAD
-
-    }
-=======
         function showLastComments($titre){
             $donnees = $this -> filmModel -> showComments($titre);
             return $donnees;
         }
     }
->>>>>>> f7b3e66c491ee0b2f1887c2b34077f90127c75a3
