@@ -3,18 +3,17 @@
     if (!isset($_SESSION)){
         session_start();
     }
-    $_SESSION['connexion']="deconnecte";
+    $_SESSION['connexion']="error";
 
-    //import tout les controlleurs 
+    //import tous les controlleurs 
     require_once("Controllers/FilmController.php");
     require_once("Controllers/UserController.php");
     require_once("Controllers/GenreController.php");
 
-    //Declarer les controlleurs
+    //Initialiser tous les controlleurs
     $filmController = new FilmController();
     $userController = new UserController();
     $genreController = new GenreController();
-
 
     if(isset($_POST["action"])){
 
@@ -22,74 +21,98 @@
 
         switch($_POST["action"]){
 
+
             case "connexion" :
                 //Affichage de la Connexion
-                $userName = $userController->displayConnexion();
-
-                if($userName == FALSE){
-
-                    require("Views/Connexion.php");
-                }
-                else{
-
-                    $liste_films = $filmController->displayFilmsTitles();
-                    require("Views/Accueil.php");
-                }
+                $userController->displayConnexion();
                 break;
             
             case "deconnexion" :
                 //Affichage de la déconnexion
                 $userController->displayDeconnexion();
-                require("Views/Connexion.php");
+                break;
+
+            case "send_to_inscription" :
+                //Affichage de l'inscription
+                $userController->displayInscription();
+                break;
+
+            case "inscription" :
+                // Ajoute un utilisateur
+                $userController->createUtilisateur();
                 break;
 
             case "accueil" :
                 //si on clique sur le bouton d'accueil
-                $userName = $userController->displayAccueil();
-                $liste_films = $filmController->displayFilmsTitles();
-                require("Views/Accueil.php");
+                $userController->displayAccueil();
                 break;
             
             case "mes_films" :
                 //Si on clique sur le bouton mes films
-                $mes_films = $filmController->displayMyFilms();
-
-                require("Views/MesFilms.php");
-
+                $filmController->displayMyFilms();
                 break;
 
             case "genre" :
                 //Si on clique sur le bouton de recherche par genre
-                $genres = $genreController->displayAllGenres();
+                $genreController->displayAllGenres();
+                break;
 
-                require("Views/Genre.php");
-
+            case "un_genre" : 
+                //Si on choisit un genre pour en voir les films
+                $filmController->displayOneGenre();
                 break;
             
             case "recherche" :
-                //Si l'utilisateur fait une recherche
-                $films_recherche = $filmController -> displayResearch();
-
-                require("Views/Recherche.php");
-
+                //Si l'utilisateur fait une recherche de genre
+                $filmController -> displayResearch();
                 break;
+            
+            case "recherche_amis" :
+                //Si l'utilisateur fait une recherche d'amis
+                 $filmController -> displayResearchFriend();
+                 require("Views/Recherche_amis.php");
+                 break;
             
             case "un_film" : 
                 //Si l'utilisateur veut voir les détails d'un film
-                $titre = $_POST["film"];
-                echo "Tout va bien";
-                echo $titre;
-                $film = $filmController->displayOneFilm();
-
-                require("Views/Film.php");
-
+                $filmController->displayOneFilm();
                 break;
 
+            case "notation" :
+                //Si l'utilisateur change la note d'un film
+                $userController->displayModifyMark();
+                break;
+
+            case "sup_note" :
+                //Si l'utilisateur appuie sur le bouton pour supprimer la note d'un film
+                $userController->displayDeleteMark();
+                break;
+
+            case "commentaire" :
+                //Si l'utilisateur appuie sur le bouton pour ajouter un commentaire
+                $userController->addComment();
+                break;
+            
+            case "target_utilisateur" :
+                // Si l'utilisateur appuie sur le login d'un autre utilisateur
+                $userController->displayOneUtilisateur();
+                break;
+            
+            case "suivre" :
+                // Si l'utilisateur suit un autre utilisateur
+                $userController->addToFriend();
+                break;
+
+            case "fuir" :
+                // Si l'utilisateur arrête de suivre un autre utilisateur
+                $userController->removeFromFriend();
+                break;
         }
     }
     else {
         //Charger l'accueil par défaut
-        require("Views/Connexion.php");
+        $userController->displayConnexion();
+
 
         
     }

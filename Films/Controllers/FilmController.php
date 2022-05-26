@@ -16,17 +16,59 @@
         }
 
         function displayOneFilm(){
-            $film = $this->filmModel->getOneFilm();
-            return $film->fetch_array();
+            $donnees = $this->filmModel->getOneFilm();
+            $titre = $_POST["film"];
+            require("Views/Film.php");
         }
 
         function displayMyFilms(){
             $mes_films = $this->filmModel->getMyFilms();
-            return $mes_films;
+            require("Views/Utilisateur.php");
         }
 
         function displayResearch(){
-            $recherche = $this->filmModel->getResearchFilm();
-            return $recherche;
+            $films_recherche = $this->filmModel->getResearchFilm();
+            require("Views/Recherche.php");
+        }
+
+        function displayResearchFriend(){
+            $amis_recherche = $this->filmModel->getResearchFriend();
+            return $amis_recherche;
+        }
+
+        function displayOneGenre(){
+            $un_genre = $this->filmModel->getFilmsOneGenre();
+            $genre = $_POST["genre"];
+            require("Views/UnGenre.php");
+        }
+
+        function displayOneFilmID(){
+            $id = $this->filmModel->getFilmID();
+            return $id;
+        }
+
+        function displayNoteMean($id){
+            $avg = $this->filmModel->getNoteMean($id);
+            return $avg;
+        }
+
+        function hasNote($id){
+            $bool = $this->filmModel->hasNote($id);
+            return $bool;
+        }
+
+
+
+        function changeNote($id_u, $id_f){
+            $this -> filmModel -> changeMark($id_u, $id_f, $_POST["new_note"]);
+        }
+
+        function suppNote($id_u, $id_f){
+            $this -> filmModel -> deleteMark($id_u, $id_f);
+        }
+
+        function showLastComments($titre){
+            $donnees = $this -> filmModel -> showComments($titre);
+            return $donnees;
         }
     }

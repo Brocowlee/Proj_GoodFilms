@@ -10,7 +10,7 @@
     <?php require("Views/header.php"); ?>
 
     <body>
-        <h1>Vous nous avez manqué <?php echo $userName->fetch_assoc()["prenom_u"] ?></h1>
+        <h1>Vous nous avez manqué <?= $_SESSION["login"] ?></h1>
         </br>
 
         <h3>Voici les derniers films sortis :</h3>
@@ -19,16 +19,13 @@
             <?php while($donnees = $liste_films->fetch_array()){ ?>
                 
                 <li>
-                <form method='POST' >
-                    <select name="film">
-                        <option value="<?php $donnees['titre'] ?>">
-                            <?php echo  $donnees['titre'] ?>
-                        </option>
-                    </select>
-                    <button type="submit" name="action" value="un_film">
-                        Détails
-                    </button>   
-                </form>
+                    <form id="form_film" method='POST'>
+                        <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
+                        <?= $donnees['titre'] ?>
+                        <button type="submit" name="action" value="un_film">
+                            Détails
+                        </button>
+                    </form>
                 </li>      
             <?php } ?>     
         </ul>
