@@ -14,8 +14,8 @@
         <h2>Connexion</h2>
         
         <form id="informations" method="POST">
-            login : <input type="text" name="login" required></br>
-            mot de passe : <input type="password" name="password" required></br>
+            login : <input id="barreLogin" type="text" name="login" required></br>
+            mot de passe : <input id="barreMdp" type="password" name="password" required></br>
             <button id="connexionBtn" type="submit" name="action" value="connexion">Connexion</buttom>
         </form>
         <form id="send_to_inscription" method="POST">

@@ -49,6 +49,16 @@ button {
 button#inscriptionBtn{
     position: relative;
     right:100px;
-    top:10px;
+    top:60px;
+}
+
+#barreLogin{
+    position: relative;
+    left: 28px;
+}
+
+#informations{
+    position: relative;
+    top: 50px;
 }
 

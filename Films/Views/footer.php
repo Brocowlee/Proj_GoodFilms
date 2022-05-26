@@ -18,25 +18,23 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="#">Web design</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Hosting</a></li>
+                            <li><a href="#">Github</a></li>
+                            <li><a href="#">Trellot</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Github</a></li>
+                            <li><a href="#">Trellot</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">
-                        <h3>Company Name</h3>
-                        <p>Praesent sed fezfezeflobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                        <h3>Notre projet</h3>
+                        <p>Notre groupe est composé de Vincent TAKAHASKI, Thomas NICOLAS, Benjamin GUERIOT et Arthur GONAY</p>
                     </div>
                       </div>
-                <p class="copyright">Company Name © 2018</p>
+                <p class="copyright">Polytech Annecy-Chambéry © 2022</p>
             </div>
         </footer>
     </div>
