@@ -47,6 +47,11 @@
             return $id;
         }
 
+        function displayRealisateur($id_film){
+            $donnees = $this->filmModel->getRealisateur($id_film);
+            return $donnees;
+        }
+
         function displayNoteMean($id){
             $avg = $this->filmModel->getNoteMean($id);
             return $avg;
