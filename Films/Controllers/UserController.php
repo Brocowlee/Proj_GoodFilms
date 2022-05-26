@@ -12,9 +12,7 @@
             $this->filmModel = new FilmModel();
         }
 
-        // function displayFriendList($target){
-        //     return $this->userModel->getFriendList($target);
-        // }
+
 
         function displayConnexion(){
 
