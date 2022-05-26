@@ -44,7 +44,7 @@
 
         function getFilmsWatched($target){
             $db=$this->getDatabaseConnection();  
-            $sql="select titre from film where id_film in ( select id_film from commentaire where id_utilisateur = '".$target."' UNION select id_film from note where id_utilisateur = '".$target."');";
+            $sql="select titre, image from film where id_film in ( select id_film from commentaire where id_utilisateur = '".$target."' UNION select id_film from note where id_utilisateur = '".$target."');";
             $result=mysqli_query($db, $sql);
             return $result;
         }

@@ -6,7 +6,7 @@ class FilmModel extends Model {
 
     function getAllFilmsTitles(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre, annee_sortie FROM film ORDER BY annee_sortie DESC LIMIT 10";
+        $sql="SELECT titre, annee_sortie, image FROM film ORDER BY annee_sortie DESC LIMIT 10";
         $result=mysqli_query($db, $sql);
         
         return $result;
@@ -40,7 +40,7 @@ class FilmModel extends Model {
 
     function getResearchFilm(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre FROM film WHERE film.titre LIKE '%".$_POST['recherche']."%' ORDER BY titre DESC";
+        $sql="SELECT titre, image FROM film WHERE film.titre LIKE '%".$_POST['recherche']."%' ORDER BY titre DESC";
         $result=mysqli_query($db, $sql);
         
         return $result;
@@ -55,7 +55,7 @@ class FilmModel extends Model {
 
     function getFilmsOneGenre(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre FROM film, genre, genres2films WHERE film.id_film=genres2films.id_film and genre.id_genre=genres2films.id_genre and genre.genre='".$_POST["genre"]."'";
+        $sql="SELECT titre, image FROM film, genre, genres2films WHERE film.id_film=genres2films.id_film and genre.id_genre=genres2films.id_genre and genre.genre='".$_POST["genre"]."'";
         $result=mysqli_query($db, $sql);
 
         return $result;

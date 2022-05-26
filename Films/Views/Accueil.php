@@ -21,9 +21,8 @@
                 <li>
                     <form id="form_film" method='POST'>
                         <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
-                        <?= $donnees['titre'] ?>
                         <button type="submit" name="action" value="un_film">
-                            Détails
+                            <img src="<?php echo $donnees['image']?>">
                         </button>
                     </form>
                 </li>      

@@ -70,7 +70,6 @@
             case "recherche_amis" :
                 //Si l'utilisateur fait une recherche d'amis
                  $filmController -> displayResearchFriend();
-                 require("Views/Recherche_amis.php");
                  break;
             
             case "un_film" : 

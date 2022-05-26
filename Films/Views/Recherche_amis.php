@@ -16,10 +16,6 @@
         <ul>
             <?php 
             
-            $filmController = new FilmController();
-
-            $friends_research = $filmController->displayResearchFriend();
-            
             while($donnees = $friends_research->fetch_array()){ ?>        
 
                     <?php $login = $donnees['login']; 

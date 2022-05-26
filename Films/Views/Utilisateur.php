@@ -54,25 +54,6 @@
             
             ?>
 
-        <div id="films">
-
-            <h3>Films regardés :</h3>
-                <ul>
-                    <?php while($donnees = $films_watched->fetch_array()){ ?>
-                
-                        <li>
-                            <form id="form_film" method='POST'>
-                                <input type="hidden" name="film" value="<?= $donnees['titre'] ?>">
-                                <?= $donnees['titre'] ?>
-                                <button type="submit" name="action" value="un_film">Détails</button>
-                            </form>
-                        </li> 
-                           
-                    <?php } ?>  
-
-                </ul>
-        </div>
-
         <div id="amis">
             <h3>Personnes suivies :</h3>
 
@@ -91,7 +72,27 @@
                 } ?>  
             </ul>       
 
-        </div>    
+        </div>  
+
+        <div id="films">
+
+            <h3>Films regardés :</h3>
+                <ul>
+                    <?php while($donnees = $films_watched->fetch_array()){ ?>
+                
+                        <li>
+                            <form id="form_film" method='POST'>
+                                <input type="hidden" name="film" value="<?= $donnees['titre'] ?>">
+                                <button type="submit" name="action" value="un_film">
+                                    <img src="<?php echo $donnees['image']?>">
+                                </button>
+                            </form>
+                        </li> 
+                           
+                    <?php } ?>  
+
+                </ul>
+        </div>  
 
         <div id="commentaire">
             <h3>Derniers commentaires :</h3>
