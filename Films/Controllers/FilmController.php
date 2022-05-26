@@ -57,5 +57,4 @@
             $this -> filmModel -> deleteMark($id_u, $id_f);
         }
 
-
     }
