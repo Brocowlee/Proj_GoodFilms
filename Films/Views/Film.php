@@ -10,6 +10,7 @@
     <?php require("Views/header.php"); ?>
 
     <body>
+<<<<<<< HEAD
         <h1><?php echo $titre ?> </h1>
         année de sortie : <?php echo $donnees['annee_sortie'] ?>
 
@@ -54,5 +55,15 @@
                 Valider
             </button>
         </form>
+=======
+        <h1><?php $film["titre"] ?> </h1>
+        </br>
+
+
+        Vous avez mis la note de : 
+
+
+
+>>>>>>> origin/Thomas
     </body>
 </content>

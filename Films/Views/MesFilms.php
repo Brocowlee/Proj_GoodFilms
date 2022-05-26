@@ -14,6 +14,7 @@
         <ul>
         <?php while($donnees = $mes_films->fetch_array()){ ?>
             <li>
+<<<<<<< HEAD
                 <form id="form_film" method='POST'>
                     <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
                     <?php echo  $donnees['titre'] ?>
@@ -21,6 +22,12 @@
                         Détails
                     </button>
                 </form>
+=======
+                <?php echo $donnees['titre']." : ".$donnees['note']." ";?>
+                <button name="action" value="<?php $donnees['titre'] ?>">
+                    détails
+                </button>
+>>>>>>> origin/Thomas
             </li>      
         <?php } ?> 
         </ul>

@@ -1,15 +1,24 @@
 <?php 
     require_once("Models/UserModel.php");
+<<<<<<< HEAD
     require_once("Models/FilmModel.php");
+=======
+>>>>>>> origin/Thomas
 
     class UserController{
 
         private $userModel;
+<<<<<<< HEAD
         private $filmModel;
 
         function __construct(){
             $this->userModel = new UserModel();
             $this->filmModel = new FilmModel();
+=======
+
+        function __construct(){
+            $this->userModel = new UserModel();
+>>>>>>> origin/Thomas
         }
 
         function displayConnexion(){
@@ -22,6 +31,7 @@
                 $_SESSION["connexion"]="ok";
                 $_SESSION["login"]=$_POST["login"];
                 $_SESSION["mdp"]=$_POST["mdp"];
+<<<<<<< HEAD
                 $val=$this->userModel->getUserId();
                 $_SESSION["user_id"] = $val->fetch_assoc();
                 $firstName = $this->userModel->getUserFirstName();
@@ -32,6 +42,16 @@
             else {
                 $_SESSION["connexion"]="error";
                 require("Views/Connexion.php");
+=======
+                $_SESSION["user_id"] = $this->userModel->getUserId();
+                $firstName = $this->userModel->getUserFirstName();
+                
+                return $firstName;
+            }
+            else {
+                $_SESSION["connexion"]="error";
+                return false;
+>>>>>>> origin/Thomas
             }  
         }
 
@@ -39,6 +59,7 @@
             unset($_SESSION['login']);
             unset($_SESSION['mdp']);
             $_SESSION['connexion']="deconnecte";
+<<<<<<< HEAD
             require("Views/Connexion.php");
         }
 
@@ -70,5 +91,11 @@
             $this->filmModel->deleteMark($id_utilisateur, $id_film);
             $donnees = $this->filmModel->getOneFilm();
             require("Views/Film.php");
+=======
+        }
+
+        function displayAccueil(){
+            return $this->userModel->getUserFirstName();
+>>>>>>> origin/Thomas
         }
     }

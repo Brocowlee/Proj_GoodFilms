@@ -16,13 +16,19 @@
         }
 
         function displayOneFilm(){
+<<<<<<< HEAD
             $donnees = $this->filmModel->getOneFilm();
             $titre = $_POST["film"];
             require("Views/Film.php");
+=======
+            $film = $this->filmModel->getOneFilm();
+            return $film->fetch_array();
+>>>>>>> origin/Thomas
         }
 
         function displayMyFilms(){
             $mes_films = $this->filmModel->getMyFilms();
+<<<<<<< HEAD
             require("Views/MesFilms.php");
         }
 
@@ -48,5 +54,13 @@
 
         function suppNote($id_u, $id_f){
             $this -> filmModel -> deleteMark($id_u, $id_f);
+=======
+            return $mes_films;
+        }
+
+        function displayResearch(){
+            $recherche = $this->filmModel->getResearchFilm();
+            return $recherche;
+>>>>>>> origin/Thomas
         }
     }
