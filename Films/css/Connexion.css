@@ -1,0 +1,54 @@
+html{
+background-color: #232323;
+}
+
+
+/* img{
+    width: auto;
+    left: auto;
+    top: auto;
+    position: absolute;
+    opacity: 0.2;
+    /* object-position: 50% 50%; 
+} */
+
+
+#connexion{
+    background: #232323;
+    color:lightgray;
+    margin: auto;
+    /* display: flex;
+    align-items: center; */
+    width: 100%;
+    top: 200px;
+    /* border: 3px solid #263238 ; */
+    padding: 10px;
+    text-align: center;
+    font-family : Georgia;
+}
+
+
+button {
+    width: 150px;
+    height: 30px;
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  button#connexionBtn{
+    position: relative;
+    left:100px;
+    top:40px;
+}
+
+button#inscriptionBtn{
+    position: relative;
+    right:100px;
+    top:10px;
+}
+
