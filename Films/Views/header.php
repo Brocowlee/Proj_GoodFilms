@@ -14,7 +14,10 @@
             <input type="hidden" name="login" value="<?= $_SESSION['login'] ?>">
             <button type="submit" name="action" value="accueil">Good2Watch</button>
         </form>
-        <form method='POST'><button type="submit" name="action" value="mes_films">Mon Profil</button></form>
+        <form method='POST'>
+            <input type="hidden" name="target_utilisateur" value="<?= $_SESSION['login'] ?>">
+            <button type="submit" name="action" value="mes_films">Mon Profil</button>
+        </form>
         <form method='POST'><button type="submit" name="action" value="genre">Recherche par genre</button></form>
         <form method='POST'>
             <input type="search" name="recherche" placeholder="Recherche par titre" required>

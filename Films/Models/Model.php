@@ -23,7 +23,7 @@ class Model {
         $this->conn = $con;
     }
 
-    protected function getConnection(){
+    protected function getDatabaseConnection(){
 
         if(!isset($this->conn)){
             $this->initConnection();

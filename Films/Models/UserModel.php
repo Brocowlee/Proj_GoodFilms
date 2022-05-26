@@ -4,18 +4,6 @@
 
     class UserModel extends Model{
 
-        function verifyUser(){
-            $db=$this->getDatabaseConnection();
-            $sql="SELECT * FROM utilisateur WHERE login='".$_POST["login"]."' and mot_de_passe = '".$_POST["password"]."';";
-            $result=mysqli_query($db, $sql);
-            if($result->fetch_array()==NULL){
-                return FALSE;
-            }
-            else{
-                return TRUE;
-            }
-        }
-
         function getUserId($target = null){
             $target = $target ?? $_SESSION['login'];
             $db=$this->getDatabaseConnection();
@@ -37,17 +25,17 @@
             $result=mysqli_query($db, $sql);
         }
     
-        function removeFriend($user, $target){
+        function removeFriend($userID, $targetID){
             $db=$this->getDatabaseConnection();
-            $sql="DELETE FROM amis WHERE ((select id_utilisateur from utilisateur where login = '".$user."') and (select id_utilisateur from utilisateur where login = '".$target."'));";
+            $sql="DELETE FROM amis WHERE id_utilisateur1=".$userID." AND id_utilisateur2 = ".$targetID." ;";
             $result=mysqli_query($db, $sql);
         }
 
-        function getOneUtilisateur(){
+        function getOneUtilisateur($login){
 
             $db=$this->getDatabaseConnection();
      
-            $sql="SELECT id_utilisateur, login FROM utilisateur WHERE utilisateur.login = '".$_POST["target_utilisateur"]."'";
+            $sql="SELECT id_utilisateur, login FROM utilisateur WHERE utilisateur.login = '".$login."'";
             $result=mysqli_query($db, $sql);
             $donnees=$result->fetch_assoc();
             return $donnees;
@@ -70,7 +58,7 @@
 
         function getLastComments($target){
             $db=$this->getDatabaseConnection();  
-            $sql="select commentaire.commentaire, commentaire.id_film from commentaire where id_utilisateur = '".$target."' Order by date desc;";
+            $sql="select commentaire.commentaire, commentaire.id_film, film.titre from commentaire, film where id_utilisateur = '".$target."' and commentaire.id_film = film.id_film Order by date desc;";
             $result=mysqli_query($db, $sql);
             return $result;
         }
@@ -95,8 +83,27 @@
             return $count > 0 ? True : False;
         }
 
-        function getDatabaseConnection(){
-            return $this->getConnection();
+
+
+        function verifyUser($login, $password){
+            $db = $this->getDatabaseConnection();
+            $sql= "SELECT mot_de_passe, salt FROM utilisateur WHERE login = '$login' LIMIT 1";
+            $result = mysqli_query($db, $sql);
+                
+            $row = $result->fetch_array();
+            //Liste des variables nécessaires pour l'affichage
+
+            if(isset($row['mot_de_passe'])){
+                $bdd_hash = $row['mot_de_passe'];
+                $salt = $row['salt'];
+    
+                $hash = crypt($password, $salt);
+                    
+                    if (hash_equals($hash, $bdd_hash)) {
+                        return true;
+                    }
+            }
+            return false;
         }
 
     }

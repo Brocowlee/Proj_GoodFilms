@@ -12,77 +12,40 @@
             $this->filmModel = new FilmModel();
         }
 
+        // function displayFriendList($target){
+        //     return $this->userModel->getFriendList($target);
+        // }
+
         function displayConnexion(){
 
-            if(isset($_SESSION["connexion"])){
-                if ($_SESSION["connexion"]=="error"){
-                $db = $this->userModel->getDatabaseConnection();
-
-                if(isset($_POST["login"])){
-                    if(isset($_POST["password"])){
-
-            
-                        $login = $_POST["login"]; 
-                        $password = $_POST["password"];
-
-                        $sql= "SELECT mot_de_passe, salt FROM utilisateur WHERE login = '$login' LIMIT 1";
-                        $result = mysqli_query($db, $sql);
-                            
-                        $row = $result->fetch_array();
-                        //Liste des variables nécessaires pour l'affichage
-
-                        if(isset($row['mot_de_passe'])){
-                            $bdd_hash = $row['mot_de_passe'];
-                            $salt = $row['salt'];
-                
-                            $hash = crypt($password, $salt);
-                                
-                                if (hash_equals($hash, $bdd_hash)) {
-                                    
-                                    $_SESSION["connexion"]="ok";
-                                    $_SESSION["login"]=$_POST["login"];
-                                    $_SESSION["mdp"]=$_POST["password"];
-                                    $val=$this->userModel->getUserId();
-                                    $_SESSION["user_id"] = $val->fetch_assoc();
-                        
-                                    $liste_films = $this->filmModel->getAllFilmsTitles();
-                                    require("Views/Accueil.php");
-                                }
-                                else {
-
-                                    $_SESSION["connexion"]="error";
-                                    require("Views/Connexion.php");
-                                }  
-                        }
-
-                        else {
-
-                            $_SESSION["connexion"]="error";
-                            require("Views/Connexion.php");
-                        }  
-
-                    }
+            if(isset($_POST["login"]) && isset($_POST["password"])){
+                if($this->userModel->verifyUser($_POST["login"], $_POST["password"])){
+                    $_SESSION["connexion"]="ok";
+                    $_SESSION["login"]=$_POST["login"];
+                    $_SESSION["mdp"]=$_POST["password"];
+                    $val=$this->userModel->getUserId();
+                    $_SESSION["user_id"] = $val->fetch_assoc();
+                    $liste_films = $this->filmModel->getAllFilmsTitles();
+                    require("Views/Accueil.php");
                 }
                 else {
-
                     $_SESSION["connexion"]="error";
                     require("Views/Connexion.php");
-                }  
+                }      
             }
-        }
             else {
-
                 $_SESSION["connexion"]="error";
                 require("Views/Connexion.php");
             }  
         }
 
+
+
         function displayInscription(){
             require("Views/Inscription.php");
         }
-        
+    
 
-        
         function createUtilisateur(){
 
 
@@ -90,7 +53,7 @@
 
             if($this->userModel->alreadyExist($login)){
 
-                echo "Ce login est déjà utilisé !";
+                $inscription_error = true;
 
                 require("Views/Inscription.php");
             } else {
@@ -109,21 +72,38 @@
         }
        
         function displayOneUtilisateur(){
-            $donnees = $this->userModel->getOneUtilisateur();
+            $donnees = $this->userModel->getOneUtilisateur($_POST["target_utilisateur"]);
+            
+            $login = $_SESSION["login"] ;
+            $utilisateur_target = $_POST["target_utilisateur"];
+
+            if($login != $utilisateur_target){
+                $soi = false;
+                if($this->userModel->isAlreadyFriendWith($login, $utilisateur_target)){
+                    $friend = true;
+                }
+                else{
+                    $friend = false;
+                }
+            }
+            else {
+                $soi = true;
+            }
+
+
+            $result =  $this->userModel->getUserId($utilisateur_target);
+           
+            $row = mysqli_fetch_array($result);
+            $id = $row["id_utilisateur"];
+            $films_watched = $this->userModel->getFilmsWatched($id);
+
+            $liste_amis = $this->userModel->getFriendList($id);
+            $last_comments = $this->userModel->getLastComments($id);
+
             require("Views/Utilisateur.php");
         }
 
-        function displayLastFilmsWatched($target){
-            return $this->userModel->getFilmsWatched($target);
-        }
 
-        function displayFriendList($target){
-            return $this->userModel->getFriendList($target);
-        }
-
-        function displayLastComments($target){
-            return $this->userModel->getLastComments($target);
-        }
     
         function displayDeconnexion(){
             unset($_SESSION['login']);
@@ -140,18 +120,54 @@
 
         function addToFriend(){
             $target = $_POST["suivre"];
-            $user = $_SESSION["login"];
+            $login = $_SESSION["login"];
             
-            $this->userModel->addFriend($user, $target);
+            $this->userModel->addFriend($login, $target);
+
+            $donnees = $this->userModel->getOneUtilisateur($target);
+            $friend = true;
+            $soi = false;
+
+            $result =  $this->userModel->getUserId($target);
+           
+            $row = mysqli_fetch_array($result);
+            $id = $row["id_utilisateur"];
+            $films_watched = $this->userModel->getFilmsWatched($id);
+
+            $liste_amis = $this->userModel->getFriendList($id);
+            $last_comments = $this->userModel->getLastComments($id);
+
             require("Views/Utilisateur.php");
         }
 
         function removeFromFriend(){
             $target = $_POST["fuir"];
-            $user = $_SESSION["login"];
+            $login = $_SESSION["login"];
 
-            $this->userModel->removeFriend($user, $target);
+            $id1 = $this->userModel->getUserId($login);
+            $userID = $id1->fetch_array()["id_utilisateur"];
+            $id2 = $this->userModel->getUserId($target);
+            $targetID = $id2->fetch_array()["id_utilisateur"];
+
+
+            $this->userModel->removeFriend($userID, $targetID);
+
+            $donnees = $this->userModel->getOneUtilisateur($target);
+
+            $friend = false;
+            $soi = false;
+
+            $result =  $this->userModel->getUserId($target);
+           
+            $row = mysqli_fetch_array($result);
+            $id = $row["id_utilisateur"];
+            $films_watched = $this->userModel->getFilmsWatched($id);
+
+            $liste_amis = $this->userModel->getFriendList($id);
+            $last_comments = $this->userModel->getLastComments($id);
+
             require("Views/Utilisateur.php");
+
         }
 
 
@@ -171,6 +187,9 @@
             $this->filmModel-> changeMark($id_utilisateur, $id_film, $_POST["new_note"]);
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
+            $realisateur = $this->filmModel->getRealisateur($id_film);
+            $has_note = $this->filmModel->hasNote($id_film);
+            $avg = $this->filmModel->getNoteMean($id_film);
             require("Views/Film.php");
         }
 
@@ -189,6 +208,9 @@
             $this->filmModel->deleteMark($id_utilisateur, $id_film);
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
+            $realisateur = $this->filmModel->getRealisateur($id_film);
+            $has_note = $this->filmModel->hasNote($id_film);
+            $avg = $this->filmModel->getNoteMean($id_film);
             require("Views/Film.php");
         }
 
@@ -196,6 +218,8 @@
 
             $titre = $_POST["film"];
             $login = $_SESSION["login"];
+            $id_f = $this->filmModel->getOneFilm($titre, $login);
+            $id_film = $id_f["id_film"];
 
             // partie pour l'id utilisateur
             $id_u = $this->userModel->getUserID();
@@ -212,6 +236,13 @@
             $this->filmModel->addComment($titre, $id_utilisateur, $commentaire, $datetime);
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
+
+
+
+
+            $realisateur = $this->filmModel->getRealisateur($id_film);
+            $has_note = $this->filmModel->hasNote($id_film);
+            $avg = $this->filmModel->getNoteMean($id_film);
             require("Views/Film.php");
         }
 

@@ -15,6 +15,10 @@
             $login = $_SESSION["login"];
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
+            $id_film = $donnees['id_film'];
+            $realisateur = $this->filmModel->getRealisateur($id_film);
+            $has_note = $this->filmModel->hasNote($id_film);
+            $avg = $this->filmModel->getNoteMean($id_film);
             require("Views/Film.php");
         }
 
@@ -44,22 +48,6 @@
             return $id;
         }
 
-        function displayRealisateur($id_film){
-            $donnees = $this->filmModel->getRealisateur($id_film);
-            return $donnees;
-        }
-
-        function displayNoteMean($id){
-            $avg = $this->filmModel->getNoteMean($id);
-            return $avg;
-        }
-
-        function hasNote($id){
-            $bool = $this->filmModel->hasNote($id);
-            return $bool;
-        }
-
-
 
         function changeNote($id_u, $id_f){
             $this -> filmModel -> changeMark($id_u, $id_f, $_POST["new_note"]);
@@ -69,13 +57,5 @@
             $this -> filmModel -> deleteMark($id_u, $id_f);
         }
 
-<<<<<<< HEAD
 
     }
-=======
-        function showLastComments($titre){
-            $donnees = $this -> filmModel -> showComments($titre);
-            return $donnees;
-        }
-    }
->>>>>>> f7b3e66c491ee0b2f1887c2b34077f90127c75a3

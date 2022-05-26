@@ -49,7 +49,7 @@
             
             case "mes_films" :
                 //Si on clique sur le bouton mes films
-                $filmController->displayMyFilms();
+                $userController->displayOneUtilisateur();
                 break;
 
             case "genre" :

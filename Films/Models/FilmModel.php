@@ -15,7 +15,7 @@ class FilmModel extends Model {
     function getOneFilm($titre, $login){
 
         $db=$this->getDatabaseConnection();
-        $sql="SELECT film.id_film, titre, resume, annee_sortie, duree, note FROM film, utilisateur, note WHERE film.titre='".$titre."' and film.id_film=note.id_film and note.id_utilisateur=utilisateur.id_utilisateur and utilisateur.login='".$login."'";
+        $sql="SELECT film.id_film, image, titre, resume, annee_sortie, duree, note FROM film, utilisateur, note WHERE film.titre='".$titre."' and film.id_film=note.id_film and note.id_utilisateur=utilisateur.id_utilisateur and utilisateur.login='".$login."'";
         $result=mysqli_query($db, $sql);
         $donnees = $result->fetch_assoc();
 
@@ -136,15 +136,6 @@ class FilmModel extends Model {
         $result=mysqli_query($db, $sql);
     }
 
-    function displayOneUtilisateur(){
-        require("Views/Utilisateur.php");
-    }
-
-    function getDatabaseConnection(){
-        return $this->getConnection();
-    }
-<<<<<<< HEAD
-
     function showLastComments($titre){
         $db=$this->getDatabaseConnection();
         $sql = "SELECT utilisateur.login, commentaire, date from commentaire INNER JOIN utilisateur on utilisateur.id_utilisateur = commentaire.id_utilisateur where id_film = (SELECT id_film FROM film WHERE titre = '".$titre."' LIMIT 1) ORDER BY date DESC LIMIT 10;";
@@ -152,6 +143,3 @@ class FilmModel extends Model {
         return $result;
     }
 }
-=======
-}
->>>>>>> f7b3e66c491ee0b2f1887c2b34077f90127c75a3

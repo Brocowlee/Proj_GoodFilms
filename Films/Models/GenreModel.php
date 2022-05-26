@@ -12,9 +12,7 @@ class GenreModel extends Model {
         return $result;
     }
 
-    function getDatabaseConnection(){
-        return $this->getConnection();
-    }
+
 
 }
 
