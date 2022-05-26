@@ -12,11 +12,7 @@
 
         function displayAllGenres(){
             $genres = $this->genreModel->getAllGenres();
-<<<<<<< HEAD
-            require("Views/Genre.php");
-=======
             return $genres;
->>>>>>> origin/Thomas
         }
 
     }

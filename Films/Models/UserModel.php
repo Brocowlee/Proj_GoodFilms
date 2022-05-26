@@ -6,11 +6,7 @@
 
         function verifyUser(){
             $db=$this->dbConnect();
-<<<<<<< HEAD
-            $sql="SELECT * FROM utilisateur WHERE login='".$_POST["login"]."' and mot_de_passe = '".$_POST["mdp"]."';";
-=======
             $sql="SELECT * FROM utilisateur WHERE login ='".$_POST["login"]."' and mot_de_passe = '".$_POST["mdp"]."';";
->>>>>>> origin/Thomas
             $result=mysqli_query($db, $sql);
             if($result->fetch_array()==NULL){
                 return FALSE;
@@ -31,11 +27,7 @@
             $db=$this->dbConnect();
             $sql="SELECT id_utilisateur FROM utilisateur WHERE login='".$_SESSION["login"]."' and mot_de_passe = '".$_SESSION["mdp"]."';";
             $result=mysqli_query($db, $sql);
-<<<<<<< HEAD
-            return $result;
-=======
             return $result->fetch_assoc()["id_u"];
->>>>>>> origin/Thomas
         }
 
 
