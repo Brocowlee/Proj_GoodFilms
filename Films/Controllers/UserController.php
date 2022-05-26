@@ -12,6 +12,10 @@
             $this->filmModel = new FilmModel();
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 76289b0a947a6e08ee9207a64c43fac0080c03dc
 
         function displayConnexion(){
 
