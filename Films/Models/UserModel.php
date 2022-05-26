@@ -6,7 +6,7 @@
 
         function verifyUser(){
             $db=$this->dbConnect();
-            $sql="SELECT * FROM utilisateur WHERE login ='".$_POST["login"]."' and mot_de_passe = '".$_POST["mdp"]."';";
+            $sql="SELECT * FROM Utilisateur WHERE login ='".$_POST["login"]."' and mot_de_passe = '".$_POST["mdp"]."';";
             $result=mysqli_query($db, $sql);
             if($result->fetch_array()==NULL){
                 return FALSE;

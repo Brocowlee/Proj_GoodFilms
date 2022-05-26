@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<link href="css\Connexion.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -8,6 +8,7 @@
 <title>Connexion</title>
 
 <body>
+    <!--<img src="https://www.le-monde-du-stickers.fr/10649-large_default/sticker-cinema-bobine-de-film.jpg" alt="error"> -->
 
     <div id="connexion">
 
@@ -32,6 +33,7 @@
             <button type="submit" name="action" value="connexion">Connexion</buttom>
         </form>
 
-    </div>
 
+    </div>
+    <?php include_once ("footer.php"); ?>
 </body>
