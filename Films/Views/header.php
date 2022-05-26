@@ -10,11 +10,21 @@
 <content>
 
     <div id="menu_haut">
-        <a href="accueil.php"><div id="accueil">Good2Watch<div></a>
-        <a href="liste_films.php"><div id="liste_films">Mes Films<div></a>
-        <a href="recherche.php"><div id="recherche">Recherche par genre<div></a>
-        <input type="search" name="recherche" placeholder="Recherche par titre">
-        <a href="logout.php"><div id="connexion">Déconnexion<div></a>
+        <form method='POST'>
+            <input type="hidden" name="login" value="<?= $_SESSION['login'] ?>">
+            <button type="submit" name="action" value="accueil">Good2Watch</button>
+        </form>
+        <form method='POST'><button type="submit" name="action" value="mes_films">Mes Films</button></form>
+        <form method='POST'><button type="submit" name="action" value="genre">Recherche par genre</button></form>
+        <form method='POST'>
+            <input type="search" name="recherche" placeholder="Recherche par titre" required>
+            <button type="submit" name="action" value="recherche">Rechercher</button>
+        </form>
+        <form method='POST'>
+            <input type="search" name="recherche_amis" placeholder="Recherche d'amis" required>
+            <button type="submit" name="action" value="recherche_amis">Rechercher</button>
+        </form>
+        <form method='POST'><button type="submit" name="action" value="deconnexion">Déconnexion</button></form>
     </div>
 
 </content>
