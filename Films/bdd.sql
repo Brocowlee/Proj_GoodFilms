@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Film`
+-- Structure de la table `film`
 --
 
-CREATE TABLE `Film` (
+CREATE TABLE `film` (
   `id_film` int(15) NOT NULL,
   `titre` varchar(100) NOT NULL,
   `resume` varchar(1000) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `Film` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Film`
+-- Déchargement des données de la table `film`
 --
 
 INSERT INTO `film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
@@ -323,7 +323,7 @@ INSERT INTO `film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 (278, 'Comment c\'est loin', 'Après une dizaine d’années de non-productivité, Orel et Gringe, la trentaine, galèrent à écrire leur premier album de rap. Leurs textes, truffés de blagues de mauvais goût et de références alambiquées, évoquent leur quotidien dans une ville moyenne de province. Le problème : impossible de terminer une chanson. A l’issue d’une séance houleuse avec leurs producteurs, ils sont au pied du mur : ils ont 24h pour sortir une chanson digne de ce nom. Leurs vieux démons, la peur de l’échec, la procrastination, les potes envahissants, les problèmes de couple, etc. viendront se mettre en travers de leur chemin. Chemin qu’ils n’avaient de toute façon pas pris dans le bon sens…', 2015, '1h 30min', 'https://images.justwatch.com/poster/10069532/s592/comment-cest-loin'),
 (279, 'Halo : The Fall of Reach', 'Des enfants kidnappés dès leur plus jeune âge sont enrôlés de force dans un entraînement militaire brutal et un programme d’amélioration. Connus sous le nom de Spartan, ces enfants sont destinés à devenir l’arme ultime contre le chaos et la révolte. Mais quand une dangereuse alliance étrangère, appelée Covenant, déclare la guerre à l’humanité, les Spartans semblent être notre seul espoir de survie.', 2015, '1h 7min', 'https://images.justwatch.com/backdrop/770064/s480/halo-the-fall-of-reach'),
 (280, 'Docteur Frankenstein', 'Le scientifique aux méthodes radicales Victor Frankenstein et son tout aussi brillant protégé Igor Strausman partagent une vision noble : celle d’aider l’humanité à travers leurs recherches innovantes sur l’immortalité. Mais les expériences de Victor vont trop loin, et son obsession engendre de terrifiantes conséquences. Seul Igor peut ramener son ami à la raison et le sauver de sa création monstrueuse. Une version enflammée et moderne d’une légende intemporelle.', 2015, '1h 49min', 'https://images.justwatch.com/poster/175955725/s592/docteur-frankenstein');
-INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
+INSERT INTO `film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `image`) VALUES
 (281, 'Good Kill', 'Le Commandant Tommy Egan, pilote de chasse reconverti en pilote de drone, combat douze heures par jour les Talibans derrière sa télécommande, depuis sa base, à Las Vegas. De retour chez lui, il passe l’autre moitié de la journée à se quereller avec sa femme, Molly et ses enfants. Tommy remet cependant sa mission en question. Ne serait-il pas en train de générer davantage de terroristes qu’il n’en extermine ? L’histoire d’un soldat, une épopée lourde de conséquences.', 2015, '1h 44min', 'https://images.justwatch.com/poster/9932971/s592/good-kill'),
 (282, 'Un Voisin trop parfait', 'Une mère, récemment divorcée, a une aventure avec un jeune homme de son quartier. Quand ce dernier sympathise avec son fils et qu\'elle décide de mettre fin à leur relation, les problèmes commencent...', 2015, '1h 31min', 'https://images.justwatch.com/poster/175430478/s592/un-voisin-trop-parfait'),
 (283, 'The Amityville Playhouse', 'Following the tragic death of her parents Fawn Harriman discovers she has inherited a theatre in the town of Amityville. She, along with 3 friends, decides to spend the weekend there looking the place over. Meanwhile one of her High School teachers begins an investigation into the village\'s past and makes a connection with something that goes back beyond recorded history.', 2015, '1h 39min', 'https://images.justwatch.com/backdrop/2505580/s480/the-amityville-playhouse'),
@@ -338,19 +338,19 @@ INSERT INTO `Film` (`id_film`, `titre`, `resume`, `annee_sortie`, `duree`, `imag
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Genre`
+-- Structure de la table `genre`
 --
 
-CREATE TABLE `Genre` (
+CREATE TABLE `genre` (
   `id_genre` int(15) NOT NULL,
   `genre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Genre`
+-- Déchargement des données de la table `genre`
 --
 
-INSERT INTO `Genre` (`id_genre`, `genre`) VALUES
+INSERT INTO `genre` (`id_genre`, `genre`) VALUES
 (1, 'Action & Aventure'),
 (2, 'Comédie'),
 (3, 'Crime & Thriller'),
@@ -3874,20 +3874,20 @@ CREATE TABLE `commentaire` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Personne`
+-- Structure de la table `personne`
 --
 
-CREATE TABLE `Personne` (
+CREATE TABLE `personne` (
   `id_personne` int(15) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Personne`
+-- Déchargement des données de la table `personne`
 --
 
-INSERT INTO `Personne` (`id_personne`, `nom`, `prenom`) VALUES
+INSERT INTO `personne` (`id_personne`, `nom`, `prenom`) VALUES
 (1, 'Leterrier', 'Louis'),
 (2, 'Sy', 'Omar'),
 (3, 'Lafitte', 'Laurent'),
@@ -5862,7 +5862,7 @@ INSERT INTO `Personne` (`id_personne`, `nom`, `prenom`) VALUES
 (1972, 'Toyonaga', 'Toshiyuki'),
 (1973, 'Barré', 'Jonathan'),
 (1974, 'Farcy', 'Bernard');
-INSERT INTO `Personne` (`id_personne`, `nom`, `prenom`) VALUES
+INSERT INTO `personne` (`id_personne`, `nom`, `prenom`) VALUES
 (1975, 'Pinon', 'Dominique'),
 (1976, 'Pestel', 'Julien'),
 (1977, 'Vial', 'Alice'),
@@ -6420,10 +6420,10 @@ INSERT INTO `realise` (`id_film`, `id_personne`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Utilisateur`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `Utilisateur` (
+CREATE TABLE `utilisateur` (
   `id_utilisateur` int(11) NOT NULL,
   `login` varchar(30) NOT NULL,
   `mot_de_passe` varchar(255) NOT NULL,
@@ -6432,10 +6432,10 @@ CREATE TABLE `Utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `Utilisateur`
+-- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `Utilisateur` (`id_utilisateur`, `login`, `mot_de_passe`, `admin`, `salt`) VALUES
+INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mot_de_passe`, `admin`, `salt`) VALUES
 (2, 'test', '$2a$10$8lYJu9EHPliYUhAsSwSJnO/7mvBNBa9pMu.jt3tzHya39ELE7juA.', 1, '$2a$10$8lYJu9EHPliYUhAsSwSJnYgQ');
 
 --
@@ -6443,15 +6443,15 @@ INSERT INTO `Utilisateur` (`id_utilisateur`, `login`, `mot_de_passe`, `admin`, `
 --
 
 --
--- Index pour la table `Film`
+-- Index pour la table `film`
 --
-ALTER TABLE `Film`
+ALTER TABLE `film`
   ADD PRIMARY KEY (`id_film`);
 
 --
--- Index pour la table `Genre`
+-- Index pour la table `genre`
 --
-ALTER TABLE `Genre`
+ALTER TABLE `genre`
   ADD PRIMARY KEY (`id_genre`);
 
 --
@@ -6495,9 +6495,9 @@ ALTER TABLE `commentaire`
   ADD KEY `FK_utilisateur_note` (`id_utilisateur`);
 
 --
--- Index pour la table `Personne`
+-- Index pour la table `personne`
 --
-ALTER TABLE `Personne`
+ALTER TABLE `personne`
   ADD PRIMARY KEY (`id_personne`);
 
 --
@@ -6509,9 +6509,9 @@ ALTER TABLE `realise`
   ADD KEY `FK_personne_realise` (`id_personne`);
 
 --
--- Index pour la table `Utilisateur`
+-- Index pour la table `utilisateur`
 --
-ALTER TABLE `Utilisateur`
+ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`id_utilisateur`);
 
 --
@@ -6519,21 +6519,21 @@ ALTER TABLE `Utilisateur`
 --
 
 --
--- AUTO_INCREMENT pour la table `Film`
+-- AUTO_INCREMENT pour la table `film`
 --
-ALTER TABLE `Film`
+ALTER TABLE `film`
   MODIFY `id_film` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
--- AUTO_INCREMENT pour la table `Personne`
+-- AUTO_INCREMENT pour la table `personne`
 --
-ALTER TABLE `Personne`
+ALTER TABLE `personne`
   MODIFY `id_personne` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2223;
 
 --
--- AUTO_INCREMENT pour la table `Utilisateur`
+-- AUTO_INCREMENT pour la table `utilisateur`
 --
-ALTER TABLE `Utilisateur`
+ALTER TABLE `utilisateur`
   MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -6544,36 +6544,36 @@ ALTER TABLE `Utilisateur`
 -- Contraintes pour la table `genres2films`
 --
 ALTER TABLE `genres2films`
-  ADD CONSTRAINT `FK_film` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`),
-  ADD CONSTRAINT `FK_genre` FOREIGN KEY (`id_genre`) REFERENCES `Genre` (`id_genre`);
+  ADD CONSTRAINT `FK_film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
+  ADD CONSTRAINT `FK_genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`);
 
 --
 -- Contraintes pour la table `joue`
 --
 ALTER TABLE `joue`
-  ADD CONSTRAINT `FK_film_joue` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`),
-  ADD CONSTRAINT `FK_personne_joue` FOREIGN KEY (`id_personne`) REFERENCES `Personne` (`id_personne`);
+  ADD CONSTRAINT `FK_film_joue` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
+  ADD CONSTRAINT `FK_personne_joue` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`);
 
 --
 -- Contraintes pour la table `note`
 --
 ALTER TABLE `note`
-  ADD CONSTRAINT `FK_film_note` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`), 
-  ADD CONSTRAINT `FK_utilisateur_note` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
+  ADD CONSTRAINT `FK_film_note` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`), 
+  ADD CONSTRAINT `FK_utilisateur_note` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
   
 --
 -- Contraintes pour la table `amis`
 --
 ALTER TABLE `amis`
-  ADD CONSTRAINT `FK_utilisateur_amis1` FOREIGN KEY (`id_utilisateur1`) REFERENCES `Utilisateur` (`id_utilisateur`), 
-  ADD CONSTRAINT `FK_utilisateur_amis2` FOREIGN KEY (`id_utilisateur2`) REFERENCES `Utilisateur` (`id_utilisateur`);
+  ADD CONSTRAINT `FK_utilisateur_amis1` FOREIGN KEY (`id_utilisateur1`) REFERENCES `utilisateur` (`id_utilisateur`), 
+  ADD CONSTRAINT `FK_utilisateur_amis2` FOREIGN KEY (`id_utilisateur2`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `commentaire`
 --
 ALTER TABLE `note`
-  ADD CONSTRAINT `FK_film_commentaire` FOREIGN KEY (`id_film`) REFERENCES `Film` (`id_film`), 
-  ADD CONSTRAINT `FK_utilisateur_commentaire` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
+  ADD CONSTRAINT `FK_film_commentaire` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`), 
+  ADD CONSTRAINT `FK_utilisateur_commentaire` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `realise`

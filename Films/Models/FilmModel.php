@@ -6,7 +6,7 @@ class FilmModel extends Model {
 
     function getAllFilmsTitles(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre, annee_sortie FROM film ORDER BY annee_sortie DESC LIMIT 10";
+        $sql="SELECT titre, annee_sortie FROM Film ORDER BY annee_sortie DESC LIMIT 10";
         $result=mysqli_query($db, $sql);
         
         return $result;
@@ -23,7 +23,7 @@ class FilmModel extends Model {
             return $donnees;
         }
         else{
-            $sql="SELECT * FROM Film WHERE film.titre='".$_POST["film"]."'";
+            $sql="SELECT * FROM film WHERE film.titre='".$_POST["film"]."'";
             $result=mysqli_query($db, $sql);
             $donnees=$result->fetch_assoc();
             return $donnees;
