@@ -95,6 +95,12 @@ class FilmModel extends Model {
         return $count > 0 ? True : False;
     }
 
+    function getRealisateur($id_film){
+        $db=$this->getDatabaseConnection();
+        $sql="select personne.nom, personne.prenom from film INNER JOIN realise on realise.id_film = film.id_film INNER JOIN personne on personne.id_personne = realise.id_personne WHERE film.id_film = '".$id_film."';";
+        $result=mysqli_query($db, $sql);
+        return $result;
+    }
 
 
     function changeMark($id_u, $id_f, $note){
