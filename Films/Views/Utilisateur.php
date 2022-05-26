@@ -32,7 +32,7 @@
                     ?>
                         <form id="form_fuir" method='POST'>
                             <input type="hidden" name="fuir" value="<?= $utilisateur_target ?>">                            
-                            <button type="submit" name="action" value="fuir">Fuir</button>
+                            <button type="submit" name="action" value="fuir">Arrêter de suivre</button>
                         </form>
 
                     <?php } else { ?>

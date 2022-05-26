@@ -10,14 +10,11 @@
             $this->filmModel = new FilmModel();
         }
 
-        function displayFilmsTitles(){
-            $films = $this->filmModel->getAllFilmsTitles();
-            return $films;
-        }
-
         function displayOneFilm(){
-            $donnees = $this->filmModel->getOneFilm();
             $titre = $_POST["film"];
+            $login = $_SESSION["login"];
+            $donnees = $this->filmModel->getOneFilm($titre, $login);
+            $last_comments = $this->filmModel->showLastComments($titre); 
             require("Views/Film.php");
         }
 
@@ -67,8 +64,5 @@
             $this -> filmModel -> deleteMark($id_u, $id_f);
         }
 
-        function showLastComments($titre){
-            $donnees = $this -> filmModel -> showComments($titre);
-            return $donnees;
-        }
+
     }

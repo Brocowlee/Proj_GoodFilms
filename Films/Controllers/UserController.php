@@ -81,6 +81,8 @@
             require("Views/Inscription.php");
         }
         
+
+        
         function createUtilisateur(){
 
 
@@ -155,32 +157,45 @@
 
 
         function displayModifyMark(){
+            $titre = $_POST["film"];
+            $login = $_SESSION["login"];
+
+
             $id_u = $this->userModel->getUserID();
             $val = $id_u->fetch_assoc();
             $id_utilisateur = $val["id_utilisateur"];
-            $id_f = $this->filmModel->getOneFilm();
+            $id_f = $this->filmModel->getOneFilm($titre, $login);
             $id_film = $id_f["id_film"];
-            $titre = $_POST["film"];
+
+
             $this->filmModel-> changeMark($id_utilisateur, $id_film, $_POST["new_note"]);
-            $donnees = $this->filmModel->getOneFilm();
+            $donnees = $this->filmModel->getOneFilm($titre, $login);
+            $last_comments = $this->filmModel->showLastComments($titre); 
             require("Views/Film.php");
         }
 
         function displayDeleteMark(){
+            $titre = $_POST["film"];
+            $login = $_SESSION["login"];
+
+
+
             $id_u = $this->userModel->getUserID();
             $val = $id_u->fetch_assoc();
             $id_utilisateur = $val["id_utilisateur"];
-            $id_f = $this->filmModel->getOneFilm();
+            $id_f = $this->filmModel->getOneFilm($titre, $login);
             $id_film = $id_f["id_film"];
-            $titre = $_POST["film"];
+ 
             $this->filmModel->deleteMark($id_utilisateur, $id_film);
-            $donnees = $this->filmModel->getOneFilm();
+            $donnees = $this->filmModel->getOneFilm($titre, $login);
+            $last_comments = $this->filmModel->showLastComments($titre); 
             require("Views/Film.php");
         }
 
         function addComment(){
 
             $titre = $_POST["film"];
+            $login = $_SESSION["login"];
 
             // partie pour l'id utilisateur
             $id_u = $this->userModel->getUserID();
@@ -195,8 +210,8 @@
             $commentaire = $_POST['ajouter_commentaire'];
 
             $this->filmModel->addComment($titre, $id_utilisateur, $commentaire, $datetime);
-            $donnees = $this->filmModel->getOneFilm();
-
+            $donnees = $this->filmModel->getOneFilm($titre, $login);
+            $last_comments = $this->filmModel->showLastComments($titre); 
             require("Views/Film.php");
         }
 

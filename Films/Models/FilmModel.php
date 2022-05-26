@@ -12,10 +12,10 @@ class FilmModel extends Model {
         return $result;
     }
 
-    function getOneFilm(){
+    function getOneFilm($titre, $login){
 
         $db=$this->getDatabaseConnection();
-        $sql="SELECT film.id_film, titre, resume, annee_sortie, duree, note FROM film, utilisateur, note WHERE film.titre='".$_POST["film"]."' and film.id_film=note.id_film and note.id_utilisateur=utilisateur.id_utilisateur and utilisateur.login='".$_SESSION['login']."'";
+        $sql="SELECT film.id_film, titre, resume, annee_sortie, duree, note FROM film, utilisateur, note WHERE film.titre='".$titre."' and film.id_film=note.id_film and note.id_utilisateur=utilisateur.id_utilisateur and utilisateur.login='".$login."'";
         $result=mysqli_query($db, $sql);
         $donnees = $result->fetch_assoc();
 
@@ -23,7 +23,7 @@ class FilmModel extends Model {
             return $donnees;
         }
         else{
-            $sql="SELECT * FROM Film WHERE film.titre='".$_POST["film"]."'";
+            $sql="SELECT * FROM film WHERE film.titre='".$titre."'";
             $result=mysqli_query($db, $sql);
             $donnees=$result->fetch_assoc();
             return $donnees;
@@ -55,7 +55,7 @@ class FilmModel extends Model {
 
     function getFilmsOneGenre(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre FROM Film, Genre, genres2films WHERE Film.id_film=genres2films.id_film and Genre.id_genre=genres2films.id_genre and Genre.genre='".$_POST["genre"]."'";
+        $sql="SELECT titre FROM film, genre, genres2films WHERE film.id_film=genres2films.id_film and genre.id_genre=genres2films.id_genre and genre.genre='".$_POST["genre"]."'";
         $result=mysqli_query($db, $sql);
 
         return $result;
@@ -63,7 +63,7 @@ class FilmModel extends Model {
 
     function getFilmID(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT id_film FROM Film WHERE titre='".$_POST["film"]."'";
+        $sql="SELECT id_film FROM film WHERE titre='".$_POST["film"]."'";
         $result=mysqli_query($db, $sql);
 
         return $result;
@@ -71,7 +71,7 @@ class FilmModel extends Model {
 
     function getFilmFromID($id){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre FROM Film WHERE id_film='".$id."'";
+        $sql="SELECT titre FROM film WHERE id_film='".$id."'";
         $result=mysqli_query($db, $sql);
 
         return $result;
@@ -130,18 +130,18 @@ class FilmModel extends Model {
         $result=mysqli_query($db, $sql);
     }
 
-    function showComments($titre){
-        $db=$this->getDatabaseConnection();
-        $sql = "SELECT utilisateur.login, commentaire, date from commentaire INNER JOIN utilisateur on utilisateur.id_utilisateur = commentaire.id_utilisateur where id_film = (SELECT id_film FROM Film WHERE titre = '".$titre."' LIMIT 1) ORDER BY date DESC LIMIT 10;";
-        $result=mysqli_query($db, $sql);
-        return $result;    
-    }
-
     function displayOneUtilisateur(){
         require("Views/Utilisateur.php");
     }
 
     function getDatabaseConnection(){
         return $this->getConnection();
+    }
+
+    function showLastComments($titre){
+        $db=$this->getDatabaseConnection();
+        $sql = "SELECT utilisateur.login, commentaire, date from commentaire INNER JOIN utilisateur on utilisateur.id_utilisateur = commentaire.id_utilisateur where id_film = (SELECT id_film FROM film WHERE titre = '".$titre."' LIMIT 1) ORDER BY date DESC LIMIT 10;";
+        $result=mysqli_query($db, $sql);
+        return $result;
     }
 }

@@ -81,7 +81,7 @@
 
             <?php
 
-                $last_comments = $filmController->showLastComments($titre); 
+
 
                 echo '<ul>';
                 while($donnees = $last_comments->fetch_array()){ 

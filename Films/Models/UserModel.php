@@ -27,7 +27,7 @@
 
         function createUser($login, $password, $salt, $hash){
             $db=$this->getDatabaseConnection();
-            $sql = "INSERT INTO `Utilisateur` (`login`, `mot_de_passe`,`admin`, `salt`) VALUES ('$login', '$hash', 0, '$salt');";
+            $sql = "INSERT INTO `utilisateur` (`login`, `mot_de_passe`,`admin`, `salt`) VALUES ('$login', '$hash', 0, '$salt');";
             $result=mysqli_query($db, $sql);     
         }
 
@@ -47,7 +47,7 @@
 
             $db=$this->getDatabaseConnection();
      
-            $sql="SELECT id_utilisateur, login FROM Utilisateur WHERE Utilisateur.login = '".$_POST["target_utilisateur"]."'";
+            $sql="SELECT id_utilisateur, login FROM utilisateur WHERE utilisateur.login = '".$_POST["target_utilisateur"]."'";
             $result=mysqli_query($db, $sql);
             $donnees=$result->fetch_assoc();
             return $donnees;

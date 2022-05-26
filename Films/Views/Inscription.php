@@ -26,7 +26,7 @@
             <button type="submit" name="action" value="inscription">S'inscrire</buttom>
         </form>
         <form id="retour" method="POST">
-        <button type="submit" name="action" value="deconnexion">Acceuil</buttom>
+        <button type="submit" name="action" value="deconnexion">Se connecter</buttom>
         </form>
 
     </div>
