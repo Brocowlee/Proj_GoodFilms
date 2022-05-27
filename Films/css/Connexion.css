@@ -1,3 +1,7 @@
+body{
+    font-family:Impact, fantasy;
+}
+
 html{
 background-color: #232323;
 }
@@ -24,7 +28,6 @@ background-color: #232323;
     /* border: 3px solid #263238 ; */
     padding: 10px;
     text-align: center;
-    font-family : Georgia;
 }
 
 
@@ -39,8 +42,8 @@ button {
     display: inline-block;
     font-size: 16px;
   }
-
-  button#connexionBtn{
+  
+button#connexionBtn{
     position: relative;
     left:100px;
     top:40px;
