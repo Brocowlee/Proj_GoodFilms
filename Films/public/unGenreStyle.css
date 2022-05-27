@@ -2,19 +2,23 @@
     font-family:Arial, sans-serif
 }
 
-body {
-    background-color: rgb(57, 54, 54);
+h1 {
+    color: lightgray;
 }
 
+body {
+    background-color:rgb(57, 54, 54);
+}
 
-
-#liste_films{
+#un_genre {
+    display : flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     padding: 8px;
 }
+
 #bouton_film{
     background-color : transparent;
     cursor: pointer;
@@ -22,20 +26,16 @@ body {
 
 }
 
+#un_film {
+    margin: 8px; 
+}
+
 #bouton_film:hover{
     box-shadow: 10px 5px 5px black;
     transition: 500ms;
 }
 
-#un_film {
-    margin: 8px; 
-}
-
-h1{
-    color: lightgrey;
-}
-
-h2 {
-    color: lightgrey;
+body {
+    background-color: rgb(57, 54, 54);
 }
 

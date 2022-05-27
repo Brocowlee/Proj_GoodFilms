@@ -2,24 +2,31 @@
     font-family:Arial, sans-serif
 }
 
+h1 {
+    color: lightgrey;
+}
+
+h3 {
+    color: lightgrey;
+}
+
 body {
     background-color: rgb(57, 54, 54);
 }
 
 
-
-#liste_films{
+#films{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     padding: 8px;
 }
+
 #bouton_film{
     background-color : transparent;
     cursor: pointer;
     border: none;
-
 }
 
 #bouton_film:hover{
@@ -27,15 +34,29 @@ body {
     transition: 500ms;
 }
 
-#un_film {
+#bouton_ami{
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bouton_ami:hover {
+    background-color: #a08906;
+    transition : 500ms;
+}
+
+
+#form_film {
     margin: 8px; 
 }
 
-h1{
+li {
     color: lightgrey;
 }
 
-h2 {
-    color: lightgrey;
-}
 

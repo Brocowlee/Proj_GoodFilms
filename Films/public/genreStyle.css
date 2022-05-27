@@ -1,0 +1,40 @@
+*{
+    font-family:Arial, sans-serif
+}
+
+h3 {
+    color:lightgray;
+    font-size: 200%;
+}
+
+body {
+    background-color: rgb(57, 54, 54);
+}
+
+#bouton_genre{
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bouton_genre:hover {
+    background-color: #a08906;
+    transition : 500ms;
+}
+
+#liste_genres {
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px;
+}
+
+#page_genre {
+    padding-left: 30px;
+}

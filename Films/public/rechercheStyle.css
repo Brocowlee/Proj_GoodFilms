@@ -3,10 +3,12 @@
 }
 
 body {
-    background-color: rgb(57, 54, 54);
+    background-color:rgb(57, 54, 54);
 }
 
-
+h1 {
+   color : lightgray;
+}
 
 #liste_films{
     display: flex;
@@ -15,6 +17,7 @@ body {
     justify-content: flex-start;
     padding: 8px;
 }
+
 #bouton_film{
     background-color : transparent;
     cursor: pointer;
@@ -30,12 +33,3 @@ body {
 #un_film {
     margin: 8px; 
 }
-
-h1{
-    color: lightgrey;
-}
-
-h2 {
-    color: lightgrey;
-}
-
