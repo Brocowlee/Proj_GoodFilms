@@ -15,7 +15,14 @@
     $userController = new UserController();
     $genreController = new GenreController();
 
-    if(isset($_GET["action"])){
+
+
+    if (isset($_POST["action"])) {
+        if ($_POST["action"] == "connexion"){
+                $userController->displayConnexion();
+        }
+    }
+    else if(isset($_GET["action"])){
 
         //différentes routes
 
@@ -105,11 +112,7 @@
                 break;
         }
     }
-    else if (isset($_POST["action"])) {
-        if ($_POST["action"] == "connexion"){
-                $userController->displayConnexion();
-        }
-    }
+
     else {
         //Charger l'accueil par défaut
         $userController->displayConnexion();
