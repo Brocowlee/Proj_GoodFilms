@@ -14,6 +14,12 @@
         <h2>Inscription</h2>
         
         <?php  
+        if (isset($inscription_error)){
+            if ($inscription_error){
+                echo "Ce login est déjà utilisé !";
+                echo "</br></br>";
+            }
+        }
 
         echo "Veuillez renseigner un identifiant et un mot de passe :";
 

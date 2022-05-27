@@ -15,6 +15,10 @@
             $login = $_SESSION["login"];
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
+            $id_film = $donnees['id_film'];
+            $realisateur = $this->filmModel->getRealisateur($id_film);
+            $has_note = $this->filmModel->hasNote($id_film);
+            $avg = $this->filmModel->getNoteMean($id_film);
             require("Views/Film.php");
         }
 
@@ -28,9 +32,9 @@
             require("Views/Recherche.php");
         }
 
-        function displayResearchFriend(){
-            $amis_recherche = $this->filmModel->getResearchFriend();
-            return $amis_recherche;
+         function displayResearchFriend(){
+            $friends_research = $this->filmModel->getResearchFriend();
+            require("Views/Recherche_amis.php");
         }
 
         function displayOneGenre(){
@@ -39,38 +43,4 @@
             require("Views/UnGenre.php");
         }
 
-        function displayOneFilmID(){
-            $id = $this->filmModel->getFilmID();
-            return $id;
-        }
-
-        function displayRealisateur($id_film){
-            $donnees = $this->filmModel->getRealisateur($id_film);
-            return $donnees;
-        }
-
-        function displayNoteMean($id){
-            $avg = $this->filmModel->getNoteMean($id);
-            return $avg;
-        }
-
-        function hasNote($id){
-            $bool = $this->filmModel->hasNote($id);
-            return $bool;
-        }
-
-
-
-        function changeNote($id_u, $id_f){
-            $this -> filmModel -> changeMark($id_u, $id_f, $_POST["new_note"]);
-        }
-
-        function suppNote($id_u, $id_f){
-            $this -> filmModel -> deleteMark($id_u, $id_f);
-        }
-
-        function showLastComments($titre){
-            $donnees = $this -> filmModel -> showComments($titre);
-            return $donnees;
-        }
     }
