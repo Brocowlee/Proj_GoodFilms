@@ -1,9 +1,12 @@
-body{
-    font-family:Impact, fantasy;
-}
 
 html{
 background-color: #232323;
+font-family:Arial Narrow, sans-serif;
+}
+
+body{
+    background: #232323;
+    color:#232323;
 }
 
 
@@ -21,13 +24,11 @@ background-color: #232323;
     background: #232323;
     color:lightgray;
     margin: auto;
-    /* display: flex;
-    align-items: center; */
     width: 100%;
-    top: 200px;
     /* border: 3px solid #263238 ; */
     padding: 10px;
     text-align: center;
+
 }
 
 
@@ -55,13 +56,19 @@ button#inscriptionBtn{
     top:60px;
 }
 
-#barreLogin{
-    position: relative;
-    left: 28px;
-}
 
 #informations{
     position: relative;
     top: 50px;
+}
+
+#login{
+    position: relative;
+    right:70px;
+}
+
+#mdp{
+    position: relative;
+    right:42px;
 }
 
