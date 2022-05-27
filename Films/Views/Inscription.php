@@ -14,6 +14,12 @@
         <h2>Inscription</h2>
         
         <?php  
+        if (isset($inscription_error)){
+            if ($inscription_error){
+                echo "Ce login est déjà utilisé !";
+                echo "</br></br>";
+            }
+        }
 
         echo "Veuillez renseigner un identifiant et un mot de passe :";
 
@@ -26,7 +32,7 @@
             <button type="submit" name="action" value="inscription">S'inscrire</buttom>
         </form>
         <form id="retour" method="POST">
-        <button type="submit" name="action" value="deconnexion">Acceuil</buttom>
+        <button type="submit" name="action" value="deconnexion">Se connecter</buttom>
         </form>
 
     </div>

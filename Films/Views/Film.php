@@ -7,20 +7,29 @@
 
 <content>
 
-    <?php require("Views/header.php"); 
-    $filmController = new FilmController();
-    ?>
+    <?php require("Views/header.php"); ?>
     
     <body>
         <h1><?= $titre ?> </h1>
+        <img src="<?php echo $donnees['image']?>">
+</br>
         année de sortie : <?php echo $donnees['annee_sortie']?> 
-        <br>
+</br>
         Durée : <?php echo $donnees['duree']?>
-        <br>
+</br>
         <?php
-            $id_film = $donnees['id_film'];
-            if($filmController->hasNote($id_film)){
-                $value = number_format($filmController->displayNoteMean($id_film),1,",",".");
+
+            while($rea_donnees = $realisateur->fetch_array()){ 
+                $nom = $rea_donnees['nom']; 
+                $prenom = $rea_donnees["prenom"];
+                echo "Réalisateur : ".$nom." ".$prenom;
+            }
+
+            echo'<br>';
+        
+                
+            if($has_note){
+                $value = number_format($avg,1,",",".");
                 echo "Note global : ".$value;
             } 
 
@@ -81,7 +90,7 @@
 
             <?php
 
-                $last_comments = $filmController->showLastComments($titre); 
+
 
                 echo '<ul>';
                 while($donnees = $last_comments->fetch_array()){ 

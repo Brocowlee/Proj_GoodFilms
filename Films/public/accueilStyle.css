@@ -1,0 +1,14 @@
+#liste_films{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#bouton_film{
+    cursor: pointer;
+    border: none;
+}
+
+#header{
+    size:100%;
+}
+

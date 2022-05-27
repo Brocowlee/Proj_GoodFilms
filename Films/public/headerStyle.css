@@ -1,0 +1,43 @@
+#menu_haut{
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #263238;
+    width: 100%;
+    top: 0px; left: 0px;
+    align-items: center;
+
+}
+
+#bouton{
+
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#bouton_a{
+    border: none;
+    background-color: transparent;
+    color: white;
+
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+#bouton_accueil{
+    font-size:200% ;
+    font-family: cursive;
+}
