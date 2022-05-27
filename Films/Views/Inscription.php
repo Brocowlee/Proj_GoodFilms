@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="css\inscriptionStyle.css" rel="stylesheet">
+<link href="public\inscriptionStyle.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
 </head>

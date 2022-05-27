@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="css\connexionStyle.css" rel="stylesheet">
+<link href="public\connexionStyle.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
 </head>

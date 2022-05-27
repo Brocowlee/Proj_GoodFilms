@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="css\footerStyle.css" rel="stylesheet">
+<link href="public\footerStyle.css" rel="stylesheet">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
