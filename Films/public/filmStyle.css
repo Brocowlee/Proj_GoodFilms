@@ -1,0 +1,61 @@
+*{
+    font-family:Arial, sans-serif
+}
+
+h1 {
+    color: lightgrey;
+    text-align: center;
+    font-size: 400%;
+}
+
+h2 {
+    color: lightgrey;
+    font-size: 200%;
+}
+
+#un_film {
+
+    display :flex; 
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+#image {
+    margin: 20px;
+}
+
+#autres_infos {
+    margin: 20px;
+    color: lightgrey;
+}
+
+
+
+li {
+    color: lightgrey;
+
+}
+
+body {
+    background-color: rgb(57, 54, 54);
+}
+
+
+
+#bouton_film{
+
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bouton_film:hover {
+    background-color: #a08906;
+    transition : 500ms;
+}

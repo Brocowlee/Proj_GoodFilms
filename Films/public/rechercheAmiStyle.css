@@ -1,0 +1,34 @@
+*{
+    font-family:Arial, sans-serif
+}
+
+h1 {
+    color:lightgray;
+}
+
+body {
+    background-color:rgb(57, 54, 54);
+}
+
+
+#bouton_ami{
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bouton_ami:hover {
+    background-color: #a08906;
+    transition : 500ms;
+}
+
+
+#page_recherche_ami {
+    padding-left: 30px;
+}
+

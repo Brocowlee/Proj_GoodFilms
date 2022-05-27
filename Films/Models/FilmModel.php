@@ -6,7 +6,7 @@ class FilmModel extends Model {
 
     function getAllFilmsTitles(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre, annee_sortie, image FROM film ORDER BY annee_sortie DESC LIMIT 10";
+        $sql="SELECT titre, annee_sortie, image FROM film ORDER BY annee_sortie DESC LIMIT 21";
         $result=mysqli_query($db, $sql);
         
         return $result;

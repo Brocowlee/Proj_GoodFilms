@@ -1,0 +1,41 @@
+*{
+    font-family:Arial, sans-serif
+}
+
+h1 {
+    color: lightgray;
+}
+
+body {
+    background-color:rgb(57, 54, 54);
+}
+
+#un_genre {
+    display : flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 8px;
+}
+
+#bouton_film{
+    background-color : transparent;
+    cursor: pointer;
+    border: none;
+
+}
+
+#un_film {
+    margin: 8px; 
+}
+
+#bouton_film:hover{
+    box-shadow: 10px 5px 5px black;
+    transition: 500ms;
+}
+
+body {
+    background-color: rgb(57, 54, 54);
+}
+

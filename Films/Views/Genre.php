@@ -3,31 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="public/genreStyle.css">
 </head>
 
-<content>
+
 
     <?php require("Views/header.php"); ?>
 
     <body>
 
+    <div id="page_genre">
         <h3>Liste des genres :</h3>
 
-        <ul>
+        <div id="liste_genres">
             <?php while($donnees = $genres->fetch_array()){ ?>
                 
-                <li>
+                <div id="un genre">
                     <form id="form_film" method='POST'>
                         <input type="hidden" name="genre" value="<?php echo $donnees['genre'] ?>">
-                        <button type="submit" name="action" value="un_genre">
+                        <button id="bouton_genre" type="submit" name="action" value="un_genre">
                             <?php echo  $donnees['genre'] ?>
                         </button>
                     </form>
-                </li>      
+                </div>
+
             <?php } ?>     
-        </ul>
+        </div>
+    </div>
 
 
     </body>
-</content>
+
 
