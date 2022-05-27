@@ -46,7 +46,7 @@
         function createUtilisateur(){
 
 
-            $login = $_POST["login"]; 
+            $login = $_GET["login"]; 
 
             if($this->userModel->alreadyExist($login)){
 
@@ -55,7 +55,7 @@
                 require("Views/Inscription.php");
             } else {
 
-                $password = $_POST["password"];
+                $password = $_GET["password"];
                 
                 $salt = "$2a$10$8l".substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
                 $hash = crypt($password, $salt);
@@ -69,10 +69,10 @@
         }
        
         function displayOneUtilisateur(){
-            $donnees = $this->userModel->getOneUtilisateur($_POST["target_utilisateur"]);
+            $donnees = $this->userModel->getOneUtilisateur($_GET["target_utilisateur"]);
             
             $login = $_SESSION["login"] ;
-            $utilisateur_target = $_POST["target_utilisateur"];
+            $utilisateur_target = $_GET["target_utilisateur"];
 
             if($login != $utilisateur_target){
                 $soi = false;
@@ -110,13 +110,13 @@
         }
 
         function displayAccueil(){
-            $userName = $_POST["login"];
+            $userName = $_GET["login"];
             $liste_films = $this->filmModel->getAllFilmsTitles();
             require("Views/Accueil.php");
         }
 
         function addToFriend(){
-            $target = $_POST["suivre"];
+            $target = $_GET["suivre"];
             $login = $_SESSION["login"];
             
             $this->userModel->addFriend($login, $target);
@@ -138,7 +138,7 @@
         }
 
         function removeFromFriend(){
-            $target = $_POST["fuir"];
+            $target = $_GET["fuir"];
             $login = $_SESSION["login"];
 
             $id1 = $this->userModel->getUserId($login);
@@ -170,7 +170,7 @@
 
 
         function displayModifyMark(){
-            $titre = $_POST["film"];
+            $titre = $_GET["film"];
             $login = $_SESSION["login"];
 
 
@@ -181,7 +181,7 @@
             $id_film = $id_f["id_film"];
 
 
-            $this->filmModel-> changeMark($id_utilisateur, $id_film, $_POST["new_note"]);
+            $this->filmModel-> changeMark($id_utilisateur, $id_film, $_GET["new_note"]);
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
             $realisateur = $this->filmModel->getRealisateur($id_film);
@@ -191,7 +191,7 @@
         }
 
         function displayDeleteMark(){
-            $titre = $_POST["film"];
+            $titre = $_GET["film"];
             $login = $_SESSION["login"];
 
 
@@ -213,7 +213,7 @@
 
         function addComment(){
 
-            $titre = $_POST["film"];
+            $titre = $_GET["film"];
             $login = $_SESSION["login"];
             $id_f = $this->filmModel->getOneFilm($titre, $login);
             $id_film = $id_f["id_film"];
@@ -228,7 +228,7 @@
             $datetime = $date->format('Y-m-d H:i:s');
 
             // partie pour le commentaire
-            $commentaire = $_POST['ajouter_commentaire'];
+            $commentaire = $_GET['ajouter_commentaire'];
 
             $this->filmModel->addComment($titre, $id_utilisateur, $commentaire, $datetime);
             $donnees = $this->filmModel->getOneFilm($titre, $login);

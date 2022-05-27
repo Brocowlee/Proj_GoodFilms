@@ -18,7 +18,7 @@
             mot de passe : <input type="password" name="password" required></br>
             <button type="submit" name="action" value="connexion">Connexion</buttom>
         </form>
-        <form id="send_to_inscription" method="POST">
+        <form id="send_to_inscription">
             <button type="submit" name="action" value="send_to_inscription">Inscription</buttom>
         </form>
       

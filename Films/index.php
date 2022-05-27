@@ -15,17 +15,14 @@
     $userController = new UserController();
     $genreController = new GenreController();
 
-    if(isset($_POST["action"])){
+    if(isset($_GET["action"])){
 
         //différentes routes
 
-        switch($_POST["action"]){
+        switch($_GET["action"]){
 
 
-            case "connexion" :
-                //Affichage de la Connexion
-                $userController->displayConnexion();
-                break;
+
             
             case "deconnexion" :
                 //Affichage de la déconnexion
@@ -106,6 +103,11 @@
                 // Si l'utilisateur arrête de suivre un autre utilisateur
                 $userController->removeFromFriend();
                 break;
+        }
+    }
+    else if (isset($_POST["action"])) {
+        if ($_POST["action"] == "connexion"){
+                $userController->displayConnexion();
         }
     }
     else {

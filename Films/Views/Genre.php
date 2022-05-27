@@ -19,7 +19,7 @@
             <?php while($donnees = $genres->fetch_array()){ ?>
                 
                 <div id="un genre">
-                    <form id="form_film" method='POST'>
+                    <form id="form_film">
                         <input type="hidden" name="genre" value="<?php echo $donnees['genre'] ?>">
                         <button id="bouton_genre" type="submit" name="action" value="un_genre">
                             <?php echo  $donnees['genre'] ?>

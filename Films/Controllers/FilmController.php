@@ -11,7 +11,7 @@
         }
 
         function displayOneFilm(){
-            $titre = $_POST["film"];
+            $titre = $_GET["film"];
             $login = $_SESSION["login"];
             $donnees = $this->filmModel->getOneFilm($titre, $login);
             $last_comments = $this->filmModel->showLastComments($titre); 
@@ -39,7 +39,7 @@
 
         function displayOneGenre(){
             $un_genre = $this->filmModel->getFilmsOneGenre();
-            $genre = $_POST["genre"];
+            $genre = $_GET["genre"];
             require("Views/UnGenre.php");
         }
 

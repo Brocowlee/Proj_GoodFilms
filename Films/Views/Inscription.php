@@ -26,12 +26,12 @@
            
         ?>
         
-        <form id="inscription" method="POST">
+        <form id="inscription">
             login : <input type="text" name="login" required></br>
             mot de passe : <input type="password" name="password" required></br>
             <button type="submit" name="action" value="inscription">S'inscrire</buttom>
         </form>
-        <form id="retour" method="POST">
+        <form id="retour">
         <button type="submit" name="action" value="deconnexion">Se connecter</buttom>
         </form>
 

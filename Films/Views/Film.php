@@ -56,7 +56,7 @@
             if (isset($donnees['note'])){
                 echo "Vous avez mis la note de ".$donnees['note']."/10";
         ?>
-            <form id="form_film" method='POST'>
+            <form id="form_film">
                 <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
                 <button id="bouton_film" type="submit" name="action" value="sup_note">
                     Supprimer la note
@@ -70,7 +70,7 @@
                 echo "</br>Vous n'avez pas noté ce film";
             }
         ?>
-        <form id="note_film" method='POST'>
+        <form id="note_film">
             <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
             Noter ce film : 
             <select name="new_note">
@@ -98,7 +98,7 @@
         </br>
         <h2>Commentaires</h2>
 
-            <form method='POST'>
+            <form>
                 <input type="hidden" name="film" value="<?= $donnees['titre'] ?>">
                 <input type="search" name="ajouter_commentaire" placeholder="Ajouter un commentaire" required>
                 <button id="bouton_film" type="submit" name="action" value="commentaire">Ajouter</button>
@@ -113,7 +113,7 @@
                     $commentaire = $donnees["commentaire"];
                     $date = $donnees["date"];
         
-                    echo'<li><form id="form_amis" method="POST">'; 
+                    echo'<li><form id="form_amis" >'; 
         
                     echo'<input type="hidden" name="target_utilisateur" value="'.$login.'"/>';
                     echo'<button id="bouton_film" type="submit" name="action" value="target_utilisateur">'.$login.'</button>';

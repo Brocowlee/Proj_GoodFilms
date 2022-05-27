@@ -22,7 +22,7 @@
 
                 <?php $login = $donnees['login']; 
 
-                    echo'<form id="form_amis" method="POST">'; 
+                    echo'<form id="form_amis">'; 
 
                     echo'<input type="hidden" name="target_utilisateur" value="'.$login.'"/>';
                     echo'<button id="bouton_ami" type="submit" name="action" value="target_utilisateur">'.$login.'</button>';
