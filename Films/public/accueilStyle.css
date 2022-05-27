@@ -1,9 +1,10 @@
 *{
-    font-family:Arial, sans-serif
+    font-family:Arial, sans-serif;
 }
 
-body {
-    background-color: rgb(57, 54, 54);
+div#global{
+    background: #232323;
+    color:lightgray;
 }
 
 
@@ -13,8 +14,9 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 8px;
+    padding: 8px; 
 }
+
 #bouton_film{
     background-color : transparent;
     cursor: pointer;
@@ -38,4 +40,3 @@ h1{
 h2 {
     color: lightgrey;
 }
-

@@ -11,7 +11,7 @@
     <?php require("Views/header.php"); ?>
 
     <body>
-
+    <div id="global">
     <div id="page_genre">
         <h3>Liste des genres :</h3>
 
@@ -19,7 +19,7 @@
             <?php while($donnees = $genres->fetch_array()){ ?>
                 
                 <div id="un genre">
-                    <form id="form_film" method='POST'>
+                    <form id="form_film">
                         <input type="hidden" name="genre" value="<?php echo $donnees['genre'] ?>">
                         <button id="bouton_genre" type="submit" name="action" value="un_genre">
                             <?php echo  $donnees['genre'] ?>
@@ -30,8 +30,8 @@
             <?php } ?>     
         </div>
     </div>
-
-
+</div>
+    <?php include_once ("footer.php"); ?>
     </body>
 
 

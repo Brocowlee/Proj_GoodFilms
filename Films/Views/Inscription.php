@@ -8,7 +8,7 @@
 <title>Inscription</title>
 
 <body>
-
+<div id="global">
     <div id="inscription">
     
         <h2>Inscription</h2>
@@ -32,10 +32,11 @@
         <div id="mdp">Mot de passe :</div> <input type="password" name="password" required></br>
             <button id="inscrireBtn" type="submit" name="action" value="inscription">S'inscrire</buttom>
         </form>
-        <form id="retour" method="POST">
+        <form id="retour" method="GET">
         <button id="connecterBtn" type="submit" name="action" value="deconnexion">Se connecter</buttom>
         </form>
 
+    </div>
     </div>
     <?php include_once ("footer.php"); ?>
 </body>

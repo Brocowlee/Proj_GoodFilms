@@ -18,7 +18,7 @@
             <div id="mdp">Mot de passe :</div> <input id="barreMdp" type="password" name="password" required></br>
             <button id="connexionBtn" type="submit" name="action" value="connexion">Connexion</buttom>
         </form>
-        <form id="send_to_inscription" method="POST">
+        <form id="send_to_inscription" method="GET">
             <button id="inscriptionBtn" type="submit" name="action" value="send_to_inscription">Inscription</buttom>
         </form>
       
@@ -26,4 +26,6 @@
     </div>
     <?php include_once ("footer.php"); ?>
 </body>
+
 </html>
+

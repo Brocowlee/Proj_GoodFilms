@@ -40,7 +40,7 @@ class FilmModel extends Model {
 
     function getResearchFilm(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre, image FROM film WHERE film.titre LIKE '%".$_POST['recherche']."%' ORDER BY titre DESC";
+        $sql="SELECT titre, image FROM film WHERE film.titre LIKE '%".$_GET['recherche']."%' ORDER BY titre DESC";
         $result=mysqli_query($db, $sql);
         
         return $result;
@@ -48,14 +48,14 @@ class FilmModel extends Model {
 
     function getResearchFriend(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT login FROM utilisateur WHERE utilisateur.login LIKE '%".$_POST['recherche_amis']."%' ORDER BY login DESC";
+        $sql="SELECT login FROM utilisateur WHERE utilisateur.login LIKE '%".$_GET['recherche_amis']."%' ORDER BY login DESC";
         $result=mysqli_query($db, $sql);
         return $result;
     }
 
     function getFilmsOneGenre(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT titre, image FROM film, genre, genres2films WHERE film.id_film=genres2films.id_film and genre.id_genre=genres2films.id_genre and genre.genre='".$_POST["genre"]."'";
+        $sql="SELECT titre, image FROM film, genre, genres2films WHERE film.id_film=genres2films.id_film and genre.id_genre=genres2films.id_genre and genre.genre='".$_GET["genre"]."'";
         $result=mysqli_query($db, $sql);
 
         return $result;
@@ -63,7 +63,7 @@ class FilmModel extends Model {
 
     function getFilmID(){
         $db=$this->getDatabaseConnection();
-        $sql="SELECT id_film FROM film WHERE titre='".$_POST["film"]."'";
+        $sql="SELECT id_film FROM film WHERE titre='".$_GET["film"]."'";
         $result=mysqli_query($db, $sql);
 
         return $result;

@@ -2,18 +2,12 @@
     font-family:Arial, sans-serif
 }
 
-h1 {
+
+
+div#global{
+    background: #232323;
     color: lightgrey;
 }
-
-h3 {
-    color: lightgrey;
-}
-
-body {
-    background-color: #232323;
-}
-
 
 #films{
     display: flex;

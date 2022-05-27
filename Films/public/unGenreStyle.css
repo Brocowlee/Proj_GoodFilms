@@ -6,8 +6,9 @@ h1 {
     color: lightgray;
 }
 
-body {
-    background-color:#232323;
+div#global{
+    background: #232323;
+    color: lightgray;
 }
 
 #un_genre {

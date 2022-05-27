@@ -6,10 +6,13 @@ h1 {
     color:lightgray;
 }
 
-body {
-    background-color:#232323;
+html{
+    width: 100%;
 }
 
+div#global{
+    background: #232323;
+}
 
 #bouton_ami{
     background-color: #FFD700;

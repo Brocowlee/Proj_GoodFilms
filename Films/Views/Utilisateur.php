@@ -10,7 +10,7 @@
 <?php require("header.php"); ?>
 
 <body>
-        
+    <div id="global">
     <?php 
     if ($soi){
         echo'<h1>Votre profil</h1>';
@@ -19,11 +19,11 @@
 
         
     else{
-        if(isset($_POST["suivre"])){
-            $utilisateur_target = $_POST["suivre"];
+        if(isset($_GET["suivre"])){
+            $utilisateur_target = $_GET["suivre"];
         }
-        else if(isset($_POST["fuir"])){
-            $utilisateur_target = $_POST["fuir"];
+        else if(isset($_GET["fuir"])){
+            $utilisateur_target = $_GET["fuir"];
         }
 
         echo'<h1>Profil de '.$utilisateur_target.'</h1>';
@@ -31,14 +31,14 @@
         
         if($friend){
         ?>
-            <form id="form_fuir" method='POST'>
+            <form id="form_fuir">
                 <input type="hidden" name="fuir" value="<?= $utilisateur_target ?>">                            
                 <button id="bouton_ami" type="submit" name="action" value="fuir">Arrêter de suivre</button>
             </form>
 
         <?php } else { ?>
 
-            <form id="form_suivre" method='POST'>
+            <form id="form_suivre">
                 <input type="hidden" name="suivre" value="<?= $utilisateur_target ?>">
                 <button id="bouton_ami" type="submit" name="action" value="suivre">Suivre</button>
             </form>
@@ -59,7 +59,7 @@
         <?php while($donnees = $liste_amis->fetch_array()){ 
 
             $login = $donnees['login']; 
-            echo'<form id="form_amis" method="POST">'; 
+            echo'<form id="form_amis">'; 
             echo'<input type="hidden" name="target_utilisateur" value="'.$login.'"/>';
             echo'<button id="bouton_ami" type="submit" name="action" value="target_utilisateur">'.$login.'</button>';
             echo'</form>';
@@ -78,7 +78,7 @@
                 <?php while($donnees = $films_watched->fetch_array()){ ?>
             
 
-                        <form id="form_film" method='POST'>
+                        <form id="form_film">
                             <input type="hidden" name="film" value="<?= $donnees['titre'] ?>">
                             <button id="bouton_film" type="submit" name="action" value="un_film" >
                                 <img src="<?php echo $donnees['image']?>" width="200" height="300">
@@ -106,5 +106,6 @@
 
     </div>
 
-
+    <?php include_once ("footer.php"); ?>
+    </div>
 </body>

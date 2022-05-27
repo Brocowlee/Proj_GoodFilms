@@ -6,9 +6,12 @@ h3 {
     color:lightgray;
     font-size: 200%;
 }
+html{
+    width: 100%;
+}
 
-body {
-    background-color: rgb(57, 54, 54);
+div#global{
+    background: #232323;
 }
 
 #bouton_genre{
