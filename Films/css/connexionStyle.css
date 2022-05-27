@@ -1,7 +1,9 @@
+*{
+    font-family:Arial, sans-serif
+}
 
 html{
 background-color: #232323;
-font-family:Arial Narrow, sans-serif;
 }
 
 body{
@@ -10,22 +12,12 @@ body{
 }
 
 
-/* img{
-    width: auto;
-    left: auto;
-    top: auto;
-    position: absolute;
-    opacity: 0.2;
-    /* object-position: 50% 50%; 
-} */
-
 
 #connexion{
     background: #232323;
     color:lightgray;
     margin: auto;
     width: 100%;
-    /* border: 3px solid #263238 ; */
     padding: 10px;
     text-align: center;
 
@@ -53,13 +45,13 @@ button#connexionBtn{
 button#inscriptionBtn{
     position: relative;
     right:100px;
-    top:60px;
+    top:84px;
 }
 
 
-#informations{
+#info{
     position: relative;
-    top: 50px;
+    top: 74px;
 }
 
 #login{

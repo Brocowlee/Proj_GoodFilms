@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="css\Connexion.css" rel="stylesheet">
+<link href="css\connexionStyle.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -13,7 +13,7 @@
 
         <h2>Connexion</h2>
         
-        <form id="informations" method="POST">
+        <form id="info" method="POST">
             <div id="login">Login :</div> <input id="barreLogin" type="text" name="login" required></br>
             <div id="mdp">Mot de passe :</div> <input id="barreMdp" type="password" name="password" required></br>
             <button id="connexionBtn" type="submit" name="action" value="connexion">Connexion</buttom>

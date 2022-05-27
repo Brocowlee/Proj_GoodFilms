@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="css\footer.css" rel="stylesheet">
+<link href="css\footerStyle.css" rel="stylesheet">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,22 +15,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
+                        <h3>Organisation</h3>
                         <ul>
-                            <li><a href="#">Github</a></li>
-                            <li><a href="#">Trellot</a></li>
+                            <li><a href="https://github.com/Brocowlee/Proj_GoodFilms">Github</a></li>
+                            <li><a href="https://trello.com/b/Pj7xMKxc/projgoodfilms">Trello</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
+                        <h3>Enseignement</h3>
                         <ul>
-                            <li><a href="#">Github</a></li>
-                            <li><a href="#">Trellot</a></li>
+                            <li><a href="https://www.polytech.univ-smb.fr/">Polytech Annecy-Chambéry</a></li>
+                            <li><a href="https://www.univ-smb.fr/">Université Savoie Mont Blanc</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">
                         <h3>Notre projet</h3>
-                        <p>Notre groupe est composé de Vincent TAKAHASKI, Thomas NICOLAS, Benjamin GUERIOT et Arthur GONAY</p>
+                        <p>Notre groupe est composé de Vincent TAKAHASKI, Thomas NICOLAS, Benjamin GUERIOT et Arthur GONAY. Ce projet comporte plusieurs parties, dont une interface web présente ici, la mise en place et remplissage d'une base de données et une interface administrateur en Java pour l'interaction avec la base.</p>
                     </div>
                       </div>
                 <p class="copyright">Polytech Annecy-Chambéry © 2022</p>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<link href="css\inscriptionStyle.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -9,10 +9,10 @@
 
 <body>
 
-    <div id="incription">
-
+    <div id="inscription">
+    
         <h2>Inscription</h2>
-        
+        <div id="indication">
         <?php  
         if (isset($inscription_error)){
             if ($inscription_error){
@@ -25,16 +25,17 @@
 
            
         ?>
+        </div>
         
-        <form id="inscription" method="POST">
-            login : <input type="text" name="login" required></br>
-            mot de passe : <input type="password" name="password" required></br>
-            <button type="submit" name="action" value="inscription">S'inscrire</buttom>
+        <form id="info" method="POST">
+        <div id="login">Login :</div> <input type="text" name="login" required></br>
+        <div id="mdp">Mot de passe :</div> <input type="password" name="password" required></br>
+            <button id="inscrireBtn" type="submit" name="action" value="inscription">S'inscrire</buttom>
         </form>
         <form id="retour" method="POST">
-        <button type="submit" name="action" value="deconnexion">Se connecter</buttom>
+        <button id="connecterBtn" type="submit" name="action" value="deconnexion">Se connecter</buttom>
         </form>
 
     </div>
-
+    <?php include_once ("footer.php"); ?>
 </body>

@@ -1,0 +1,80 @@
+*{
+    font-family:Arial, sans-serif;
+}
+
+html{
+background-color: #232323;
+}
+
+body{
+background: #232323;
+color:#232323;
+}
+
+
+/* img{
+    width: auto;
+    left: auto;
+    top: auto;
+    position: absolute;
+    opacity: 0.2;
+    /* object-position: 50% 50%; 
+} */
+
+
+#inscription{
+    background: #232323;
+    color:lightgray;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+
+}
+
+
+button {
+    width: 150px;
+    height: 30px;
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    }
+    
+button#inscrireBtn{
+    position: relative;
+    left:100px;
+    top:40px;
+}
+
+button#connecterBtn{
+    position: relative;
+    right:100px;
+    top:60px;
+}
+
+#indication{
+    position: relative;
+    top:50px;
+}
+
+
+#info{
+    position: relative;
+    top: 50px;
+}
+
+#login{
+    position: relative;
+    right:70px;
+}
+
+#mdp{
+    position: relative;
+    right:42px;
+}
+
