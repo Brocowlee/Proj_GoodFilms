@@ -59,6 +59,8 @@ public class TableObject {
 	
 	/**
 	 * Méthode qui supprime la table
+	 * 
+	 * @see InitTable
 	 */
 	public void deleteTable() {
 		
@@ -84,9 +86,9 @@ public class TableObject {
 	
 	/**
 	 * Méthode qui insert des valeurs dans la table
-     * @param indexes liste d'entier 
+     * @param indexes liste d'entiers 
      * @param value liste de String
-     * @return true si la requête a fonctionné, false sinon
+     * @return true si la requête a fonctionnée, false sinon
 	 */
 	public boolean insertInto(List<Integer> indexes, ArrayList<String> value) {
 		
@@ -123,7 +125,7 @@ public class TableObject {
 	
 	/**
 	 * Méthode qui vérifie si une clé primaire existe déjà
-     * @param string un String
+     * @param string un nom de colonne
      * @return true si la table contient déjà une clé primaire, false sinon
 	 */
 	public boolean alreadyHasPrimaryKey(String string) {
@@ -149,7 +151,7 @@ public class TableObject {
 	
 	/**
 	 * Méthode qui vérifie si la table est une table de relation
-     * @return true si la table contient déjà une clé primaire, false sinon
+     * @return true si la table contient déjà deux clés primaires, false sinon
 	 */
 	public boolean isRelationTable() {
 		
@@ -248,8 +250,7 @@ public class TableObject {
 	
 	/**
 	 * Méthode qui renvoie une ligne précise en fonction de l'id
-     * @return une liste comprenant elle même des listes
-     * 		chaque liste correpondant à une ligne de la table
+     * @return une liste correpondant à une ligne de la table
      * @param index String correspondant à l'id d'une ligne
 	 */
 	public ArrayList<String> selectLigne(String index) {
@@ -283,11 +284,11 @@ public class TableObject {
 	}
 	
 	/**
-	 * Méthode qui un string à partir d'un type de variable d'une base de données
+	 * Méthode qui cast en string à partir d'un type de variable d'une base de données
      * @return un type sql casté en String
      * @throws SQLException erreur dans la requête sql
      * @param rs Un ResultSet
-     * @param un String correspondant au non d'une colonne
+     * @param name un String correspondant au nom d'une colonne
 	 */
 	private String getValueOf(ResultSet rs, String name) throws SQLException {
 	
@@ -407,8 +408,8 @@ public class TableObject {
 	}
 	
 	/**
-	 * Méthode qui renvoie un entier
-     * @return un entier correspondant au nombre de colonnes
+	 * Méthode qui renvoie un entier correspondant au nombre de colonnes
+     * @return un entier 
 	 */
 	public int getTotalColumn() {
 		
@@ -417,8 +418,8 @@ public class TableObject {
 	}
 	
 	/**
-	 * Méthode qui renvoie un entier
-     * @return un entier correspondant au nombre total de lignes
+	 * Méthode qui renvoie un entier correspondant au nombre total de lignes
+     * @return un entier 
 	 */
 	public int getTotalLine() {
 		
@@ -441,7 +442,7 @@ public class TableObject {
 	
 	/**
 	 * Méthode qui supprime une ligne
-	 * @param index entier correspondant à un id
+	 * @param index entier correspondant à un id d'une ligne
 	 */
 	public void deleteLine(int index) {
 		

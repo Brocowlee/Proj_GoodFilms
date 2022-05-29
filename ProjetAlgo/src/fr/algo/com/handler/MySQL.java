@@ -62,7 +62,7 @@ public class MySQL extends Database {
   * Retourne une connexion à une base de données
   * @throws SQLException si une requête sql est érronée
   * @throws ClassNotFoundException si une classe est introuvable
-  * @return une instance de Connection, qui renvoie un objet Connection
+  * @return une instance de Connection
   */
   public Connection openConnection()
     throws SQLException, ClassNotFoundException

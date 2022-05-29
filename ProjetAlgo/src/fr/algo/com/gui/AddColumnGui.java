@@ -38,7 +38,7 @@ import fr.algo.com.object.TableObject;
 public class AddColumnGui extends JFrame {
 	
 	/**
-     * Image servant d'icon.
+     * Image servant d'icon
      */
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 	
@@ -48,7 +48,7 @@ public class AddColumnGui extends JFrame {
 	private JLabel LName = new JLabel("Nom de la colonne : ");
 	
 	/**
-     * Zone de text pour le nom
+     * Zone de texte pour le nom
      */
 	private JTextField TName = new JTextField();
 	
@@ -68,7 +68,7 @@ public class AddColumnGui extends JFrame {
 	private JLabel LDefaultValue = new JLabel("Valeur par défaut : ");
 	
 	/**
-     * Zone de text pour la valeur par defaut
+     * Zone de texte pour la valeur par defaut
      */
 	private JTextField TDefaultValue = new JTextField();
 	
@@ -98,13 +98,14 @@ public class AddColumnGui extends JFrame {
 	private JLabel LisPrimary = new JLabel("Primary Key ? : ");
 	
 	/**
-     * Checkbox is Pramary
+     * Checkbox is Primary
      */
 	private JCheckBox CisPrimary = new JCheckBox();
 	
 	/**
 	* Constructeur de la classe
-	* @param containerCreateTable instance de creation d'une nouvelle
+	* @param containerCreateTable instance de création d'une nouvelle table
+	* @see ContainerCreateTable
 	*/
 	public AddColumnGui(ContainerCreateTable containerCreateTable) {
 		
@@ -179,7 +180,7 @@ public class AddColumnGui extends JFrame {
 	}
 	
 	/**
-     * Ajoute un nombre indéfinis de JComponent à un JPanel tout en définissanr l'espace entre les JComponents
+     * Ajoute un nombre indéfini de JComponent à un JPanel tout en définissant l'espace entre les JComponents
      * 
      * @param pan Jpanel 
      * @param components liste de JComponent
@@ -198,7 +199,7 @@ public class AddColumnGui extends JFrame {
 	}
 
 	/**
-     * Definit les elements de la checkbox de types
+     * Definit les élements de la checkbox de types
      * 
      * @param box JCheckBox de type
      * @return une JComboBox contenant tous les types
@@ -220,7 +221,7 @@ public class AddColumnGui extends JFrame {
 	}
 	
 	/**
-     * Retourne un objet AddColumnGui.
+     * Retourne une instance AddColumnGui.
      *
      * @return Une instance d'un AddColumnGui
      */

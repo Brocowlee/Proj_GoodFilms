@@ -70,6 +70,7 @@ public class ContainerCreateTable extends JPanel{
 	/**
 	* Constructeur de la classe
 	* @param mastercontainer container de gestion d'affichage
+	* @see MasterContainer
 	*/
 	public ContainerCreateTable(MasterContainer mastercontainer) {
         
@@ -82,7 +83,7 @@ public class ContainerCreateTable extends JPanel{
     }
 	
 	/**
-     * Methode permettant l'affichage des différentes colonne
+     * Methode permettant l'affichage des différentes colonnes
      * 
      */
 	public void ShowColumn() {
@@ -386,7 +387,7 @@ public class ContainerCreateTable extends JPanel{
      * 
      * @param width largeur
      * @param id_column id de la colonne
-     * @return un entier correspondant a l'espace
+     * @return un entier correspondant à l'espace
      */
 	public int getSpace(int width, int id_column) {
 		
@@ -401,6 +402,7 @@ public class ContainerCreateTable extends JPanel{
      * Ajoute la nouvelle colonne à la liste de colonnes
      * 
      * @param colonne colonne à ajouter
+     * @see Column
      */
 	public void AddColumn(Column colonne) {
 		this.lstColumns.add(colonne);
@@ -411,6 +413,7 @@ public class ContainerCreateTable extends JPanel{
      * Getter de cet objet
      * 
      * @return une instance de cette classe
+     * @see ContainerCreateTable
      */
 	public ContainerCreateTable getContainerCreateTable() {
 		return this;
@@ -421,6 +424,7 @@ public class ContainerCreateTable extends JPanel{
      * Getter de masterContainer
      * 
      * @return une intance de MasterContainer
+     * @see MasterContainer
      */
 	public MasterContainer getMasterContainer() {
 		return this.mastercontainer;

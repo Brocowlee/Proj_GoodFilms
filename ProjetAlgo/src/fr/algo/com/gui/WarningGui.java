@@ -31,17 +31,17 @@ import fr.algo.com.utils.Config;
 public class WarningGui extends JFrame{
 	
 	/**
-     * Image panneau attention.
+     * Image panneau attention
      */
 	private ImageIcon attention = new ImageIcon(new ImageIcon("./attention.png").getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
 	
 	/**
-     * message d'erreur.
+     * Message d'erreur
      */
 	private String message;
 	
 	/**
-     * Button "ok".
+     * Button "ok"
      */
 	private JButton button;
 	
@@ -88,7 +88,7 @@ public class WarningGui extends JFrame{
 	}
 	
 	 /**
-     * Retourne un objet WarningGUI.
+     * Retourne une instance WarningGUI
      * 
      * @return Une instance d'un WarningGUI
      * 

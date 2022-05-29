@@ -10,7 +10,7 @@ import fr.algo.com.gui.containers.MasterContainer;
 /**
  * <b>Classe GUI principal </b>
  * <p>
- *   Cette classe va réaliser le gui permettant d'avoir un affichage de toute les fonctionalité.
+ *   Cette classe va réaliser le gui permettant d'avoir un affichage de toutes les fonctionalités
  * 
  * @author Thomas, Benjamin
  * @version 1.0
@@ -20,7 +20,7 @@ import fr.algo.com.gui.containers.MasterContainer;
 public class MyGUI extends JFrame{
 
 	/**
-     * Image servant d'icon.
+     * Image servant d'icon
      */
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 
@@ -32,7 +32,6 @@ public class MyGUI extends JFrame{
 		
 		setContentPane(new MasterContainer(this));
 
-		//Application initialising :
 		setTitle("ZeFilmViewer");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

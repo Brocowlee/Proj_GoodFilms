@@ -36,24 +36,28 @@ import fr.algo.com.object.TableObject;
 public class AddingGui extends JFrame {
 	
 	/**
-     * Image servant d'icon.
+     * Image servant d'icon
      */
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 	
 	/**
-     * Liste de zone de text
+     * Liste de zones de texte
      */
 	private ArrayList<JTextField> textField_list = new ArrayList<>();	
 	
 	/**
      * Objet TableObject contenant la table d'où la ligne provient
+     * @see TableObject
      */
 	private TableObject table;
 	
 	/**
 	* Constructeur de la classe
 	* @param containerAdmin panel contenant l'affichage de la table
-	* @param table table dans laquelle la ligne va être ajouté
+	* @param table table dans laquelle la ligne va être ajoutée
+	* 
+	* @see ContainerAdmin
+	* @see TableObject
 	*/
 	public AddingGui(ContainerAdmin containerAdmin, TableObject table) {
 		
@@ -190,19 +194,19 @@ public class AddingGui extends JFrame {
 	/**
      * Definit la taille d'un composant et l'ajoute a son JPanel
      * 
-     * @param test composant de GUI
+     * @param composent composant de GUI
      * @param dim dimension
      * @param pan Jpanel 
      */
-	public static void setSizeAdd(Object test,Dimension dim,JPanel pan) {
+	public static void setSizeAdd(Object composent,Dimension dim,JPanel pan) {
 		
-		((JComponent) test).setMinimumSize(dim);
-        ((JComponent) test).setMaximumSize(dim);
-        pan.add((JComponent) test);
+		((JComponent) composent).setMinimumSize(dim);
+        ((JComponent) composent).setMaximumSize(dim);
+        pan.add((JComponent) composent);
 	}
 
 	/**
-     * Retourne un objet AddingGui.
+     * Retourne une instance AddingGui.
      *
      * @return Une instance d'un AddingGui
      */

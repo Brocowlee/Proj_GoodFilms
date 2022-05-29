@@ -151,7 +151,7 @@ public class Column {
 	}
 	
 	/**
-	 * Méthode qui set le boolean priary
+	 * Méthode qui set le boolean primary
      * @param bool une valeur true ou false 
 	 */
 	public void setPrimary(Boolean bool) {

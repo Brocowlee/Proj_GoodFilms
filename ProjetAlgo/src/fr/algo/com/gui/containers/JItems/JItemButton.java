@@ -17,7 +17,7 @@ import fr.algo.com.object.TableObject;
 /**
  * <b>Classe de creation d'un bouton ainsi que son listener</b>
  * <p>
- *   Cette classe gère un bouton en dehros de la classe où il est crée
+ *   Cette classe gère un bouton en dehors de la classe où il est créé
  * 
  * @author Thomas, Benjamin
  * @version 1.0
@@ -42,11 +42,13 @@ public class JItemButton {
 	
 	/**
      * ContainerAdmin conteneur d'où peut provenir le bouton
+     * @see ContainerAdmin
      */
 	private ContainerAdmin containerAdmin;
 	
 	/**
      * ContainerCreateTable conteneur d'où peut provenir le bouton
+     * @see ContainerCreateTable
      */
 	private ContainerCreateTable containerCreateTable;
 	
@@ -86,7 +88,7 @@ public class JItemButton {
 	/**
 	* Constructeur de la classe pour un bouton Image dans ContainerAdmin
 	* 
-	* @param name nom du bouton
+	* @param name image du bouton
 	* @param containerAdmin conteneur d'où peut provenir le bouton
 	* @param type type d'action
 	*/
@@ -104,35 +106,6 @@ public class JItemButton {
 		    		EditGui gui = new EditGui(containerAdmin, getItemButton());
 		    		
 		    		gui.setVisible(true);
-		    		
-		    	}
-		    }
-		    
-		});
-		
-	}
-	
-	/**
-	* Constructeur de la classe pour une image dans ContainerCreateTable
-	* 
-	* @param name nom du bouton
-	* @param containerCreateTable conteneur d'où peut provenir le bouton
-	* @param type type d'action
-	*/
-	public JItemButton(ImageIcon name,ContainerCreateTable containerCreateTable, String type) {
-		this.type = type;
-		this.containerCreateTable = containerCreateTable;
-		initButton(name);
-		
-		
-		this.button.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent arg0) {
-		    	
-		    	if (type.equalsIgnoreCase("Edit")) {
-		    		
-		    		//EditColumnGui gui = new EditColumnGui(containerCreateTable, getItemButton());
-		    		
-		    		//gui.setVisible(true);
 		    		
 		    	}
 		    }
@@ -227,9 +200,9 @@ public class JItemButton {
 	}
 	
 	/**
-	* Getter de cet objet
+	* Getter de cet instance
 	*
-	*@return cet objet
+	*@return cet instance
 	*/
 	public JItemButton getItemButton() {
 		return this;

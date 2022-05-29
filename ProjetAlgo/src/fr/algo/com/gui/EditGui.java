@@ -38,12 +38,12 @@ import fr.algo.com.object.TableObject;
 public class EditGui extends JFrame{
 
 	/**
-     * Image servant d'icon.
+     * Image servant d'icon
      */
 	private ImageIcon icon = new ImageIcon("./Icon.jpg");
 	
 	/**
-     * Liste de zone de text
+     * Liste de zones de texte
      */
 	private ArrayList<JTextField> textField_list = new ArrayList<>();	
 	
@@ -55,7 +55,7 @@ public class EditGui extends JFrame{
 	/**
 	* Constructeur de la classe
 	* @param containerAdmin panel contenant l'affichage de la table
-	* @param button button modifié d'une ligne qui a été cliqué 
+	* @param button bouton éditer d'une ligne qui a été cliqué 
 	*/
 	public EditGui(ContainerAdmin containerAdmin, JItemButton button) {
 		
@@ -188,23 +188,24 @@ public class EditGui extends JFrame{
 	}
 	
 	/**
-     * Definit la taille d'un composant et l'ajoute a son JPanel
+     * Definit la taille d'un composant et l'ajoute à son JPanel
      * 
-     * @param test composant de GUI
+     * @param component composant de GUI
      * @param dim dimension
      * @param pan Jpanel 
      */
-	public static void setSizeAdd(JComponent test,Dimension dim,JPanel pan) {
+	public static void setSizeAdd(JComponent component,Dimension dim,JPanel pan) {
 		
-		test.setMinimumSize(dim);
-        test.setMaximumSize(dim);
-        pan.add(test);
+		component.setMinimumSize(dim);
+        component.setMaximumSize(dim);
+        pan.add(component);
 	}
 	
 	/**
-     * Retourne un objet EditGui.
+     * Retourne une instance EditGui
      *
      * @return Une instance d'un EditGui
+     * @see EditGui
      */
 	public EditGui getEditGui() {
 		return this;

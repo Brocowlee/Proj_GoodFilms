@@ -29,22 +29,26 @@ public class MasterContainer extends JPanel {
 	
 	/**
      * ContainerInit principal
+     * @see ContainerInit
      */
 	private ContainerInit Connect;
 	
 	/**
      * ContainerAdmin principal
+     * @see ContainerAdmin
      */
 	private ContainerAdmin Admin;
 	
 	/**
      * Gui principal
+     * @see MyGUI
      */
 	private MyGUI gui;
 
 	/**
 	* Constructeur de la classe
 	* @param gui dans lequel sera affiché le container
+	* @see MyGUI
 	*/
     public MasterContainer(MyGUI gui) {
     	this.gui = gui;
@@ -88,7 +92,7 @@ public class MasterContainer extends JPanel {
         else {
         	present(Admin);
         	gui.setResizable(true);
-        	Admin.maj();
+        	Admin.update();
         }
         
         revalidate();
@@ -97,7 +101,7 @@ public class MasterContainer extends JPanel {
 
     /**
      * 
-     * Affiche le bon Container grâce à un listener
+     * Affiche le bon Container
      * 
      */
     protected void present(JPanel panel) {
@@ -108,9 +112,9 @@ public class MasterContainer extends JPanel {
     }
     
     /**
-     * Ajoute des elements à un menu
+     * Ajoute des élements à un menu
      * 
-     * @param main_menu menu ou l'on ajoute les components
+     * @param main_menu menu où l'on ajoute les components
      * @param components liste de JComponents
      */
     public void addMenu(JComponent main_menu, JComponent... components ) {
@@ -124,6 +128,7 @@ public class MasterContainer extends JPanel {
      * Créer le menu ainsi que ses elements
      * 
      * @param gui instance de MyGUI
+     * @see MyGUI
      * 
      * @return le menu
      */
@@ -205,6 +210,7 @@ public class MasterContainer extends JPanel {
      * Getter d'une instance de ContainerAdmin
      * 
      * @return instance de ContainerAdmin
+     * @see ContainerAdmin
      */
     public ContainerAdmin getContainerAdmin() {
 		return this.Admin;
@@ -215,6 +221,7 @@ public class MasterContainer extends JPanel {
      * Getter d'une instance de MasterContainer
      * 
      * @return instance de MasterContainer
+     * @see MasterContainer
      */
     public MasterContainer getMasterContainer() {
 		return this;

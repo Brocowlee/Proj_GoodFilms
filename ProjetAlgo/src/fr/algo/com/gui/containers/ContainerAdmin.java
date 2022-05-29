@@ -29,7 +29,7 @@ import fr.algo.com.object.TableObject;
 /**
  * <b>Classe JPanel d'affichage des tables</b>
  * <p>
- *   Cette classe va l'affichage des tables
+ *   Cette classe réalise l'affichage des tables
  * 
  * @author Thomas, Benjamin
  * @version 1.0
@@ -130,13 +130,13 @@ public class ContainerAdmin extends JPanel {
 	* Methode de mise à jour de la classe
 	*
 	*/
-	public void maj() {
+	public void update() {
 		removeAll();
 		showMenu(null);
 	}
 	
 	/**
-	* Methode permettant de changer la visibilité des bouton de réussite d'ajout
+	* Methode permettant de changer la visibilité des boutons de réussite d'ajout
 	*
 	*@param bool un boolean
 	*/
@@ -144,7 +144,6 @@ public class ContainerAdmin extends JPanel {
 		
 		this.Ladd.setVisible(bool);
 		this.Ladd2.setVisible(bool);
-		
 	}
 	
 	/**
@@ -224,7 +223,7 @@ public class ContainerAdmin extends JPanel {
 	/**
 	* Methode permettant de changer le format des JLabel
 	*
-	*@param text le label a modifier
+	*@param text le label à modifier
 	*@param contentPane le JPanel où l'on ajoute le JLabel
 	*@param list liste de positions
 	*@param color couleur de fond du JLabel
@@ -310,7 +309,7 @@ public class ContainerAdmin extends JPanel {
 	}
 	
 	/**
-	* Methode permettant d'obtenir la liste les valeurs maximals entre deux attributs
+	* Methode permettant d'obtenir la liste des valeurs maximales entre deux attributs
 	*
 	*@param table la table dans laquelle on recupère les attributs
 	*/
@@ -332,6 +331,7 @@ public class ContainerAdmin extends JPanel {
 	* Methode permettant d'afficher les informations d'une table
 	*
 	*@param table table sélectionée
+	*@see TableObject
 	*/
 	public void showTable(TableObject table) {
 		
@@ -467,9 +467,10 @@ public class ContainerAdmin extends JPanel {
 	}
 	
 	/**
-	* Methode permettant d'obtenir la table actuellement selectioné
+	* Methode permettant d'obtenir la table actuellement selectionée
 	*
 	*@return table sélectionée
+	*@see TableObject
 	*/
 	public static TableObject getCurrentTable() {
 		

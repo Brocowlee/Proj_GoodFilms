@@ -122,7 +122,7 @@ public class Config {
 	
 	 /**
      * Retourne un string correspondant à la description de la classe
-     * @return un String, avec les différentes valeurs
+     * @return un String, avec les différentes valeurs de la classe
      */
 	@Override
     public String toString() {

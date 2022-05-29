@@ -14,7 +14,6 @@ import fr.algo.com.utils.Config;
  * <b>Classe principale du projet</b>
  * <p>
  *   Cette classe va réaliser la connexion à la base de données puis ouvrir le gui principal
- * @see Main
  * 
  * @author Thomas, Benjamin
  * @version 1.0
@@ -31,13 +30,13 @@ public class Main {
 	
 	
 	/**
-     * Variable pour connaître l'état de la connexion.
+     * Variable pour connaître l'état de la connexion
      * 
      */
 	public static boolean connected;
 	
 	 /**
-     * Fonction principale du programme.
+     * Fonction principale du programme
      * @param args[]
      */
 	public static void main(String args[]) {
@@ -53,9 +52,9 @@ public class Main {
 	}
 	
 	  /**
-     * Retourne le fichier de configuration.
+     * Retourne le fichier de configuration
      * 
-     * @return Une instance de Config, qui correspond à un fichier configuration.
+     * @return Une instance de Config, qui correspond à un fichier configuration
      * 
      * @throws FileNotFoundException si le fichier est introuvable
      * @see Config
@@ -70,13 +69,12 @@ public class Main {
 		}
 		
 	    return handler.getConfig();
-		
 	}
 	
 	 /**
-     * Fonction de connexion à la base de donnée.
+     * Fonction de connexion à la base de donnée
      * 
-     * @return True si la connexion est réussie, False si elle a échoué.
+     * @return True si la connexion est réussie, False si elle a échoué
      * @throws ClassNotFoundException si la classe est introuvable
      * @throws SQLException si la requête sql n'a pas fonctionné
      * @see MySQL

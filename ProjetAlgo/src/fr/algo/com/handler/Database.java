@@ -19,6 +19,10 @@ public abstract class Database {
      */
   public Connection connexion;
   
+  
+  /**
+	* Constructeur de la classe
+	*/
   protected Database()
   {
     this.connexion = null;
@@ -45,7 +49,7 @@ public abstract class Database {
   }
   
   	 /**
-	 * Méthode retournant la connexio, 
+	 * Méthode retournant la connexion 
 	 * @return une instance Connection
 	 */
   public Connection getConnection()
@@ -69,7 +73,7 @@ public abstract class Database {
   }
   
   	/**
-	 * Méthode pour executer des requêtes sql
+	 * Méthode pour exécuter des requêtes sql
 	 * @return un ResultSet
 	 * @param query String correspondant à la requête
 	 * @throws SQLException erreur dans la requête sql

@@ -38,7 +38,7 @@ public class ContainerInit extends JPanel{
 	/**
 	 * <b>Interface Listener</b>
 	 * <p>
-	 *   Cette Interface va renvoyer 
+	 *   Interface de navigation
 	 * 
 	 * @see ReturnNavigationListener
 	 * @author Thomas, Benjamin
@@ -88,6 +88,7 @@ public class ContainerInit extends JPanel{
 	/**
 	* Constructeur de la classe
 	* @param navigationListener listener de retour
+	* @see NavigationListener
 	*/
 	public ContainerInit(NavigationListener navigationListener){
 		this.navigationListener = navigationListener;
@@ -184,7 +185,7 @@ public class ContainerInit extends JPanel{
 	}
 	
 	/**
-     * Demande a la base de donnée si l'identifiant d'un utilisateur est un admin
+     * Demande a la base de données si l'identifiant d'un utilisateur est un admin
      * 
      * @param login identifiant de l'utilisateur
      */
@@ -208,7 +209,7 @@ public class ContainerInit extends JPanel{
 	}
 	
 	/**
-     * Demande a la base de donnée si l'identifiant d'un utilisateur est connu
+     * Demande a la base de données si l'identifiant d'un utilisateur est connu
      * 
      * @param login identifiant de l'utilisateur
      */
@@ -232,7 +233,7 @@ public class ContainerInit extends JPanel{
 	}
 	
 	/**
-     * Demande a la base de donnée le mot de passe
+     * Demande a la base de données le mot de passe
      * 
      * @param login identifiant de l'utilisateur
      */
@@ -269,7 +270,7 @@ public class ContainerInit extends JPanel{
 	}
 	
 	/**
-     * Demande a la base de donnée le salt d'un identifiant
+     * Demande a la base de données le salt d'un identifiant
      * 
      * @param login identifiant de l'utilisateur
      * @return un String contenant le salt
@@ -296,6 +297,7 @@ public class ContainerInit extends JPanel{
      * Getter d'un Listener
      * 
      * @return un Listener de navigation
+     * @see NavigationListener
      */
 	protected NavigationListener getNavigationListener() {
         return navigationListener;
