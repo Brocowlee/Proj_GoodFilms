@@ -1,11 +1,19 @@
 <!DOCTYPE HTML>
 
 <head>
-    <?php require("Views/header.php"); ?>
     <link rel="stylesheet" href="public/accueilStyle.css">
 </head>
 
+
+
+
 <body>
+<header>
+<?php require("Views/header.php"); ?>
+</header>
+
+
+<div id="content">
     <h1>Vous nous avez manqué <?= $_SESSION["login"] ?></h1>
     </br>
 
@@ -26,5 +34,11 @@
     </div>
 
 
+
+</div>
+
+<footer>
+<?php require("footer.php"); ?>
+</footer>
 </body>
 

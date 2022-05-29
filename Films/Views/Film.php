@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="public/filmStyle.css">
@@ -8,11 +8,15 @@
 
 
 
-    <?php require("Views/header.php"); ?>
+<header>
+<?php require("Views/header.php"); ?>
+</header>
 <body>   
 
+<div id="film">
 <h1><?= $titre ?> </h1>
 <div id="un_film">
+
     <div id="image">
 
         <img src="<?php echo $donnees['image']?>" width="600" height="1000">
@@ -130,5 +134,10 @@
     </div>
 
 </div>
+</div>
+
+<footer>
+<?php require ("footer.php"); ?>
+</footer>
 
 </body>

@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="public/unGenreStyle.css">
 </head>
 
+<header>
 <?php require("Views/header.php"); ?>
+</header>
 
 <body>
+<div id="page_un_genre">
     <h1> Films du genre : <?php echo $genre ?> </h1>
 <div id="un_genre">
     <?php while($donnees = $un_genre->fetch_array()){ ?>
@@ -25,4 +28,9 @@
 
 
 </div>
+</div>
+<footer>
+<?php require("footer.php"); ?>
+</footer>
+
 </body>

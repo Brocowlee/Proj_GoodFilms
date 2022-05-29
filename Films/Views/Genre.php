@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="public/genreStyle.css">
 </head>
 
+<body>
+
+<header>
+<?php require("Views/header.php"); ?>
+</header>
 
 
-    <?php require("Views/header.php"); ?>
-
-    <body>
 
     <div id="page_genre">
         <h3>Liste des genres :</h3>
@@ -31,7 +33,10 @@
         </div>
     </div>
 
+    <footer>
+    <?php require("footer.php"); ?>
+    </footer>
 
-    </body>
+</body>
 
 

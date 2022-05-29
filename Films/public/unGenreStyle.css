@@ -2,12 +2,22 @@
     font-family:Arial, sans-serif
 }
 
-h1 {
+html {
+    background-color:rgb(57, 54, 54);
+}
+
+#page_un_genre h1 {
     color: lightgray;
 }
 
-body {
+header {
+    position : sticky;
+    top: 0;
+}
+
+#page_un_genre {
     background-color:rgb(57, 54, 54);
+    padding-bottom: 280px;
 }
 
 #un_genre {
@@ -33,9 +43,5 @@ body {
 #bouton_film:hover{
     box-shadow: 10px 5px 5px black;
     transition: 500ms;
-}
-
-body {
-    background-color: rgb(57, 54, 54);
 }
 

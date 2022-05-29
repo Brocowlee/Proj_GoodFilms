@@ -8,10 +8,13 @@
 
 
 
+<header>
 <?php require("Views/header.php"); ?>
+</header>
 
 <body>
-    <div id="page_recherche_ami">
+
+<div id="page_recherche_ami">
     <h1>Votre recherche : </h1>
     </br>
 
@@ -33,5 +36,8 @@
     </div>
     </div>
 
+<footer>
+<?php require ("footer.php"); ?>
+</footer>
 
 </body>

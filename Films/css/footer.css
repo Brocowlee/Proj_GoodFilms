@@ -1,10 +1,13 @@
 .footer-dark {
-    position:absolute;
     bottom: 0;
     padding:auto;
-    width: 100%;
     color:darkgray;
     background:black;
+  }
+
+  footer {
+    position : absolute;
+    width: 100%;
   }
   
   .footer-dark h3 {

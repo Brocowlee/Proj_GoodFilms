@@ -2,7 +2,7 @@
     font-family:Arial, sans-serif
 }
 
-#menu_haut{
+#header {
     display : flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -13,7 +13,7 @@
     width: 100%;
     top: 0px; left: 0px;
     align-items: center;
-    position : sticky;
+
 }
 
 #bouton{

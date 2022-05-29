@@ -1,20 +1,34 @@
 *{
     font-family:Arial, sans-serif
 }
+html {
+    background-color: rgb(57, 54, 54);
+}
 
-h1 {
+header {
+    position : sticky;
+    top: 0;
+}
+
+#film h1 {
     color: lightgrey;
     text-align: center;
     font-size: 400%;
+    background-color: rgb(57, 54, 54);
 }
 
-h2 {
+#film h2 {
     color: lightgrey;
     font-size: 200%;
 }
 
-#un_film {
+#film {
+    padding-bottom: 50px;
 
+    background-color: rgb(57, 54, 54);
+}
+
+#un_film {
     display :flex; 
     flex-direction: row;
     justify-content: space-around;
@@ -37,9 +51,7 @@ li {
 
 }
 
-body {
-    background-color: rgb(57, 54, 54);
-}
+
 
 
 

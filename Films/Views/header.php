@@ -6,7 +6,8 @@
     <title>Good2Watch</title>
 </head>
 
-<div id="menu_haut">
+
+    <div id="header">
     <form id="form_accueil">
         <input type="hidden" name="login" value="<?= $_SESSION['login'] ?>">
         <button id="bouton_a" type="submit" name="action" value="accueil">
@@ -44,4 +45,5 @@
         </button>
     </form>
 </div>
+
 

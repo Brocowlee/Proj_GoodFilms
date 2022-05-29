@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
-<link href="css\Connexion.css" rel="stylesheet">
+
 <head>
+<link href="css\Connexion.css" rel="stylesheet">
     <meta charset="UTF-8">
 </head>
 
@@ -18,17 +18,15 @@
             <div id="mdp">Mot de passe :</div> <input id="barreMdp" type="password" name="password" required></br>
             <button id="connexionBtn" type="submit" name="action" value="connexion">Connexion</buttom>
         </form>
-<<<<<<< HEAD
-        <form id="send_to_inscription">
-            <button type="submit" name="action" value="send_to_inscription">Inscription</buttom>
-=======
-        <form id="send_to_inscription" method="POST">
+        <form id="send_to_inscription" >
             <button id="inscriptionBtn" type="submit" name="action" value="send_to_inscription">Inscription</buttom>
->>>>>>> origin/connexion_css
         </form>
       
 
     </div>
-    <?php include_once ("footer.php"); ?>
+
+<footer>
+<?php require ("footer.php"); ?>
+</footer>
+
 </body>
-</html>

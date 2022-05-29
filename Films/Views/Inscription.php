@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<link href="public\inscriptionStyle.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -8,12 +8,12 @@
 <title>Inscription</title>
 
 <body>
-
-    <div id="incription">
+<div id="global">
+    <div id="inscription">
 
         <h2>Inscription</h2>
-        
-        <?php  
+        <div id="indication">
+        <?php
         if (isset($inscription_error)){
             if ($inscription_error){
                 echo "Ce login est déjà utilisé !";
@@ -23,18 +23,22 @@
 
         echo "Veuillez renseigner un identifiant et un mot de passe :";
 
-           
+
         ?>
-        
-        <form id="inscription">
-            login : <input type="text" name="login" required></br>
-            mot de passe : <input type="password" name="password" required></br>
-            <button type="submit" name="action" value="inscription">S'inscrire</buttom>
+        </div>
+
+        <form id="info" method="POST">
+        <div id="login">Login :</div> <input type="text" name="login" required></br>
+        <div id="mdp">Mot de passe :</div> <input type="password" name="password" required></br>
+            <button id="inscrireBtn" type="submit" name="action" value="inscription">S'inscrire</buttom>
         </form>
-        <form id="retour">
-        <button type="submit" name="action" value="deconnexion">Se connecter</buttom>
+        <form id="retour" method="GET">
+        <button id="connecterBtn" type="submit" name="action" value="deconnexion">Se connecter</buttom>
         </form>
 
     </div>
-
+    </div>
+    <footer>
+<?php require("footer.php"); ?>
+</footer>
 </body>

@@ -1,34 +1,24 @@
+*{
+    font-family:Arial, sans-serif;
+}
 
 html{
 background-color: #232323;
-font-family:Arial Narrow, sans-serif;
 }
 
 body{
-    background: #232323;
-    color:#232323;
+background: #232323;
+color:#232323;
 }
 
 
-/* img{
-    width: auto;
-    left: auto;
-    top: auto;
-    position: absolute;
-    opacity: 0.2;
-    /* object-position: 50% 50%; 
-} */
-
-
-#connexion{
+#inscription{
     background: #232323;
     color:lightgray;
     margin: auto;
     width: 100%;
-    /* border: 3px solid #263238 ; */
     padding: 10px;
     text-align: center;
-    position :relative;
 
 }
 
@@ -43,24 +33,27 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  }
-  
-button#connexionBtn{
-    position: relative;
-    right:100px;
-    top:21px;
+    }
 
-}
-
-button#inscriptionBtn{
+button#inscrireBtn{
     position: relative;
     left:100px;
     top:40px;
+}
 
+button#connecterBtn{
+    position: relative;
+    right:100px;
+    top:60px;
+}
+
+#indication{
+    position: relative;
+    top:50px;
 }
 
 
-#informations{
+#info{
     position: relative;
     top: 50px;
 }
@@ -74,6 +67,7 @@ button#inscriptionBtn{
     position: relative;
     right:42px;
 }
+
 
 footer {
     bottom : 0;

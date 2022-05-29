@@ -7,10 +7,12 @@
 
 
 
-<?php require("header.php"); ?>
-
 <body>
-        
+    
+<header>
+<?php require("Views/header.php"); ?>
+</header>
+    <div id="content">
     <?php 
     if ($soi){
         echo'<h1>Votre profil</h1>';
@@ -105,6 +107,9 @@
 
 
     </div>
+    </div>
 
-
+<footer>
+<?php require("footer.php"); ?>
+</footer>
 </body>

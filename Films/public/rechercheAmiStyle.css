@@ -2,14 +2,23 @@
     font-family:Arial, sans-serif
 }
 
-h1 {
-    color:lightgray;
-}
-
-body {
+html {
     background-color:rgb(57, 54, 54);
 }
 
+#page_recherche_ami {
+    background-color:rgb(57, 54, 54);
+    padding : 20px;
+}
+
+#page_recherche_ami h1 {
+    color:lightgray;
+}
+
+header {
+    position : sticky;
+    top: 0;
+}
 
 #bouton_ami{
     background-color: #FFD700;
@@ -28,7 +37,7 @@ body {
 }
 
 
-#page_recherche_ami {
-    padding-left: 30px;
+footer {
+    bottom : 0;
 }
 
