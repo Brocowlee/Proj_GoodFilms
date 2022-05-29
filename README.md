@@ -25,6 +25,8 @@ Projet de création d'un site web de gestion des films visionnés inspiré du si
 
 Avec git, dans le repertoire de votre choix :
 
+'''git
 git clone https://github.com/Brocowlee/Proj_GoodFilms.git
+'''
 
 puis lancez votre serveur php et ouvrez le dossier dans votre navigateur préféré.
