@@ -3,6 +3,9 @@ package fr.algo.com.gui.containers;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JComponent;
 import javax.swing.JMenu;
@@ -144,8 +147,8 @@ public class MasterContainer extends JPanel {
     	JMenuItem menu2Item2 = new JMenuItem("SUPPRIMER TABLE");
     	
     	JMenu menu3 = new JMenu("Help");
-    	JMenuItem menu3Item = new JMenuItem("Site");
-    	JMenuItem menu3Item2 = new JMenuItem("GitHub");
+    	JMenuItem menu3Item = new JMenuItem("Github");
+    	JMenuItem menu3Item2 = new JMenuItem("Trello");
 		
     	addMenu(menuBar, menu, menu2, menu3);
     	addMenu(menu, menuItem);
@@ -192,6 +195,36 @@ public class MasterContainer extends JPanel {
 			
 			}
 		});
+		
+		menu3Item.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				try {
+					java.awt.Desktop.getDesktop().browse(new URI("https://github.com/Brocowlee/Proj_GoodFilms"));
+				} catch (IOException | URISyntaxException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
+		menu3Item2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				try {
+					java.awt.Desktop.getDesktop().browse(new URI("https://trello.com/b/Pj7xMKxc/projgoodfilms"));
+				} catch (IOException | URISyntaxException e1) {
+					e1.printStackTrace();
+				}
+								
+			}
+		});
+
+
     	
     	return menuBar;
     }
