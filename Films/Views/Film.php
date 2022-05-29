@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="public/filmStyle.css">
@@ -8,11 +8,15 @@
 
 
 
-    <?php require("Views/header.php"); ?>
+<header>
+<?php require("Views/header.php"); ?>
+</header>
 <body>   
 
+<div id="film">
 <h1><?= $titre ?> </h1>
 <div id="un_film">
+
     <div id="image">
 
         <img src="<?php echo $donnees['image']?>" width="600" height="1000">
@@ -20,7 +24,7 @@
 
     <div id="autres_infos">
 </br>
-        année de sortie : <?php echo $donnees['annee_sortie']?> 
+        Année de sortie : <?php echo $donnees['annee_sortie']?> 
 </br>
         Durée : <?php echo $donnees['duree']?>
 </br>
@@ -56,7 +60,7 @@
             if (isset($donnees['note'])){
                 echo "Vous avez mis la note de ".$donnees['note']."/10";
         ?>
-            <form id="form_film" method='POST'>
+            <form id="form_film">
                 <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
                 <button id="bouton_film" type="submit" name="action" value="sup_note">
                     Supprimer la note
@@ -70,7 +74,7 @@
                 echo "</br>Vous n'avez pas noté ce film";
             }
         ?>
-        <form id="note_film" method='POST'>
+        <form id="note_film">
             <input type="hidden" name="film" value="<?php echo $donnees['titre'] ?>">
             Noter ce film : 
             <select name="new_note">
@@ -98,7 +102,7 @@
         </br>
         <h2>Commentaires</h2>
 
-            <form method='POST'>
+            <form>
                 <input type="hidden" name="film" value="<?= $donnees['titre'] ?>">
                 <input type="search" name="ajouter_commentaire" placeholder="Ajouter un commentaire" required>
                 <button id="bouton_film" type="submit" name="action" value="commentaire">Ajouter</button>
@@ -113,7 +117,7 @@
                     $commentaire = $donnees["commentaire"];
                     $date = $donnees["date"];
         
-                    echo'<li><form id="form_amis" method="POST">'; 
+                    echo'<li><form id="form_amis" >'; 
         
                     echo'<input type="hidden" name="target_utilisateur" value="'.$login.'"/>';
                     echo'<button id="bouton_film" type="submit" name="action" value="target_utilisateur">'.$login.'</button>';
@@ -130,5 +134,10 @@
     </div>
 
 </div>
+</div>
+
+<footer>
+<?php require ("footer.php"); ?>
+</footer>
 
 </body>

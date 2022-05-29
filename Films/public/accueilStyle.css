@@ -2,10 +2,15 @@
     font-family:Arial, sans-serif
 }
 
-body {
-    background-color: rgb(57, 54, 54);
+header {
+    position : sticky;
+    top: 0;
 }
 
+#content {
+    padding-bottom: 50px;
+    background-color: rgb(57, 54, 54);
+}
 
 
 #liste_films{
@@ -31,11 +36,15 @@ body {
     margin: 8px; 
 }
 
-h1{
+#content h1{
     color: lightgrey;
 }
 
-h2 {
+#content h2 {
     color: lightgrey;
+}
+
+body {
+    height  :100%;
 }
 

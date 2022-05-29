@@ -1,16 +1,26 @@
 *{
     font-family:Arial, sans-serif
 }
-
-body {
+html {
     background-color:rgb(57, 54, 54);
 }
 
-h1 {
+#page_recherche {
+    background-color:rgb(57, 54, 54);
+}
+
+header {
+    position : sticky;
+    top: 0;
+}
+
+#page_recherche h1 {
+    padding : 20px;
    color : lightgray;
 }
 
 #liste_films{
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,4 +42,10 @@ h1 {
 
 #un_film {
     margin: 8px; 
+}
+
+footer {
+    position : absolute;
+    bottom : 0;
+    width : 100%;
 }

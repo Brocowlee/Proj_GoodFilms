@@ -2,16 +2,24 @@
     font-family:Arial, sans-serif
 }
 
-h1 {
+#content h1 {
     color: lightgrey;
 }
 
-h3 {
+#content h3 {
     color: lightgrey;
 }
 
-body {
+header {
+    position : sticky;
+    top: 0;
+}
+
+#content {
     background-color: rgb(57, 54, 54);
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-bottom: 324px;
 }
 
 
@@ -55,8 +63,9 @@ body {
     margin: 8px; 
 }
 
-li {
+#content li {
     color: lightgrey;
 }
+
 
 

@@ -15,17 +15,19 @@
     $userController = new UserController();
     $genreController = new GenreController();
 
-    if(isset($_POST["action"])){
-
-        //différentes routes
-
-        switch($_POST["action"]){
 
 
-            case "connexion" :
-                //Affichage de la Connexion
+    if (isset($_POST["action"])) {
+        if ($_POST["action"] == "connexion"){
                 $userController->displayConnexion();
-                break;
+        }
+        if ($_POST["action"]=="inscription"){
+            $userController->createUtilisateur();
+        }
+    }
+    else if(isset($_GET["action"])){
+        //différentes routes
+        switch($_GET["action"]){
             
             case "deconnexion" :
                 //Affichage de la déconnexion
@@ -35,11 +37,6 @@
             case "send_to_inscription" :
                 //Affichage de l'inscription
                 $userController->displayInscription();
-                break;
-
-            case "inscription" :
-                // Ajoute un utilisateur
-                $userController->createUtilisateur();
                 break;
 
             case "accueil" :
@@ -108,6 +105,7 @@
                 break;
         }
     }
+
     else {
         //Charger l'accueil par défaut
         $userController->displayConnexion();
