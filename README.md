@@ -41,8 +41,8 @@ Ainsi qu'une interface Java permettant de traiter les informations liées à la 
 
 Avec git, dans le repertoire de votre choix :
 
-'git
+```
 git clone https://github.com/Brocowlee/Proj_GoodFilms.git
-'
+```
 
 puis lancez votre serveur php et ouvrez le dossier dans votre navigateur préféré.
