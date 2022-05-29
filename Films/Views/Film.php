@@ -24,7 +24,7 @@
 
     <div id="autres_infos">
 </br>
-        année de sortie : <?php echo $donnees['annee_sortie']?> 
+        Année de sortie : <?php echo $donnees['annee_sortie']?> 
 </br>
         Durée : <?php echo $donnees['duree']?>
 </br>
