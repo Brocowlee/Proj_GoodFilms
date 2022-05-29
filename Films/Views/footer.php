@@ -18,20 +18,22 @@
                 <div class="col-sm-6 col-md-3 item">
                     <h3>Services</h3>
                     <ul>
-                        <li><a href="#">Github</a></li>
-                        <li><a href="#">Trellot</a></li>
+                        <li><a href="https://github.com/Brocowlee/Proj_GoodFilms">Github</a></li>
+                        <li><a href="https://trello.com/b/Pj7xMKxc/projgoodfilms">Trello</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 item">
-                    <h3>About</h3>
+                    <h3>About us</h3>
                     <ul>
-                        <li><a href="#">Github</a></li>
-                        <li><a href="#">Trellot</a></li>
+                        <li>Arthur GONAY</li>
+                        <li>Benjamin GUERIOT</li>
+                        <li>Thomas NICOLAS</li>
+                        <li>Vincent TAKAHASHI</li>
                     </ul>
                 </div>
-                <div class="col-md-6 item text">
-                    <h3>Notre projet</h3>
-                    <p>Notre groupe est composé de Vincent TAKAHASHI, Thomas NICOLAS, Benjamin GUERIOT et Arthur GONAY</p>
+                <div class="col-md-6_item_text">
+                    <h3>Projet</h3>
+                    <p>Création d'un site de reviews de films avec pour modèle le site <a href="https://www.goodreads.com/"><div id="lien_site">GoodReads</div></a></p>
                 </div>
                     </div>
             <p class="copyright">Polytech Annecy-Chambéry © 2022</p>

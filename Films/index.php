@@ -21,15 +21,13 @@
         if ($_POST["action"] == "connexion"){
                 $userController->displayConnexion();
         }
+        if ($_POST["action"]=="inscription"){
+            $userController->createUtilisateur();
+        }
     }
     else if(isset($_GET["action"])){
-
         //différentes routes
-
         switch($_GET["action"]){
-
-
-
             
             case "deconnexion" :
                 //Affichage de la déconnexion
@@ -39,11 +37,6 @@
             case "send_to_inscription" :
                 //Affichage de l'inscription
                 $userController->displayInscription();
-                break;
-
-            case "inscription" :
-                // Ajoute un utilisateur
-                $userController->createUtilisateur();
                 break;
 
             case "accueil" :

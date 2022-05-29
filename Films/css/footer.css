@@ -11,7 +11,7 @@
   }
   
   .footer-dark h3 {
-    margin-top:0;
+    margin-top:12px;
     margin-bottom:12px;
     font-weight:bold;
     font-size:16px;
@@ -31,6 +31,17 @@
     opacity:0.6;
   }
   
+  #lien_site {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.6;
+  }
+
+  #lien_site {
+    opacity:0.8;
+  }
+
+
   .footer-dark ul a:hover {
     opacity:0.8;
   }
@@ -93,4 +104,10 @@
     font-size:13px;
     margin-bottom:0;
   }
+
+
+
   
+  .footer-dark .item.social > a:hover {
+    opacity:0.9;
+  }

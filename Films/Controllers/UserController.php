@@ -46,7 +46,7 @@
         function createUtilisateur(){
 
 
-            $login = $_GET["login"]; 
+            $login = $_POST["login"]; 
 
             if($this->userModel->alreadyExist($login)){
 
@@ -55,7 +55,7 @@
                 require("Views/Inscription.php");
             } else {
 
-                $password = $_GET["password"];
+                $password = $_POST["password"];
                 
                 $salt = "$2a$10$8l".substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
                 $hash = crypt($password, $salt);
