@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-<link href="css\Connexion.css" rel="stylesheet">
+<link href="public\Connexion.css" rel="stylesheet">
     <meta charset="UTF-8">
 </head>
 

@@ -4,28 +4,18 @@ background-color: #232323;
 font-family:Arial Narrow, sans-serif;
 }
 
+
+
 body{
     background: #232323;
     color:#232323;
 }
-
-
-/* img{
-    width: auto;
-    left: auto;
-    top: auto;
-    position: absolute;
-    opacity: 0.2;
-    /* object-position: 50% 50%; 
-} */
-
 
 #connexion{
     background: #232323;
     color:lightgray;
     margin: auto;
     width: 100%;
-    /* border: 3px solid #263238 ; */
     padding: 10px;
     text-align: center;
     position :relative;
@@ -76,5 +66,7 @@ button#inscriptionBtn{
 }
 
 footer {
+    width : 100%;
+    position: absolute;
     bottom : 0;
 }

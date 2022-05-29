@@ -21,7 +21,7 @@
             }
         }
 
-        echo "Veuillez renseigner un identifiant et un mot de passe :";
+        echo "Veuillez choisir un identifiant et un mot de passe :";
 
 
         ?>
