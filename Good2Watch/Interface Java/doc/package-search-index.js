@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.algo.com"},{"l":"fr.algo.com.gui"},{"l":"fr.algo.com.gui.containers"},{"l":"fr.algo.com.gui.containers.JItems"},{"l":"fr.algo.com.handler"},{"l":"fr.algo.com.object"},{"l":"fr.algo.com.utils"}];updateSearchResults();
