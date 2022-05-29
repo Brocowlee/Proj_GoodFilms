@@ -21,8 +21,10 @@ Projet de création d'un site web de gestion des films visionnés inspiré du si
   - Ajout des films aux films regardés
   - voir les films vus et les commentaires d'autres utilisateurs
 
-# Installation
+# Utilisation
 
 Avec git, dans le repertoire de votre choix :
 
-git clone
+git clone https://github.com/Brocowlee/Proj_GoodFilms.git
+
+puis lancez votre serveur php et ouvrez le dossier dans votre navigateur préféré.
