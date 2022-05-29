@@ -1,0 +1,59 @@
+*{
+    font-family:Arial, sans-serif
+}
+
+html{
+    background-color: rgb(57, 54, 54);
+}
+
+#page_genre h3 {
+    color:lightgray;
+    font-size: 200%;
+
+}
+
+header {
+    position : sticky;
+    top: 0;
+}
+
+#page_genre {
+    background-color: rgb(57, 54, 54);
+    margin: auto;
+    width: 100%;
+    height : 100%;
+    padding: 30px;
+    position :relative;
+}
+
+#bouton_genre{
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bouton_genre:hover {
+    background-color: #a08906;
+    transition : 500ms;
+}
+
+#liste_genres {
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px;
+}
+
+footer {
+    position : absolute;
+    bottom : 0;
+    width : 100%;
+}
+
+

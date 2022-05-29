@@ -1,0 +1,71 @@
+*{
+    font-family:Arial, sans-serif
+}
+
+#content h1 {
+    color: lightgrey;
+}
+
+#content h3 {
+    color: lightgrey;
+}
+
+header {
+    position : sticky;
+    top: 0;
+}
+
+#content {
+    background-color: rgb(57, 54, 54);
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-bottom: 324px;
+}
+
+
+#films{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 8px;
+}
+
+#bouton_film{
+    background-color : transparent;
+    cursor: pointer;
+    border: none;
+}
+
+#bouton_film:hover{
+    box-shadow: 10px 5px 5px black;
+    transition: 500ms;
+}
+
+#bouton_ami{
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bouton_ami:hover {
+    background-color: #a08906;
+    transition : 500ms;
+}
+
+
+#form_film {
+    margin: 8px; 
+}
+
+#content li {
+    color: lightgrey;
+}
+
+
+

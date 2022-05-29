@@ -1,0 +1,51 @@
+*{
+    font-family:Arial, sans-serif
+}
+html {
+    background-color:rgb(57, 54, 54);
+}
+
+#page_recherche {
+    background-color:rgb(57, 54, 54);
+}
+
+header {
+    position : sticky;
+    top: 0;
+}
+
+#page_recherche h1 {
+    padding : 20px;
+   color : lightgray;
+}
+
+#liste_films{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 8px;
+}
+
+#bouton_film{
+    background-color : transparent;
+    cursor: pointer;
+    border: none;
+
+}
+
+#bouton_film:hover{
+    box-shadow: 10px 5px 5px black;
+    transition: 500ms;
+}
+
+#un_film {
+    margin: 8px; 
+}
+
+footer {
+    position : absolute;
+    bottom : 0;
+    width : 100%;
+}
