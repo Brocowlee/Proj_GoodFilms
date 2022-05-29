@@ -1,5 +1,6 @@
 # Proj_GoodFilms
 Projet de création d'un site web de gestion des films visionnés inspiré du site goodReads. Ce site permet la création de compte et la connexion d'utilisateurs. Chaque utilisateur peut rechercher des informations sur les films présents à la base de données, les noter et les commenter.
+
 Ainsi qu'une interface Java permettant de traiter les informations liées à la base de données.
 
 # Fonctionnalités
