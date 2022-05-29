@@ -1,0 +1,74 @@
+
+html{
+background-color: #232323;
+font-family:Arial Narrow, sans-serif;
+}
+
+body{
+    background: #232323;
+    color:#232323;
+}
+
+
+/* img{
+    width: auto;
+    left: auto;
+    top: auto;
+    position: absolute;
+    opacity: 0.2;
+    /* object-position: 50% 50%; 
+} */
+
+
+#connexion{
+    background: #232323;
+    color:lightgray;
+    margin: auto;
+    width: 100%;
+    /* border: 3px solid #263238 ; */
+    padding: 10px;
+    text-align: center;
+
+}
+
+
+button {
+    width: 150px;
+    height: 30px;
+    background-color: #FFD700;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+button#connexionBtn{
+    position: relative;
+    left:100px;
+    top:40px;
+}
+
+button#inscriptionBtn{
+    position: relative;
+    right:100px;
+    top:60px;
+}
+
+
+#informations{
+    position: relative;
+    top: 50px;
+}
+
+#login{
+    position: relative;
+    right:70px;
+}
+
+#mdp{
+    position: relative;
+    right:42px;
+}
+
