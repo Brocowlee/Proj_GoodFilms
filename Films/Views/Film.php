@@ -41,7 +41,7 @@
                 
             if($has_note){
                 $value = number_format($avg,1,",",".");
-                echo "Note global : ".$value;
+                echo "Note globale : ".$value;
             } 
 
         ?>
