@@ -9,43 +9,34 @@ lstFilms=[]
 lstPers=[]
 lstGenre=[]
 
+
+#fonction de récupération des liens (string)
 def findLinks(soup):
     res=[]
     for link in soup.find_all("a",{"class":"title-list-grid__item--link"}):
         res.append("https://www.justwatch.com"+link["href"])
     return res
 
-# def findLinks(soup):
-#     res=[]
-#     for link in soup.find_all("a",{"class":"html-attribute-value html-external-link"}):
-#         try:
-#             if link["href"][29]=="f" and link["href"][30]=="i" and link["href"][31]=="l" and link["href"][32]=="m":
-#                 res.append(link["href"])
-#         except:
-#             pass
-#     res.pop(0)
-#     res.pop(0)
-#     res.pop(0)
-#     res.pop(0)
-#     return res
 
+#fonction de récupération des réalisateurs (string)
 def getReal(soup):
     return soup.find_all("a",class_="title-credit-name")[0].text
 
 
+#fonctions de récupération du cast (list)
 def getCast(soup):
     res=[]
     i=0
     for cast in soup.find_all("a",class_="title-credit-name"):
         res.append(cast.text)
         i+=1
-        if i>10:
+        if i>10:  #limitation à 10 acteurs par films
             break
     res.pop(0)
     res.pop(0)
     return res
 
-
+#fonction de récupération du lien des images des films (string)
 def getImage(soup):
     res=""
     line = soup.find_all("source",{"type":"image/jpeg"})[3]["data-srcset"]
@@ -55,6 +46,7 @@ def getImage(soup):
         else:
             res+=car
 
+#fonction de récupération des genres (liste)
 def getGenre(soup):
     res=[]
     line=soup.find_all("div",{"class":"detail-infos__value"})[1].text
@@ -62,6 +54,7 @@ def getGenre(soup):
     lstGenre[len(lstGenre)-1]=lstGenre[len(lstGenre)-1][:-1]
     return lstGenre
 
+#fonction de récupération du résumé (string)
 def getResume(soup):
     line=soup.find("p",{"class":"text-wrap-pre-line mt-0"}).text
     for i in range(len(line)):
@@ -69,15 +62,19 @@ def getResume(soup):
             return None
     return line
 
+#fonction de récupération des titres (string)
 def getTitre(soup):
     return soup.find("h1").text[1:-1] #contient des espaces au début et à la fin
 
+#fonction de récupération des années de sortie (string)
 def getAnnee(soup):
     return soup.find("span",{"class":"text-muted"}).text[2:-2]
 
+#fonction de récupération des durées des films
 def getDuree(soup):
     return soup.find_all("div",{"class":"detail-infos__value"})[2].text
 
+#vérification que le genre n'a pas déjà été créée
 def isAldreadyAddGenre(soup,genre):
     i=0
     for g in lstGenre:
@@ -86,6 +83,7 @@ def isAldreadyAddGenre(soup,genre):
         i+=1
     return None
 
+#vérification que la personne n'a pas déjà été créée 
 def isAldreadyAddPers(soup,pers):
     i=0
     for p in lstPers:
@@ -94,6 +92,7 @@ def isAldreadyAddPers(soup,pers):
         i+=1
     return None
 
+#fonction d'initialisation et d'écriture des requetes SQL pour un lien de film
 def initTxt(link):
     global id_f
     result=requests.get(link)
@@ -134,7 +133,7 @@ def initTxt(link):
             print("error")
         f.close()
     
-
+#écriture des requêtes à partir du lien du site contenant les liens des films
 def initTxtGlobal(soup):
     global id_f
     res=[]
@@ -143,16 +142,8 @@ def initTxtGlobal(soup):
         initTxt(link)
 
 
-
-# with open("www.justwatch.com_fr_films.html",encoding="utf-8") as fp:
-#     soup = BeautifulSoup(fp, 'html.parser')
-#     fp.close()
-
-#print(initTxt(urlfilm))
-#initTxtGlobal(soup)
-
+#liste des liens JustWatch avec le filtre des années
 urls=["https://www.justwatch.com/fr/films?release_year_from=2022","https://www.justwatch.com/fr/films?release_year_from=2021&release_year_until=2021","https://www.justwatch.com/fr/films?release_year_from=2020&release_year_until=2020","https://www.justwatch.com/fr/films?release_year_from=2019&release_year_until=2019","https://www.justwatch.com/fr/films?release_year_from=2018&release_year_until=2018","https://www.justwatch.com/fr/films?release_year_from=2017&release_year_until=2017","https://www.justwatch.com/fr/films?release_year_from=2016&release_year_until=2016","https://www.justwatch.com/fr/films?release_year_from=2015&release_year_until=2015"]
-url="https://www.justwatch.com/fr/film/fantastic-beasts-3"
 with open('films.txt', 'a',encoding="utf-8") as f:
      f.writelines('TRUNCATE TABLE Film;\n')
      f.writelines('TRUNCATE TABLE Genre;\n')
@@ -162,13 +153,9 @@ with open('films.txt', 'a',encoding="utf-8") as f:
      f.writelines('TRUNCATE TABLE realise;\n')
      f.close()
 
+#écriture pour tous les liens JustWatch 
 for url in urls:
     result=requests.get(url)
     soup = BeautifulSoup(result.text, 'html.parser')
     initTxtGlobal(soup)
 
-
-# result=requests.get(url)
-# soup = BeautifulSoup(result.text, 'html.parser')
-# #print(getResume(soup))
-# print(getCast(soup))#base >
