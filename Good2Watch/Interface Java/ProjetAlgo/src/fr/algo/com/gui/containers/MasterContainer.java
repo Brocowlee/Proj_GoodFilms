@@ -79,7 +79,7 @@ public class MasterContainer extends JPanel {
     	                }
     	            });
         			
-        			gui.setJMenuBar(CreateMenuBar(gui));
+        			gui.setJMenuBar(createMenuBar(gui));
         			gui.setResizable(true);
         			present(admin);
     	        }
@@ -135,7 +135,7 @@ public class MasterContainer extends JPanel {
      * 
      * @return le menu
      */
-    public JMenuBar CreateMenuBar(MyGUI gui) {
+    public JMenuBar createMenuBar(MyGUI gui) {
     	
     	JMenuBar menuBar = new JMenuBar();
     	JMenu menu = new JMenu("Fichier");

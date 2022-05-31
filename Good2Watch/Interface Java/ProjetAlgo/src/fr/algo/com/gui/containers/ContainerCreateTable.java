@@ -78,7 +78,7 @@ public class ContainerCreateTable extends JPanel{
 		setLayout(new GridLayout());
         
         
-        ShowColumn();
+        showColumn();
           
     }
 	
@@ -86,7 +86,7 @@ public class ContainerCreateTable extends JPanel{
      * Methode permettant l'affichage des différentes colonnes
      * 
      */
-	public void ShowColumn() {
+	public void showColumn() {
 		removeAll();
 
 		this.check_box_column.clear();
@@ -262,7 +262,7 @@ public class ContainerCreateTable extends JPanel{
 					}
 				}
 		    	
-		    	ShowColumn();
+		    	showColumn();
 		    }
 		    
 		});
@@ -404,9 +404,9 @@ public class ContainerCreateTable extends JPanel{
      * @param colonne colonne à ajouter
      * @see Column
      */
-	public void AddColumn(Column colonne) {
+	public void addColumn(Column colonne) {
 		this.lstColumns.add(colonne);
-		ShowColumn();
+		showColumn();
 	}
 	
 	/**

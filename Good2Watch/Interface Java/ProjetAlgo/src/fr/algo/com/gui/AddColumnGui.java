@@ -171,7 +171,7 @@ public class AddColumnGui extends JFrame {
 		    	column.setPrimary(isPrimary);
 		    	column.setAutoIncrement(isAutoIncrement);
 		    	
-		    	containerCreateTable.AddColumn(column);
+		    	containerCreateTable.addColumn(column);
 		    	getAddColumnGui().dispose();
 		    }
 		    
