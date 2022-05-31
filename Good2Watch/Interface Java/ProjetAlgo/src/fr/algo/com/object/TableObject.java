@@ -396,8 +396,10 @@ public class TableObject {
 				
 				String attribut = sublist.get(i);
 				
-				if(attribut.length() > maxvalue.get(i).length()) {
-					maxvalue.set(i, attribut);
+				if(attribut != null) {			
+					if(attribut.length() > maxvalue.get(i).length()) {
+						maxvalue.set(i, attribut);
+					}
 				}
 				
 			}

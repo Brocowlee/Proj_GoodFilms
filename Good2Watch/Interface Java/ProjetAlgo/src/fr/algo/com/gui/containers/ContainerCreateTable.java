@@ -60,7 +60,7 @@ public class ContainerCreateTable extends JPanel{
 	/**
      * Zone de texte pour le nom de la table
      */
-	private JTextField Ttable = new JTextField();
+	private JTextField tTable = new JTextField();
 	
 	/**
      * Container JPanel de gestion d'affichage
@@ -219,8 +219,8 @@ public class ContainerCreateTable extends JPanel{
         Ltable.setBounds(300, 700, 100, 50);
         contentPane2.add(Ltable);
         
-        this.Ttable.setBounds(400, 700, 150, 50);
-        contentPane2.add(this.Ttable);
+        this.tTable.setBounds(400, 700, 150, 50);
+        contentPane2.add(this.tTable);
         
         JButton BValid = new JButton("Ajouter Table");
         BValid.setBounds(400, 800, 150, 50);
@@ -270,7 +270,7 @@ public class ContainerCreateTable extends JPanel{
         BValid.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
 		    	
-		    	String tableName = getContainerCreateTable().Ttable.getText();
+		    	String tableName = getContainerCreateTable().tTable.getText();
 		    	
 		    	TableBuilder table_builder = new TableBuilder(tableName);
 		    	

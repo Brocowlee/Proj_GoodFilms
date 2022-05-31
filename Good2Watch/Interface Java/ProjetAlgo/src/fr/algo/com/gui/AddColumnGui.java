@@ -45,62 +45,62 @@ public class AddColumnGui extends JFrame {
 	/**
      * Label pour le nom
      */
-	private JLabel LName = new JLabel("Nom de la colonne : ");
+	private JLabel lName = new JLabel("Nom de la colonne : ");
 	
 	/**
      * Zone de texte pour le nom
      */
-	private JTextField TName = new JTextField();
+	private JTextField tName = new JTextField();
 	
 	/**
      * Label pour le type
      */
-	private JLabel LType = new JLabel("Type de la colonne : ");
+	private JLabel lType = new JLabel("Type de la colonne : ");
 	
 	/**
      * ComboBox pour le type
      */
-	private JComboBox<String> CBType = new JComboBox<>();
+	private JComboBox<String> cbType = new JComboBox<>();
 	
 	/**
      * Label pour la valeur par defaut
      */
-	private JLabel LDefaultValue = new JLabel("Valeur par défaut : ");
+	private JLabel lDefaultValue = new JLabel("Valeur par défaut : ");
 	
 	/**
      * Zone de texte pour la valeur par defaut
      */
-	private JTextField TDefaultValue = new JTextField();
+	private JTextField tDefaultValue = new JTextField();
 	
 	/**
      * Label si la valeur peut etre nul
      */
-	private JLabel LisNull = new JLabel("Valeur null ? : ");
+	private JLabel lIsNull = new JLabel("Valeur null ? : ");
 	
 	/**
      * CheckBox isNull
      */
-	private JCheckBox CisNull = new JCheckBox();
+	private JCheckBox cIsNull = new JCheckBox();
 	
 	/**
      * Label si la valeur peut etre autoIncrement
      */
-	private JLabel LisAutoIncrement = new JLabel("Auto Increment ? : ");
+	private JLabel lIsAutoIncrement = new JLabel("Auto Increment ? : ");
 	
 	/**
      * Checkbox is AutoIncrement
      */
-	private JCheckBox CisAutoIncrement = new JCheckBox();
+	private JCheckBox cIsAutoIncrement = new JCheckBox();
 	
 	/**
      * Label si la valeur est une clé primaire
      */
-	private JLabel LisPrimary = new JLabel("Primary Key ? : ");
+	private JLabel lIsPrimary = new JLabel("Primary Key ? : ");
 	
 	/**
      * Checkbox is Primary
      */
-	private JCheckBox CisPrimary = new JCheckBox();
+	private JCheckBox cIsPrimary = new JCheckBox();
 	
 	/**
 	* Constructeur de la classe
@@ -120,7 +120,7 @@ public class AddColumnGui extends JFrame {
 		
 		JPanel pan = new JPanel(new GridLayout(8,2,0,0));
 		
-		addJComponents2JPanel(pan, LName, TName, LType, setType(this.CBType), LDefaultValue, TDefaultValue, LisNull, CisNull, LisAutoIncrement, CisAutoIncrement, LisPrimary, CisPrimary); 
+		addJComponents2JPanel(pan, lName, tName, lType, setType(this.cbType), lDefaultValue, tDefaultValue, lIsNull, cIsNull, lIsAutoIncrement, cIsAutoIncrement, lIsPrimary, cIsPrimary); 
 		
 		JButton button = new JButton("Ajouter");
 		pan.add(button);
@@ -130,13 +130,13 @@ public class AddColumnGui extends JFrame {
         button.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
 		    	
-		    	String Name = getAddColumnGui().TName.getText();
+		    	String Name = getAddColumnGui().tName.getText();
 		    	
-		    	String Type = (String) getAddColumnGui().CBType.getSelectedItem();
-		    	String DefaultValue = getAddColumnGui().TDefaultValue.getText();
+		    	String Type = (String) getAddColumnGui().cbType.getSelectedItem();
+		    	String DefaultValue = getAddColumnGui().tDefaultValue.getText();
 		    	
 		    	boolean isNull;
-		    	if(getAddColumnGui().CisNull.isSelected()) {
+		    	if(getAddColumnGui().cIsNull.isSelected()) {
 		    		isNull = true;
 		    	}
 		    	else {
@@ -144,7 +144,7 @@ public class AddColumnGui extends JFrame {
 		    	}
 		    	
 		    	boolean isPrimary;
-		    	if(getAddColumnGui().CisPrimary.isSelected()) {
+		    	if(getAddColumnGui().cIsPrimary.isSelected()) {
 		    		isPrimary = true;
 		    	}
 		    	else {
@@ -152,7 +152,7 @@ public class AddColumnGui extends JFrame {
 		    	}
 		    	
 		    	boolean isAutoIncrement;
-		    	if(getAddColumnGui().CisAutoIncrement.isSelected()) {
+		    	if(getAddColumnGui().cIsAutoIncrement.isSelected()) {
 		    		isAutoIncrement = true;
 		    	}
 		    	else {

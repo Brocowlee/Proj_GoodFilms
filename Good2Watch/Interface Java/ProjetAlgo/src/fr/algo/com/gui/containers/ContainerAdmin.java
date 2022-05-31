@@ -71,42 +71,42 @@ public class ContainerAdmin extends JPanel {
 	/**
      * Label réussite de la suppression partie 1
      */
-	private JLabel Ldelete = new JLabel("La suppression");
+	private JLabel lDelete = new JLabel("La suppression");
 	
 	/**
      * Label réussite de la suppression partie 2
      */
-    private JLabel Ldelete2 = new JLabel("a été effectué");
+    private JLabel lDelete2 = new JLabel("a été effectué");
     
     /**
      * Label échec de la suppression partie 1
      */
-    private JLabel Ldeleterefused = new JLabel("Veuillez choisir");
+    private JLabel lDeleteRefused = new JLabel("Veuillez choisir");
     
     /**
      * Label échec de la suppression partie 2
      */
-    private JLabel Ldeleterefused2 = new JLabel("une donnée");
+    private JLabel lDeleteRefused2 = new JLabel("une donnée");
     
     /**
      * Label réussite de l'ajout partie 1
      */
-    private JLabel Ladd = new JLabel("L'ajout");
+    private JLabel lAdd = new JLabel("L'ajout");
     
     /**
      * Label réussite de l'ajout partie 2
      */
-    private JLabel Ladd2 = new JLabel("a été effectué");
+    private JLabel lAdd2 = new JLabel("a été effectué");
     
     /**
      * Label échec de l'ajout partie 1
      */
-    private JLabel Laddrefused = new JLabel("Veuillez choisir");
+    private JLabel lAddRefused = new JLabel("Veuillez choisir");
     
     /**
      * Label échec de l'ajout partie 2
      */
-    private JLabel Laddrefused2 = new JLabel("une table");
+    private JLabel lAddRefused2 = new JLabel("une table");
     
     /**
      * Listener de retour
@@ -142,8 +142,8 @@ public class ContainerAdmin extends JPanel {
 	*/
 	public void setAddButton(boolean bool) {
 		
-		this.Ladd.setVisible(bool);
-		this.Ladd2.setVisible(bool);
+		this.lAdd.setVisible(bool);
+		this.lAdd2.setVisible(bool);
 	}
 	
 	/**
@@ -198,15 +198,15 @@ public class ContainerAdmin extends JPanel {
         delete.getButton().setBounds(25, 300, 100, 25);
         contentPane.add(delete.getButton());
         
-        createTextArea(this.Ldelete, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
-        createTextArea(this.Ldelete2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
-        createTextArea(this.Ldeleterefused, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
-        createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
-        createTextArea(this.Ldeleterefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
-        createTextArea(this.Laddrefused, contentPane, new int[] {40, 440, 100, 25}, Color.RED, false);
-        createTextArea(this.Laddrefused2, contentPane, new int[] {40, 460, 100, 25}, Color.RED, false);
-        createTextArea(this.Ladd, contentPane, new int[] {50, 440, 100, 25}, Color.GREEN, false);
-        createTextArea(this.Ladd2, contentPane, new int[] {40, 460, 100, 25}, Color.GREEN, false);
+        createTextArea(this.lDelete, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
+        createTextArea(this.lDelete2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
+        createTextArea(this.lDeleteRefused, contentPane, new int[] {35, 340, 100, 25}, Color.RED, false);
+        createTextArea(this.lDeleteRefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
+        createTextArea(this.lDeleteRefused2, contentPane, new int[] {40, 360, 100, 25}, Color.RED, false);
+        createTextArea(this.lAddRefused, contentPane, new int[] {40, 440, 100, 25}, Color.RED, false);
+        createTextArea(this.lAddRefused2, contentPane, new int[] {40, 460, 100, 25}, Color.RED, false);
+        createTextArea(this.lAdd, contentPane, new int[] {50, 440, 100, 25}, Color.GREEN, false);
+        createTextArea(this.lAdd2, contentPane, new int[] {40, 460, 100, 25}, Color.GREEN, false);
         
         JItemButton adding = new JItemButton("Ajouter",this, "Ajouter");
         adding.getButton().setMinimumSize(new Dimension(20,20));
@@ -248,8 +248,8 @@ public class ContainerAdmin extends JPanel {
 		TableObject table = getCurrentTable();
 		
 		if(table == null) {
-			this.Laddrefused.setVisible(true);
-	        this.Laddrefused2.setVisible(true);
+			this.lAddRefused.setVisible(true);
+	        this.lAddRefused2.setVisible(true);
 			return;
 		}
 		
@@ -266,12 +266,12 @@ public class ContainerAdmin extends JPanel {
 	*/
 	public void delete() {
 		
-		this.Ldelete.setVisible(false);
-        this.Ldelete2.setVisible(false);
-        this.Ldeleterefused.setVisible(false);
-        this.Ldeleterefused2.setVisible(false);
-        this.Laddrefused.setVisible(false);
-        this.Laddrefused2.setVisible(false);
+		this.lDelete.setVisible(false);
+        this.lDelete2.setVisible(false);
+        this.lDeleteRefused.setVisible(false);
+        this.lDeleteRefused2.setVisible(false);
+        this.lAddRefused.setVisible(false);
+        this.lAddRefused2.setVisible(false);
         
 		TableObject table = null;
 		
@@ -294,8 +294,8 @@ public class ContainerAdmin extends JPanel {
 		}
 		
 		if(table == null) {
-			this.Ldeleterefused.setVisible(true);
-	        this.Ldeleterefused2.setVisible(true);
+			this.lDeleteRefused.setVisible(true);
+	        this.lDeleteRefused2.setVisible(true);
 			return;
 		}
 		
@@ -303,8 +303,8 @@ public class ContainerAdmin extends JPanel {
 		
 		showTable(table);
 		
-		this.Ldelete.setVisible(true);
-        this.Ldelete2.setVisible(true);
+		this.lDelete.setVisible(true);
+        this.lDelete2.setVisible(true);
 		
 	}
 	

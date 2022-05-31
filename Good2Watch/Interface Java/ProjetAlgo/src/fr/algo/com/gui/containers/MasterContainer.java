@@ -34,13 +34,13 @@ public class MasterContainer extends JPanel {
      * ContainerInit principal
      * @see ContainerInit
      */
-	private ContainerInit Connect;
+	private ContainerInit connect;
 	
 	/**
      * ContainerAdmin principal
      * @see ContainerAdmin
      */
-	private ContainerAdmin Admin;
+	private ContainerAdmin admin;
 	
 	/**
      * Gui principal
@@ -68,11 +68,11 @@ public class MasterContainer extends JPanel {
         removeAll();
         
         	
-        if (Connect == null) {
-        	Connect = new ContainerInit(new ContainerInit.NavigationListener() {
+        if (connect == null) {
+        	connect = new ContainerInit(new ContainerInit.NavigationListener() {
         		@Override
     	        public void presentAdminContainer(ContainerInit source) {
-        			Admin = new ContainerAdmin(new ReturnNavigationListener<ContainerAdmin>() {
+        			admin = new ContainerAdmin(new ReturnNavigationListener<ContainerAdmin>() {
         				@Override
     	                public void returnFrom(ContainerAdmin source) {
         					presentMenu();
@@ -81,7 +81,7 @@ public class MasterContainer extends JPanel {
         			
         			gui.setJMenuBar(CreateMenuBar(gui));
         			gui.setResizable(true);
-        			present(Admin);
+        			present(admin);
     	        }
     	                
         	});
@@ -90,12 +90,12 @@ public class MasterContainer extends JPanel {
         	
         if(Main.connected == false) {
         	gui.setResizable(false);
-        	add(Connect);
+        	add(connect);
     	}
         else {
-        	present(Admin);
+        	present(admin);
         	gui.setResizable(true);
-        	Admin.update();
+        	admin.update();
         }
         
         revalidate();
@@ -246,7 +246,7 @@ public class MasterContainer extends JPanel {
      * @see ContainerAdmin
      */
     public ContainerAdmin getContainerAdmin() {
-		return this.Admin;
+		return this.admin;
     	
     }
     

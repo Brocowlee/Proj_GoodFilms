@@ -62,22 +62,22 @@ public class ContainerInit extends JPanel{
 	/**
      * Label pour l'identifiant
      */
-	private JLabel Lidentifiant = new JLabel("Identifiant : ");
+	private JLabel lIdentifiant = new JLabel("Identifiant : ");
 	
 	/**
      * Zone de texte pour l'indentifiant
      */
-	private JTextField Tidentifiant = new JTextField("");
+	private JTextField tIdentifiant = new JTextField("");
 	
 	/**
      * Label pour le mot de passe
      */
-	private JLabel Lmdp = new JLabel("Mot de passe : ");
+	private JLabel lMdp = new JLabel("Mot de passe : ");
 	
 	/**
      * Zone de texte pour le mot de passe
      */
-	private JPasswordField Tmdp = new JPasswordField("");
+	private JPasswordField tMdp = new JPasswordField("");
 	
 	/**
      * Interface listener
@@ -105,18 +105,18 @@ public class ContainerInit extends JPanel{
 		layout.setAutoCreateContainerGaps(true);
 		
 		
-		add(Lidentifiant);
+		add(lIdentifiant);
 		
-		Tidentifiant.setMinimumSize(new Dimension(200,20));
-		Tidentifiant.setMaximumSize(new Dimension(200,Lidentifiant.getHeight()));
-		add(Tidentifiant);
+		tIdentifiant.setMinimumSize(new Dimension(200,20));
+		tIdentifiant.setMaximumSize(new Dimension(200,lIdentifiant.getHeight()));
+		add(tIdentifiant);
 		
 		
-		add(Lmdp);
+		add(lMdp);
 		
-		Tmdp.setMinimumSize(new Dimension(200,20));
-		Tmdp.setMaximumSize(new Dimension(200,Lmdp.getHeight()));
-		add(Tmdp);
+		tMdp.setMinimumSize(new Dimension(200,20));
+		tMdp.setMaximumSize(new Dimension(200,lMdp.getHeight()));
+		add(tMdp);
 		
 		connect.setMinimumSize(new Dimension(200,20));
 		connect.setMaximumSize(new Dimension(200,20));
@@ -126,22 +126,22 @@ public class ContainerInit extends JPanel{
 		layout.setHorizontalGroup(
 				  	layout.createSequentialGroup()
 				  	  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				  			  .addComponent(Lidentifiant)
-				  			  .addComponent(Lmdp))
+				  			  .addComponent(lIdentifiant)
+				  			  .addComponent(lMdp))
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				    		  .addComponent(Tidentifiant)
-				    		  .addComponent(Tmdp)
+				    		  .addComponent(tIdentifiant)
+				    		  .addComponent(tMdp)
 				      		  .addComponent(connect))
 				      
 				);
 		layout.setVerticalGroup(
 				   layout.createSequentialGroup()
 				   		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-				   			.addComponent(Lidentifiant)
-						   	.addComponent(Tidentifiant))
+				   			.addComponent(lIdentifiant)
+						   	.addComponent(tIdentifiant))
 				   		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-				   				.addComponent(Lmdp)
-				   				.addComponent(Tmdp))
+				   				.addComponent(lMdp)
+				   				.addComponent(tMdp))
 		
 				   		.addComponent(connect)
 				);
@@ -150,8 +150,8 @@ public class ContainerInit extends JPanel{
 		    @SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 		    	
-		    	String login = Tidentifiant.getText();
-		    	String password = Tmdp.getText();
+		    	String login = tIdentifiant.getText();
+		    	String password = tMdp.getText();
 		    	
 		    	if(isKnownLogin(login)) {
 		    		
