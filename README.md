@@ -47,4 +47,4 @@ git clone https://github.com/Brocowlee/Proj_GoodFilms.git
 
 puis lancez votre serveur php et ouvrez le dossier dans votre navigateur préféré.
 
-*L'utilisateur admin par défaut à comme login : admin et comme mot de passe : admin.*
+**L'utilisateur admin par défaut à comme login : admin et comme mot de passe : admin.**
