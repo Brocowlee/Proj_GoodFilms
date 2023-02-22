@@ -1,7 +1,8 @@
 # Proj_GoodFilms
 
 ## Contexte
-Ce projet a été ralisé par Vincent Takahashi, Thomas Nicolas, Benjamin Guériot et Arthur Gonay dans le cadre de notre école d'ingénieur lors du module PROJ631. Il consiste en la création d'un site web de gestion des films visionnés inspiré du site goodReads. Ce site permet la création de compte et la connexion d'utilisateurs. Chaque utilisateur peut rechercher des informations sur les films présents à la base de données, les noter et les commenter.
+Ce projet a été ralisé par Vincent Takahashi, Thomas Nicolas, Benjamin Guériot et Arthur Gonay dans le cadre de notre école d'ingénieur lors du module PROJ631. Il consiste en la création d'un site web de gestion des films visionnés inspiré du site goodReads. Ce site permet la création de comptes et la connexion d'utilisateurs. Chaque utilisateur peut rechercher des informations sur les films présents à la base de données, les noter et les commenter.
+Nous utilisons pour cela une base de données MySQL que nous avons préalablement remplie à partir d'un scraping Python sur le site https://www.justwatch.com
 
 Une interface Java permet également le traitement des informations liées à la base de données.
 
